@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 
 class RegisterController extends Controller
 {
@@ -63,20 +64,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $img = Image::make('storage/avatars/1.jpg');
-        $img->text('HW', 125, 80, function ($font) {
-            $font->file(public_path('/fonts/font.ttf'));
-            $font->size(40);
-            $font->color('#fdf6e3');
-            $font->align('center');
-            $font->angle(45);
-        });
-        $filename = time() . '.' . 'jpg';
-        $img->resize(150, 150)->save('storage/avatars/' . $filename);
-
         return User::create([
             'email' => $data['email'],
-            'avatar' => $filename,
             'password' => Hash::make($data['password']),
         ]);
     }
