@@ -1,0 +1,102 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// general
+
+.bg-main {
+    background: url("/img/svg/bg.png");
+    background-size: 100%;
+}
+
+.btn-gradient {
+    color: #000 !important;
+    transition: 0.5s;
+    background-image: linear-gradient(to right, $first-color 0%, $second-color 100%);
+
+    &:hover {
+        filter: brightness(90%);
+        transition: 0.5s;
+    }
+}
+
+.btn-first {
+    background: $first-color;
+
+    &:hover {
+        background: $second-color;
+    }
+}
+
+// header
+
+.header--title {
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+// search
+
+.search {
+    &--input {
+        height: 60px;
+        border: 1px solid #000;
+    }
+
+    &--btn {
+        text-align: center;
+        background: $first-color;
+        width: 100%;
+        font-size: 1.15rem;
+    }
+}
+
+// footer
+
+.footer {
+    &-bg {
+        background: url("/img/svg/footer.svg") no-repeat;
+        background-size: 100%;
+        height: 100px;
+        background-position-y: bottom;
+    }
+
+    &--copyright {
+        background: #F6FF6E;
+        text-align: center;
+    }
+}
+
+// section
+
+.section--title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem 0;
+}
+
+// section areas
+
+.areas-item--title {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+        color: #000;
+    }
+}
+
+// auth
+
+.auth-form--title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
