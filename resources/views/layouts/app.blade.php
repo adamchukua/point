@@ -19,22 +19,20 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Favicon -->
-    <!--
-     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2b5797">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#2b5797">
-     -->
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d5d45b">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-<div id="app">
+<div id="app" class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                <img src="/img/logo.png" alt="" title="{{ config('app.name', 'Laravel') }}" class="logo">
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -70,11 +68,35 @@
                         @endif
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                @if (empty(Auth::user()->profile()->name))
+                                    Ваш профіль
+                                @else
+                                    {{ Auth::user()->profile()->name }}
+                                @endif
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/profile/edit">
+                                    Налаштування
+                                </a>
+
+                                <a class="dropdown-item" href="/profile/bookings">
+                                    Бронювання
+                                </a>
+
+                                <a class="dropdown-item" href="/profile/reviews">
+                                    Ваші відгуки
+                                </a>
+
+                                <a class="dropdown-item" href="/profile/reviews">
+                                    Перелік бажань
+                                </a>
+
+                                <a class="dropdown-item" href="/profile/apartments">
+                                    Ваші помешкання
+                                </a>
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -99,7 +121,7 @@
         @yield('content')
     </main>
 
-    <footer class="footer">
+    <footer class="footer mt-auto">
         <div class="footer-bg"></div>
 
         <div class="footer--copyright py-3">

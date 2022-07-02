@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('country');
             $table->string('avatar');
             $table->timestamps();
+
+            $table->index('user_id');
         });
     }
 

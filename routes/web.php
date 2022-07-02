@@ -13,10 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes(['verify' => true]);
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/join', function () {
+    return view('join');
+});
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile/edit', [App\Http\Controllers\ProfilesController::class, 'edit']);
+Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index']);
+Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'update'])->middleware('verified');
