@@ -33,3 +33,4 @@ Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, '
 Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'update'])->middleware('verified');
 
 Route::get('/hotel/', [App\Http\Controllers\HotelsController::class, 'index']);
+Route::get('/hotels', [App\Http\Controllers\HotelsController::class, 'hotels']);

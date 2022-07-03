@@ -10292,6 +10292,18 @@ textarea.form-control-lg {
 .nav-tabs {
   border: none;
 }
+.nav-tabs__bg {
+  background: #b2d3fe;
+  border-radius: 5px;
+}
+
+.nav-tabs__bg .nav-item {
+  transition: 0.5s;
+}
+.nav-tabs__bg .nav-item:hover {
+  transition: 0.5s;
+  background: #f6ff6e;
+}
 
 .nav-tabs .nav-link {
   border: none;

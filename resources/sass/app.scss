@@ -55,6 +55,20 @@
 
 .nav-tabs {
     border: none;
+
+    &__bg {
+        background: $first-color;
+        border-radius: 5px;
+    }
+}
+
+.nav-tabs__bg .nav-item {
+    transition: 0.5s;
+
+    &:hover {
+        transition: 0.5s;
+        background: $second-color;
+    }
 }
 
 .nav-tabs .nav-link {

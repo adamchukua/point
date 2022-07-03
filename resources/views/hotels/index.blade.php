@@ -4,21 +4,31 @@
     <div class="container">
         <div class="row">
             <div class="col-3">
-                <div class="search-sidebar">
-                    <p class="search-sidebar--title">Шукати</p>
-
-                    <form action="" method="get">
-                        <input type="text" placeholder="Куди Ви вирушаєте?" class="form-control search--input">
-
-                        <input type="text" placeholder="Куди Ви вирушаєте?" class="form-control search--input">
-
-                        <input type="text" placeholder="Куди Ви вирушаєте?" class="form-control search--input">
-
-                        <button type="submit" class="btn search--input search--btn btn-first">Шукати</button>
-                    </form>
-                </div>
+                @include('layouts.search-sidebar')
             </div>
             <div class="col-9">
+                <ul class="nav nav-tabs d-flex justify-content-around mb-2 nav-tabs__bg">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#description">Опис</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reviews">Відгуки гостей</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Зручності</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pay">Деталі оплати</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#availability">Наявність місць</a>
+                    </li>
+                </ul>
+
                 <div class="hotel">
                     <div class="row align-items-center">
                         <div class="col-9">
@@ -91,7 +101,7 @@
 
         <div class="row">
             <section class="hotel-section">
-                <p class="hotel--title">Опис</p>
+                <p class="hotel--title" id="description">Опис</p>
 
                 <p class="hotel--description">
                     Це помешкання розташоване в 5 хв. ходьби від пляжу Апартаменти Arcadia & sea terrace розташовані в Одесі, за 450 метрів від пляжу Аркадія та за 1,2 км від пляжу Чайка. До послуг гостей сад із терасою. На території облаштовано власну парковку та надається безкоштовний Wi-Fi.
@@ -105,7 +115,7 @@
             </section>
 
             <section class="hotel-section">
-                <p class="hotel--title">Відгуки гостей</p>
+                <p class="hotel--title" id="reviews">Відгуки гостей</p>
 
                 <div class="hotel-reviews">
                     <p class="hotel-reviews--number">
@@ -143,7 +153,7 @@
             </section>
 
             <section class="hotel-section">
-                <p class="hotel--title">Зручності</p>
+                <p class="hotel--title" id="features">Зручності</p>
 
                 <div class="hotel-features">
                     <div class="row">
@@ -175,6 +185,34 @@
                         </div>
                     </div>
                 </div>
+            </section>
+
+            <section class="hotel-section">
+                <p class="hotel--title" id="pay">Деталі оплати</p>
+
+                <p class="hotel--description">
+                    Це помешкання розташоване в 5 хв. ходьби від пляжу Апартаменти Arcadia & sea terrace розташовані в Одесі, за 450 метрів від пляжу Аркадія та за 1,2 км від пляжу Чайка. До послуг гостей сад із терасою. На території облаштовано власну парковку та надається безкоштовний Wi-Fi.
+                    <br>
+                    В апартаментах є кондиціонер, повністю обладнана міні-кухня, телевізор із плоским екраном і окрема ванна кімната з ванною або душем, феном і безкоштовними туалетно-косметичними засобами. Серед інших зручностей: мікрохвильова піч, холодильник, чайник і плита.
+                    <br>
+                    За 7 км від апартаментів розміщені Одеський археологічний музей і Одеський театр опери й балету. Відстань від апартаментів Arcadia & sea terrace до міжнародного аеропорту Одеси становить 7 км.
+                    <br>
+                    Це місце розташування особливо подобається парам - вони оцінили його на 9,6 для поїздки удвох.
+                </p>
+            </section>
+
+            <section class="hotel-section">
+                <p class="hotel--title" id="availability">Наявність місць</p>
+
+                <p class="hotel--description">
+                    Це помешкання розташоване в 5 хв. ходьби від пляжу Апартаменти Arcadia & sea terrace розташовані в Одесі, за 450 метрів від пляжу Аркадія та за 1,2 км від пляжу Чайка. До послуг гостей сад із терасою. На території облаштовано власну парковку та надається безкоштовний Wi-Fi.
+                    <br>
+                    В апартаментах є кондиціонер, повністю обладнана міні-кухня, телевізор із плоским екраном і окрема ванна кімната з ванною або душем, феном і безкоштовними туалетно-косметичними засобами. Серед інших зручностей: мікрохвильова піч, холодильник, чайник і плита.
+                    <br>
+                    За 7 км від апартаментів розміщені Одеський археологічний музей і Одеський театр опери й балету. Відстань від апартаментів Arcadia & sea terrace до міжнародного аеропорту Одеси становить 7 км.
+                    <br>
+                    Це місце розташування особливо подобається парам - вони оцінили його на 9,6 для поїздки удвох.
+                </p>
             </section>
         </div>
     </div>

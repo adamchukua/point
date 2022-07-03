@@ -10,4 +10,9 @@ class HotelsController extends Controller
     {
         return view('hotels.index');
     }
+
+    public function hotels()
+    {
+        return view('hotels.hotels');
+    }
 }
