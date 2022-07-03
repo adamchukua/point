@@ -14,11 +14,39 @@ class ProfilesController extends Controller
         return view('profiles.index', compact('user'));
     }
 
-    public function edit()
+    public function settings()
     {
         $user = auth()->user();
 
-        return view('profiles.edit', compact('user'));
+        return view('profiles.settings', compact('user'));
+    }
+
+    public function bookings()
+    {
+        $user = auth()->user();
+
+        return view('profiles.bookings', compact('user'));
+    }
+
+    public function reviews()
+    {
+        $user = auth()->user();
+
+        return view('profiles.reviews', compact('user'));
+    }
+
+    public function saved()
+    {
+        $user = auth()->user();
+
+        return view('profiles.saved', compact('user'));
+    }
+
+    public function apartments()
+    {
+        $user = auth()->user();
+
+        return view('profiles.apartments', compact('user'));
     }
 
     public function update(User $user)

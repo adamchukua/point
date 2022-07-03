@@ -10277,6 +10277,14 @@ textarea.form-control-lg {
   background: #f6ff6e;
 }
 
+.btn-second {
+  background: #f6ff6e;
+  border: 1px solid #000;
+}
+.btn-second:hover {
+  background: #b2d3fe;
+}
+
 .logo {
   width: 80px;
 }
@@ -10294,6 +10302,10 @@ textarea.form-control-lg {
   border-bottom: 3px solid #b2d3fe;
   color: #000;
   font-weight: bold;
+}
+
+.notification-img {
+  width: 30px;
 }
 
 .header--title {
@@ -10355,6 +10367,73 @@ textarea.form-control-lg {
   font-weight: bold;
 }
 .join-info-list--item {
+  background: url("/img/svg/accept-check-success.svg") no-repeat left center;
+  padding: 0.5rem 2rem;
+}
+
+.search-sidebar {
+  padding: 1rem;
+  border: 1px solid #000;
+  border-radius: 13px;
+}
+.search-sidebar--title {
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+.search--input {
+  height: 50px;
+  margin-bottom: 1rem;
+}
+.search--input:last-child {
+  margin-bottom: 0;
+}
+.search--btn {
+  font-size: 1rem;
+}
+
+.hotel--title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.hotel--title span {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #000;
+  border-radius: 2px;
+  margin-right: 0.5rem;
+  margin-right: 0.5rem;
+}
+.hotel--save {
+  width: 30px;
+}
+.hotel-gallery--img {
+  cursor: pointer;
+}
+.hotel-reviews--number {
+  font-size: 1.1rem;
+}
+.hotel-reviews--number span {
+  font-weight: bold;
+}
+.hotel-reviews--mark {
+  font-size: 1.1rem;
+}
+.hotel-reviews--mark span {
+  font-size: 1.5rem;
+  padding: 0.2rem;
+  background: #b2d3fe;
+  border-radius: 5px;
+}
+.hotel-reviews-categories--title {
+  font-weight: bold;
+}
+.hotel-features--title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.hotel-features-list--item {
   background: url("/img/svg/accept-check-success.svg") no-repeat left center;
   padding: 0.5rem 2rem;
 }

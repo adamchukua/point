@@ -23,6 +23,13 @@ Route::get('/join', function () {
     return view('join');
 });
 
-Route::get('/profile/edit', [App\Http\Controllers\ProfilesController::class, 'edit']);
+Route::get('/profile/settings', [App\Http\Controllers\ProfilesController::class, 'settings']);
+Route::get('/profile/bookings', [App\Http\Controllers\ProfilesController::class, 'bookings']);
+Route::get('/profile/reviews', [App\Http\Controllers\ProfilesController::class, 'reviews']);
+Route::get('/profile/saved', [App\Http\Controllers\ProfilesController::class, 'saved']);
+Route::get('/profile/apartments', [App\Http\Controllers\ProfilesController::class, 'apartments']);
+
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index']);
 Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'update'])->middleware('verified');
+
+Route::get('/hotel/', [App\Http\Controllers\HotelsController::class, 'index']);

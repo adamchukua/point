@@ -47,6 +47,14 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
+                    @auth
+                        <li class="navbar-item me-3">
+                            <button class="btn">
+                                <img src="/img/svg/notification.svg" alt="" class="notification-img">
+                            </button>
+                        </li>
+                    @endauth
+
                     <li class="navbar-item me-3">
                         <a href="/join" class="text-decoration-none">
                             <button class="nav-link btn btn-light btn-gradient">Зареєструвати своє помешкання</button>
@@ -77,7 +85,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/profile/edit">
+                                <a class="dropdown-item" href="/profile/settings">
                                     Налаштування
                                 </a>
 
@@ -89,8 +97,8 @@
                                     Ваші відгуки
                                 </a>
 
-                                <a class="dropdown-item" href="/profile/reviews">
-                                    Перелік бажань
+                                <a class="dropdown-item" href="/profile/saved">
+                                    Збережене
                                 </a>
 
                                 <a class="dropdown-item" href="/profile/apartments">

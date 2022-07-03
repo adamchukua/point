@@ -40,6 +40,15 @@
     }
 }
 
+.btn-second {
+    background: $second-color;
+    border: 1px solid #000;
+
+    &:hover {
+        background: $first-color;
+    }
+}
+
 .logo {
     width: 80px;
 }
@@ -57,6 +66,10 @@
     border-bottom: 3px solid $first-color;
     color: #000;
     font-weight: bold;
+}
+
+.notification-img {
+    width: 30px;
 }
 
 // header
@@ -142,5 +155,98 @@
     &-list--item {
         background: url('/img/svg/accept-check-success.svg') no-repeat left center;
         padding: 0.5rem 2rem;
+    }
+}
+
+// search-sidebar
+
+.search {
+    &-sidebar {
+        padding: 1rem;
+        border: 1px solid #000;
+        border-radius: 13px;
+
+        &--title {
+            font-size: 1.15rem;
+            font-weight: bold;
+        }
+    }
+
+    &--input {
+        height: 50px;
+        margin-bottom: 1rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &--btn {
+        font-size: 1rem;
+    }
+}
+
+// hotel
+
+.hotel {
+    &--title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+
+        span {
+            font-size: 1rem;
+            padding: 0.5rem;
+            border: 1px solid #000;
+            border-radius: 2px;
+            margin-right: 0.5rem;
+            margin-right: 0.5rem;
+        }
+    }
+
+    &--save {
+        width: 30px;
+    }
+
+    &-gallery--img {
+        cursor: pointer;
+    }
+
+    &-reviews {
+        &--number {
+            font-size: 1.1rem;
+
+            span {
+                font-weight: bold;
+            }
+        }
+
+        &--mark {
+            font-size: 1.1rem;
+
+            span {
+                font-size: 1.5rem;
+                padding: 0.2rem;
+                background: $first-color;
+                border-radius: 5px;
+            }
+        }
+
+        &-categories--title {
+            font-weight: bold;
+        }
+    }
+
+    &-features {
+        &--title {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        &-list--item {
+            background: url('/img/svg/accept-check-success.svg') no-repeat left center;
+            padding: 0.5rem 2rem;
+        }
     }
 }
