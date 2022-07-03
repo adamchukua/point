@@ -10449,3 +10449,43 @@ textarea.form-control-lg {
   background: url("/img/svg/accept-check-success.svg") no-repeat left center;
   padding: 0.5rem 2rem;
 }
+
+.profile--title {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 1rem 0;
+}
+.profile-list-item {
+  padding: 1rem;
+  border: 1px solid #000;
+  border-radius: 7px;
+}
+.profile-list-item-left--img {
+  width: 100px;
+  height: 100px;
+  margin-right: 2rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 50%;
+}
+.profile-list-item-left--title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.profile-list-item-left--subtitle {
+  margin-bottom: 0.5rem;
+}
+.profile-list-item-left--subtitle:last-child {
+  margin-bottom: 0;
+}
+.profile-list-item-right--text {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.profile-list-item-right--btn {
+  padding-top: 0;
+  margin-top: 0;
+}
+.profile-list-item-right--btn img {
+  width: 15px;
+}
