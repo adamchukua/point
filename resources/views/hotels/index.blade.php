@@ -6,6 +6,7 @@
             <div class="col-3">
                 @include('layouts.search-sidebar')
             </div>
+
             <div class="col-9">
                 <ul class="nav nav-tabs d-flex justify-content-around mb-2 nav-tabs__bg">
                     <li class="nav-item">
@@ -32,12 +33,19 @@
                 <div class="hotel">
                     <div class="row align-items-center">
                         <div class="col-9">
-                            <div class="hotel--title"><span>Апартаменти</span> Arcadia apartment & sea terrace</div>
+                            <div class="hotel--title">
+                                <span>{{ $hotel->getType() }}</span>
+                                {{ $hotel->name }}
+                            </div>
                         </div>
 
                         <div class="col-1">
                             <button class="btn">
-                                <img src="/img/svg/heart.svg" alt="" class="hotel--save" title="Додати в збережене">
+                                <img
+                                    src="/img/svg/heart.svg"
+                                    alt=""
+                                    class="hotel--save"
+                                    title="Додати в збережене">
                             </button>
                         </div>
 
@@ -47,7 +55,7 @@
                     </div>
 
                     <div class="row">
-                        <p>16 Kamanina Street flor 23, Одеса, 65000, Україна</p>
+                        <p>{{ $hotel->address }}</p>
                     </div>
 
                     <div class="hotel-gallery">
@@ -57,6 +65,12 @@
                                     src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
                                     class="w-100 shadow-1-strong rounded mb-4 hotel-gallery--img"
                                     alt="Boat on Calm Water"
+                                >
+
+                                <img
+                                    src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp"
+                                    class="w-100 shadow-1-strong rounded mb-4 hotel-gallery--img"
+                                    alt="Wintry Mountain Landscape"
                                 >
 
                                 <img
@@ -104,13 +118,7 @@
                 <p class="hotel--title" id="description">Опис</p>
 
                 <p class="hotel--description">
-                    Це помешкання розташоване в 5 хв. ходьби від пляжу Апартаменти Arcadia & sea terrace розташовані в Одесі, за 450 метрів від пляжу Аркадія та за 1,2 км від пляжу Чайка. До послуг гостей сад із терасою. На території облаштовано власну парковку та надається безкоштовний Wi-Fi.
-                    <br>
-                    В апартаментах є кондиціонер, повністю обладнана міні-кухня, телевізор із плоским екраном і окрема ванна кімната з ванною або душем, феном і безкоштовними туалетно-косметичними засобами. Серед інших зручностей: мікрохвильова піч, холодильник, чайник і плита.
-                    <br>
-                    За 7 км від апартаментів розміщені Одеський археологічний музей і Одеський театр опери й балету. Відстань від апартаментів Arcadia & sea terrace до міжнародного аеропорту Одеси становить 7 км.
-                    <br>
-                    Це місце розташування особливо подобається парам - вони оцінили його на 9,6 для поїздки удвох.
+                    {{ $hotel->description }}
                 </p>
             </section>
 
@@ -190,15 +198,10 @@
             <section class="hotel-section">
                 <p class="hotel--title" id="pay">Деталі оплати</p>
 
-                <p class="hotel--description">
-                    Це помешкання розташоване в 5 хв. ходьби від пляжу Апартаменти Arcadia & sea terrace розташовані в Одесі, за 450 метрів від пляжу Аркадія та за 1,2 км від пляжу Чайка. До послуг гостей сад із терасою. На території облаштовано власну парковку та надається безкоштовний Wi-Fi.
-                    <br>
-                    В апартаментах є кондиціонер, повністю обладнана міні-кухня, телевізор із плоским екраном і окрема ванна кімната з ванною або душем, феном і безкоштовними туалетно-косметичними засобами. Серед інших зручностей: мікрохвильова піч, холодильник, чайник і плита.
-                    <br>
-                    За 7 км від апартаментів розміщені Одеський археологічний музей і Одеський театр опери й балету. Відстань від апартаментів Arcadia & sea terrace до міжнародного аеропорту Одеси становить 7 км.
-                    <br>
-                    Це місце розташування особливо подобається парам - вони оцінили його на 9,6 для поїздки удвох.
-                </p>
+                <ul class="list-group list-group-flush align-items-start">
+                    <li class="list-group-item">Оплата при заселенні (готівка)</li>
+                    <li class="list-group-item">Оплата при заселенні (карткою Visa/MasterCard)</li>
+                </ul>
             </section>
 
             <section class="hotel-section">

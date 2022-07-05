@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hotel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -47,8 +48,9 @@ class ProfilesController extends Controller
     public function apartments()
     {
         $user = auth()->user();
+        $hotels = Hotel::where('user_id', $user->id)->get();
 
-        return view('profiles.apartments', compact('user'));
+        return view('profiles.apartments', compact('user', 'hotels'));
     }
 
     public function update()
@@ -57,7 +59,7 @@ class ProfilesController extends Controller
 
         $data = request()->validate([
             'name' => 'string',
-            'birthdate' => 'date',
+            'birthdate' => ['date', 'nullable'],
             'country' => 'string',
             'avatar' => '',
         ]);
