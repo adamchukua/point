@@ -46,7 +46,7 @@
                 </ul>
 
                 <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
                     @auth
                         <li class="navbar-item me-3">
                             <button class="btn">
@@ -77,11 +77,12 @@
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle text-black" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                @if (empty(Auth::user()->profile()->name))
-                                    Ваш профіль
-                                @else
-                                    {{ Auth::user()->profile()->name }}
-                                @endif
+                                <img
+                                    src="{{ Auth::user()->profile->getAvatar() }}"
+                                    alt=""
+                                    class="avatar">
+
+                                {{ Auth::user()->profile->name ?? 'Ваш профіль' }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

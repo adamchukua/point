@@ -53,6 +53,12 @@
     width: 80px;
 }
 
+.avatar {
+    width: 35px;
+    border-radius: 51%;
+    margin-right: 0.5rem;
+}
+
 .nav-tabs {
     border: none;
 
@@ -272,6 +278,38 @@
         font-size: 2rem;
         font-weight: bold;
         padding: 1rem 0;
+    }
+
+    &-avatar {
+        position: relative;
+        transition: 0.2s;
+
+        &:hover {
+            transition: 0.2s;
+            filter: brightness(0.5);
+        }
+
+        &--img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 51%;
+            cursor: pointer;
+        }
+
+        &--hided {
+            top: calc(50% - 0.55rem);
+            left: 17%;
+            position: absolute;
+            font-weight: bold;
+            font-size: 1.05rem;
+            color: #fff;
+            display: none;
+        }
+    }
+
+    &-avatar:hover + &-avatar--hided {
+        display: block;
     }
 
     &-list {

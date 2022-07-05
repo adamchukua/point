@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 
 class ProfilesController extends Controller
@@ -17,8 +18,9 @@ class ProfilesController extends Controller
     public function settings()
     {
         $user = auth()->user();
+        $countries = DB::table('countries')->get();
 
-        return view('profiles.settings', compact('user'));
+        return view('profiles.settings', compact('user', 'countries'));
     }
 
     public function bookings()
@@ -49,34 +51,41 @@ class ProfilesController extends Controller
         return view('profiles.apartments', compact('user'));
     }
 
-    public function update(User $user)
+    public function update()
     {
-        //$this->authorize('update', $user->profile);
+        $user = auth()->user();
 
         $data = request()->validate([
-            'name' => 'required',
+            'name' => 'string',
             'birthdate' => 'date',
-            'country' => 'required',
-            //'image' => '',
+            'country' => 'string',
+            'avatar' => '',
         ]);
 
-        /*if (request('image')) {
-            $imagePath = request('image')->store('profile', 'public');
+        if (request('avatar')) {
+            $imagePath = request('avatar')->store('avatars', 'public');
 
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(150, 150);
+            $image = Image::make(public_path("storage/{$imagePath}"))
+                ->fit(250, 250);
             $image->save();
 
-            $imageArray = ['image' => $imagePath];
-        }*/
+            $imageInArray = ['avatar' => $imagePath];
+        }
 
-        /*auth()->user()->profile->update(array_merge(
+        $user->profile->update(array_merge(
             $data,
-            //$imageArray ?? []
-        ));*/
-        //auth()->user()->profile->update($data);
+            $imageInArray ?? []
+        ));
 
-        $user->profile->update($data);
+        return redirect("profile/settings");
+    }
 
-        return redirect("profile/{$user->id}");
+    public function delete()
+    {
+        $user = auth()->user();
+
+        $user->delete();
+
+        return redirect('/');
     }
 }

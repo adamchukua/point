@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('name')->nullable();
-            $table->date('birthdate')->nullable();
-            $table->string('country')->nullable();
-            $table->string('avatar')->nullable();
+        Schema::create('countries', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('code');
+            $table->string('name');
             $table->timestamps();
-
-            $table->index('user_id');
         });
     }
 
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('countries');
     }
 };

@@ -10289,6 +10289,12 @@ textarea.form-control-lg {
   width: 80px;
 }
 
+.avatar {
+  width: 35px;
+  border-radius: 51%;
+  margin-right: 0.5rem;
+}
+
 .nav-tabs {
   border: none;
 }
@@ -10454,6 +10460,34 @@ textarea.form-control-lg {
   font-size: 2rem;
   font-weight: bold;
   padding: 1rem 0;
+}
+.profile-avatar {
+  position: relative;
+  transition: 0.2s;
+}
+.profile-avatar:hover {
+  transition: 0.2s;
+  filter: brightness(0.5);
+}
+.profile-avatar--img {
+  width: 220px;
+  height: 220px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 51%;
+  cursor: pointer;
+}
+.profile-avatar--hided {
+  top: calc(50% - 0.55rem);
+  left: 17%;
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.05rem;
+  color: #fff;
+  display: none;
+}
+.profile-avatar:hover + .profile-avatar--hided {
+  display: block;
 }
 .profile-list-item {
   padding: 1rem;
