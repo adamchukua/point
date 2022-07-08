@@ -28,14 +28,20 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/profile/settings', [App\Http\Controllers\ProfilesController::class, 'update']);
 
     Route::get('/profile/bookings', [App\Http\Controllers\ProfilesController::class, 'bookings']);
+
     Route::get('/profile/reviews', [App\Http\Controllers\ProfilesController::class, 'reviews']);
+
     Route::get('/profile/saved', [App\Http\Controllers\ProfilesController::class, 'saved']);
+    Route::post('/profile/saveHotel/{hotel}', [App\Http\Controllers\SavedsController::class, 'store']);
+    Route::post('/profile/unsaveHotel/{saved}', [App\Http\Controllers\SavedsController::class, 'unsave']);
 
     Route::get('/profile/apartments', [App\Http\Controllers\ProfilesController::class, 'apartments']);
     Route::get('/profile/apartments/create', [App\Http\Controllers\HotelsController::class, 'create'])->middleware('verified');
     Route::post('/profile/apartments/create', [App\Http\Controllers\HotelsController::class, 'store'])->middleware('verified');
 
     Route::get('/profile/delete', [App\Http\Controllers\ProfilesController::class, 'delete']);
+
+    //Route::get('/notifications', [App\Http\Controllers\::class, 'notifications']);
 });
 
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index']);

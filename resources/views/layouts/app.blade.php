@@ -7,13 +7,16 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>
+        @if(View::hasSection('title'))
+            @yield('title')
+        @else
+            {{ config('app.name', 'Laravel') }}
+        @endif
+    </title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <!-- in sass -->
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -49,9 +52,31 @@
                 <ul class="navbar-nav ms-auto align-items-center">
                     @auth
                         <li class="navbar-item me-3">
-                            <button class="btn">
-                                <img src="/img/svg/notification.svg" alt="" class="notification-img">
-                            </button>
+                            <div class="dropdown">
+                                <button class="btn" type="button" id="notifications" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="/img/svg/notification.svg" alt="" class="notification-img" title="Повідомлення">
+                                </button>
+
+                                <div class="dropdown-menu p-4 notifications pb-0">
+                                    <div class="notifications-item">
+                                        <p class="notifications-item-title">
+                                            <span>Перевірте пошту!</span>
+                                            <img src="/img/svg/right-arrow.svg" alt="" class="notifications-item-title--arrow">
+                                        </p>
+                                        <p class="notifications-item--text">Після реєстрації на пошту {{ Auth::user()->email }} прийшов лист з підтвердженням пошти.</p>
+                                    </div>
+
+                                    <div class="notifications-item">
+                                        <p class="notifications-item-title">
+                                            <span>Перевірте пошту!</span>
+                                            <img src="/img/svg/right-arrow.svg" alt="" class="notifications-item-title--arrow">
+                                        </p>
+                                        <p class="notifications-item--text">Після реєстрації на пошту {{ Auth::user()->email }} прийшов лист з підтвердженням пошти.</p>
+                                    </div>
+
+                                    <a href="/notifications" class="btn w-100 py-3">Всі сповіщення</a>
+                                </div>
+                            </div>
                         </li>
                     @endauth
 

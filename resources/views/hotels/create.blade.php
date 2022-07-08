@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', config('app.name', 'Laravel') . ': Створення Вашого помешкання')
+
 @section('content')
     <div class="container">
 
@@ -33,8 +35,11 @@
                         <label for="type" class="col-form-label">Тип помешкання</label>
                     </div>
 
-                    <select class="form-select" name="type">
-                        <option selected>Оберіть тип помешкання</option>
+                    <select
+                        class="form-select @error('type') is-invalid @enderror"
+                        name="type"
+                        required>
+                        <option value="">Оберіть тип помешкання</option>
 
                         <option value="apartment">Апаратаменти</option>
                         <option value="hotel">Готель</option>
@@ -49,6 +54,36 @@
                         <option value="resort_hotel">Курортний готель</option>
                         <option value="park_hotel">Парк-готель</option>
                     </select>
+
+                    @error('type')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+
+                    <div class="row">
+                        <label for="city" class="col-form-label">Місто</label>
+                    </div>
+
+                    <select class="form-select @error('city') is-invalid @enderror"
+                            name="city"
+                            required>
+                        <option value="">Оберіть місто</option>
+
+                        @foreach($cities as $city)
+                            <option
+                                value="{{ $city->id }}"
+                                data-subtext="{{ $city->city }}">
+                                {{ $city->city }} ({{ $city->area }})
+                            </option>
+                        @endforeach
+                    </select>
+
+                    @error('city')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
 
                     <div class="row">
                         <label for="address" class="col-form-label">Адреса</label>

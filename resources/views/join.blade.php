@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', config('app.name', 'Laravel') . ': Приєднуйтесь до партерів ' . config('app.name', 'Laravel') . '!')
+
 @section('content')
     <div class="container">
         <div class="row pt-5 pb-5">
@@ -20,7 +22,7 @@
                         <li class="join-info-list--item">Більше ніж 1 млрд заїздів у помешкання для відпустки</li>
                         <li class="join-info-list--item">Понад 40% щойно зареєстрованих помешкань для відпустки отримують своє перше бронювання протягом тижня</li>
                     </ul>
-                    <a class="btn btn-first w-100" href="{{ route('register') }}">Почати</a>
+                    <a class="btn btn-first w-100" href="/profile/apartments/create">Почати</a>
                 </div>
             </div>
         </div>

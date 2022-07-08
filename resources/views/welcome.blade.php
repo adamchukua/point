@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', config('app.name', 'Laravel') . ': Пошук помешкання')
+
 @section('content')
     <div class="bg-main">
         <div class="container mt-3 mb-5">

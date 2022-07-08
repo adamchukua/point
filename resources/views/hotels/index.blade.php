@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', config('app.name', 'Laravel') . ': ' . $hotel->name)
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -40,13 +42,7 @@
                         </div>
 
                         <div class="col-1">
-                            <button class="btn">
-                                <img
-                                    src="/img/svg/heart.svg"
-                                    alt=""
-                                    class="hotel--save"
-                                    title="Додати в збережене">
-                            </button>
+                            <save-button hotel-id="{{ $hotel->id }}" status="{{ $savedStatus }}"></save-button>
                         </div>
 
                         <div class="col-2">
@@ -59,7 +55,7 @@
                     </div>
 
                     <div class="hotel-gallery">
-                        <div class="row">
+                        <div class="row align-items-center">
                             <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
                                 <img
                                     src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
@@ -68,43 +64,17 @@
                                 >
 
                                 <img
-                                    src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp"
-                                    class="w-100 shadow-1-strong rounded mb-4 hotel-gallery--img"
-                                    alt="Wintry Mountain Landscape"
-                                >
-
-                                <img
-                                    src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain1.webp"
-                                    class="w-100 shadow-1-strong rounded mb-4 hotel-gallery--img"
-                                    alt="Wintry Mountain Landscape"
-                                >
-                            </div>
-
-                            <div class="col-lg-4 mb-4 mb-lg-0">
-                                <img
-                                    src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain2.webp"
-                                    class="w-100 shadow-1-strong rounded mb-4 hotel-gallery--img"
-                                    alt="Mountains in the Clouds"
-                                >
-
-                                <img
-                                    src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
-                                    class="w-100 shadow-1-strong rounded mb-4 hotel-gallery--img"
-                                    alt="Boat on Calm Water"
-                                >
-                            </div>
-
-                            <div class="col-lg-4 mb-4 mb-lg-0">
-                                <img
                                     src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp"
-                                    class="w-100 shadow-1-strong rounded mb-4 hotel-gallery--img"
+                                    class="w-100 shadow-1-strong rounded hotel-gallery--img"
                                     alt="Waves at Sea"
                                 >
+                            </div>
 
+                            <div class="col-lg-8">
                                 <img
-                                    src="https://mdbcdn.b-cdn.net/img/Photos/Vertical/mountain3.webp"
-                                    class="w-100 shadow-1-strong rounded mb-4 hotel-gallery--img"
-                                    alt="Yosemite National Park"
+                                    src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp"
+                                    class="w-100 shadow-1-strong rounded hotel-gallery--img"
+                                    alt="Mountains in the Clouds"
                                 >
                             </div>
                         </div>
@@ -118,7 +88,7 @@
                 <p class="hotel--title" id="description">Опис</p>
 
                 <p class="hotel--description">
-                    {{ $hotel->description }}
+                    {!! nl2br(e($hotel->description)) !!}
                 </p>
             </section>
 
@@ -127,35 +97,52 @@
 
                 <div class="hotel-reviews">
                     <p class="hotel-reviews--number">
-                        <span>297</span> відгуків
+                        <span>{{ $reviews->count() }}</span> відгуків
                     </p>
 
-                    <p class="hotel-reviews--mark">
-                        <span>9,6</span> Відмінно
-                    </p>
+                    @if($reviews->count() > 0)
+                        <p class="hotel-reviews--mark">
+                            <span>{{ 0 }}</span>
+                            {{ 'Немає даних ' }}
+                        </p>
 
-                    <div class="hotel-reviews-categories">
-                        <p class="hotel-reviews-categories--title">Оцінки за категоріями</p>
+                        <div class="hotel-reviews-categories">
+                            <p class="hotel-reviews-categories--title">Оцінки за категоріями</p>
 
-                        <div class="row">
-                            <div class="col-4">
-                                <p class="hotel-reviews-categories--item">Персонал: 9,5</p>
-                                <p class="hotel-reviews-categories--item">Комфорт: 9,5</p>
-                                <p class="hotel-reviews-categories--item">Безкоштовний Wi-Fi: 9,5</p>
+                            <div class="row">
+                                <div class="col-4">
+                                    <p class="hotel-reviews-categories--item">Персонал:
+                                        {{ $reviews->avg('personnel_mark') }}
+                                    </p>
+                                    <p class="hotel-reviews-categories--item">Комфорт:
+                                        {{ $reviews->avg('comfort_mark') }}
+                                    </p>
+                                    <p class="hotel-reviews-categories--item">Безкоштовний Wi-Fi:
+                                        {{ $reviews->avg('free_wifi_mark') }}
+                                    </p>
+                                </div>
+
+                                <div class="col-4">
+                                    <p class="hotel-reviews-categories--item">Зручності:
+                                        {{ $reviews->avg('amenities_mark') }}
+                                    </p>
+                                    <p class="hotel-reviews-categories--item">Співвідношення ціна/якість:
+                                        {{ $reviews->avg('price_quality_mark') }}
+                                    </p>
+                                </div>
+
+                                <div class="col-4">
+                                    <p class="hotel-reviews-categories--item">Чистота:
+                                        {{ $reviews->avg('purity_mark') }}
+                                    </p>
+                                    <p class="hotel-reviews-categories--item">Розташування:
+                                        {{ $reviews->avg('location_mark') }}
+                                    </p>
+                                </div>
                             </div>
 
-                            <div class="col-4">
-                                <p class="hotel-reviews-categories--item">Зручності: 9,5</p>
-                                <p class="hotel-reviews-categories--item">Співвідношення ціна/якість: 9,5</p>
-                            </div>
-
-                            <div class="col-4">
-                                <p class="hotel-reviews-categories--item">Чистота: 9,5</p>
-                                <p class="hotel-reviews-categories--item">Розташування: 9,5</p>
-                            </div>
-                        </div>
-
-                        <button class="btn btn-first mb-3">Читати всі відгуки</button>
+                            <button class="btn btn-first mb-3">Читати всі відгуки</button>
+                        @endif
                     </div>
                 </div>
             </section>

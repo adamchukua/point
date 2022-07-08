@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', config('app.name', 'Laravel') . ': Відгуки')
+
 @section('content')
     <div class="container">
         <ul class="nav nav-tabs">

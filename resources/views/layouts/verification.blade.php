@@ -16,7 +16,7 @@
 
         <p class="mb-0">
             Якщо Ви не знайшли листа, ми можемо
-            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">повторно відправити</button>
+            <button type="submit" class="btn btn-link p-0 m-0 align-baseline alert-link">повторно відправити</button>
             його.
         </p>
     </form>

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', config('app.name', 'Laravel') . ': Створіть акаунт')
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">

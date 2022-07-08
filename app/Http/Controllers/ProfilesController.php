@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use App\Models\Saved;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -41,14 +42,15 @@ class ProfilesController extends Controller
     public function saved()
     {
         $user = auth()->user();
+        $saveds = Saved::where('user_id', $user->id)->latest()->get();
 
-        return view('profiles.saved', compact('user'));
+        return view('profiles.saved', compact('user', 'saveds'));
     }
 
     public function apartments()
     {
         $user = auth()->user();
-        $hotels = Hotel::where('user_id', $user->id)->get();
+        $hotels = Hotel::where('user_id', $user->id)->latest()->get();
 
         return view('profiles.apartments', compact('user', 'hotels'));
     }
@@ -58,9 +60,9 @@ class ProfilesController extends Controller
         $user = auth()->user();
 
         $data = request()->validate([
-            'name' => 'string',
+            'name' => ['string', 'nullable'],
             'birthdate' => ['date', 'nullable'],
-            'country' => 'string',
+            'country' => ['string', 'nullable'],
             'avatar' => '',
         ]);
 

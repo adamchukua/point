@@ -92,6 +92,24 @@
     width: 30px;
 }
 
+.empty-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &--text {
+        padding-top: 0.5rem;
+        font-weight: bold;
+    }
+}
+
+.link-unstyled,
+.link-unstyled:link,
+.link-unstyled:hover {
+    color: inherit;
+    text-decoration: inherit;
+}
+
 // header
 
 .header--title {
@@ -227,6 +245,10 @@
 
     &--save {
         width: 30px;
+
+        &__saved {
+            fill: #000;
+        }
     }
 
     &-gallery--img {
@@ -282,12 +304,7 @@
 
     &-avatar {
         position: relative;
-        transition: 0.2s;
-
-        &:hover {
-            transition: 0.2s;
-            filter: brightness(0.5);
-        }
+        cursor: pointer;
 
         &--img {
             width: 220px;
@@ -295,6 +312,7 @@
             object-fit: cover;
             border-radius: 51%;
             cursor: pointer;
+            transition: 0.2s;
         }
 
         &--hided {
@@ -308,7 +326,12 @@
         }
     }
 
-    &-avatar:hover + &-avatar--hided {
+    &-avatar:hover &-avatar--img {
+        transition: 0.2s;
+        filter: brightness(0.5);
+    }
+
+    &-avatar:hover &-avatar--hided {
         display: block;
     }
 
@@ -317,6 +340,7 @@
             padding: 1rem;
             border: 1px solid #000;
             border-radius: 7px;
+            margin-bottom: 1rem;
 
             &-left {
                 &--img {
@@ -327,16 +351,22 @@
                     opacity: 50%;
                 }
 
-                &--title {
-                    font-size: 1.2rem;
-                    font-weight: bold;
-                }
+                &-text {
+                    &--title {
+                        font-size: 1.2rem;
+                        font-weight: bold;
 
-                &--subtitle {
-                    margin-bottom: 0.5rem;
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
 
-                    &:last-child {
-                        margin-bottom: 0;
+                    &--subtitle {
+                        margin-bottom: 0.5rem;
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
                     }
                 }
             }
@@ -355,6 +385,32 @@
                         width: 15px;
                     }
                 }
+            }
+        }
+    }
+}
+
+// notifications {
+
+.notifications {
+    width: 300px;
+
+    &-item {
+        &:not(:first-child) {
+            margin-top: 1rem;
+        }
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #000;
+        }
+
+        &-title {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+
+            &--arrow {
+                width: 17px;
             }
         }
     }

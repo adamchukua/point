@@ -10326,6 +10326,23 @@ textarea.form-control-lg {
   width: 30px;
 }
 
+.empty-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.empty-section--text {
+  padding-top: 0.5rem;
+  font-weight: bold;
+}
+
+.link-unstyled,
+.link-unstyled:link,
+.link-unstyled:hover {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .header--title {
   font-weight: bold;
   font-size: 3rem;
@@ -10426,6 +10443,9 @@ textarea.form-control-lg {
 .hotel--save {
   width: 30px;
 }
+.hotel--save__saved {
+  fill: #000;
+}
 .hotel-gallery--img {
   cursor: pointer;
 }
@@ -10463,11 +10483,7 @@ textarea.form-control-lg {
 }
 .profile-avatar {
   position: relative;
-  transition: 0.2s;
-}
-.profile-avatar:hover {
-  transition: 0.2s;
-  filter: brightness(0.5);
+  cursor: pointer;
 }
 .profile-avatar--img {
   width: 220px;
@@ -10476,6 +10492,7 @@ textarea.form-control-lg {
      object-fit: cover;
   border-radius: 51%;
   cursor: pointer;
+  transition: 0.2s;
 }
 .profile-avatar--hided {
   top: calc(50% - 0.55rem);
@@ -10486,13 +10503,18 @@ textarea.form-control-lg {
   color: #fff;
   display: none;
 }
-.profile-avatar:hover + .profile-avatar--hided {
+.profile-avatar:hover .profile-avatar--img {
+  transition: 0.2s;
+  filter: brightness(0.5);
+}
+.profile-avatar:hover .profile-avatar--hided {
   display: block;
 }
 .profile-list-item {
   padding: 1rem;
   border: 1px solid #000;
   border-radius: 7px;
+  margin-bottom: 1rem;
 }
 .profile-list-item-left--img {
   width: 100px;
@@ -10502,14 +10524,17 @@ textarea.form-control-lg {
      object-fit: cover;
   opacity: 50%;
 }
-.profile-list-item-left--title {
+.profile-list-item-left-text--title {
   font-size: 1.2rem;
   font-weight: bold;
 }
-.profile-list-item-left--subtitle {
+.profile-list-item-left-text--title:hover {
+  text-decoration: underline;
+}
+.profile-list-item-left-text--subtitle {
   margin-bottom: 0.5rem;
 }
-.profile-list-item-left--subtitle:last-child {
+.profile-list-item-left-text--subtitle:last-child {
   margin-bottom: 0;
 }
 .profile-list-item-right--text {
@@ -10522,4 +10547,22 @@ textarea.form-control-lg {
 }
 .profile-list-item-right--btn img {
   width: 15px;
+}
+
+.notifications {
+  width: 300px;
+}
+.notifications-item:not(:first-child) {
+  margin-top: 1rem;
+}
+.notifications-item:not(:last-child) {
+  border-bottom: 1px solid #000;
+}
+.notifications-item-title {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+.notifications-item-title--arrow {
+  width: 17px;
 }

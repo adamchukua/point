@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', config('app.name', 'Laravel') . ': Налаштування')
+
 @section('content')
     <div class="container">
         <ul class="nav nav-tabs">
@@ -56,8 +58,8 @@
 
                         @error('name')
                         <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
 
@@ -74,8 +76,8 @@
 
                         @error('birthdate')
                         <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+                            <strong>{{ $message }}</strong>
+                        </span>
                         @enderror
                     </div>
 
@@ -84,7 +86,17 @@
                     </div>
 
                     <div>
-                        @include('layouts.countries')
+                        <select class="form-select" name="country">
+                            <option value="">Оберіть країну проживання</option>
+
+                            @foreach($countries as $country)
+                                <option
+                                    value="{{ $country->code }}"
+                                    {{ $country->code == $user->profile->country ? 'selected' : '' }}>
+                                    {{ $country->name }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="d-none">
@@ -124,7 +136,7 @@
 
                         <p class="mb-0">
                             Якщо Ви забажали видалити свій акаунт натисніть
-                            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">сюди</button>. Пам'ятайте, що ця дія незворотня
+                            <button type="submit" class="btn btn-link p-0 m-0 align-baseline alert-link">сюди</button>. Пам'ятайте, що ця дія незворотня!
                         </p>
                     </form>
                 </div>

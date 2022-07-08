@@ -3,23 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HotelsController extends Controller
 {
     public function index(Hotel $hotel)
     {
-        return view('hotels.index', compact('hotel'));
+        $user = auth()->user();
+        $reviews = Review::where('hotel_id', $hotel->id)->get();
+        $savedStatus = $user != null ? count(DB::table('saveds')
+            ->where('user_id', '=', $user->id)
+            ->where('hotel_id', '=', $hotel->id)
+            ->get()) > 0 : null;
+
+        return view('hotels.index', compact('hotel', 'reviews', 'savedStatus'));
     }
 
     public function hotels()
     {
-        return view('hotels.hotels');
+        $hotels = Hotel::all();
+
+        return view('hotels.hotels', compact('hotels'));
     }
 
     public function create()
     {
-        return view('hotels.create');
+        $cities = DB::table('cities')->get();
+
+        return view('hotels.create', compact('cities'));
     }
 
     public function store()
@@ -38,6 +51,6 @@ class HotelsController extends Controller
             'description' => $data['description'],
         ]);
 
-        redirect('/profile/apartments');
+        return redirect('/profile/apartments');
     }
 }
