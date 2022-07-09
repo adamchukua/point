@@ -56,7 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
         static::deleted(function ($user) {
             $user->profile->delete();
-            $user->hotels->delete();
+            $user->hotels->each->delete();
         });
     }
 
