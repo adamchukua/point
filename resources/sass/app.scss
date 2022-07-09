@@ -246,6 +246,7 @@
         font-weight: bold;
         display: flex;
         align-items: center;
+        padding: 1rem 0;
 
         span {
             font-size: 1rem;
@@ -303,6 +304,17 @@
         &-list--item {
             background: url('/img/svg/accept-check-success.svg') no-repeat left center;
             padding: 0.5rem 2rem;
+
+            &__checkbox {
+                display: flex;
+                background: none;
+                padding: 0.5rem 0;
+
+                &--checkbox {
+                    order: -1;
+                    margin-right: 1rem;
+                }
+            }
         }
     }
 }

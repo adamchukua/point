@@ -12,8 +12,23 @@ class Hotel extends Model
     protected $fillable = [
         'name',
         'type',
+        'city',
         'address',
         'description',
+        'food_with_own_kitchen',
+        'food_breakfast_is_included',
+        'food_restaurant',
+        'internet_free_wifi',
+        'internet_fixed',
+        'transport_free_parking',
+        'transport_paid_parking',
+        'transport_e_station',
+        'sports_leisure_fitness',
+        'sports_leisure_basin',
+        'sports_leisure_health_spa',
+        'other_pets_allowed',
+        'other_cleaning',
+        'other_facilities_for_people_with_disabilities',
     ];
 
     public function getType()
@@ -55,6 +70,40 @@ class Hotel extends Model
             case 'park_hotel':
                 return 'Парк-готель';
         }
+    }
+
+    public function featuresFood()
+    {
+        return $this->food_with_own_kitchen or
+            $this->food_breakfast_is_included or
+            $this->food_restaurant;
+    }
+
+    public function featuresInternet()
+    {
+        return $this->internet_free_wifi or
+            $this->internet_fixed;
+    }
+
+    public function featuresTransport()
+    {
+        return $this->transport_free_parking or
+            $this->transport_paid_parking or
+            $this->transport_e_station;
+    }
+
+    public function featuresSportsLeisure()
+    {
+        return $this->sports_leisure_fitness or
+            $this->sports_leisure_basin or
+            $this->sports_leisure_health_spa;
+    }
+
+    public function featuresOther()
+    {
+        return $this->other_pets_allowed or
+            $this->other_cleaning or
+            $this->other_facilities_for_people_with_disabilities;
     }
 
     public function user()

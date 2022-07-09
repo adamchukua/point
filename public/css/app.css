@@ -10443,6 +10443,7 @@ textarea.form-control-lg {
   font-weight: bold;
   display: flex;
   align-items: center;
+  padding: 1rem 0;
 }
 .hotel--title span {
   font-size: 1rem;
@@ -10486,6 +10487,15 @@ textarea.form-control-lg {
 .hotel-features-list--item {
   background: url("/img/svg/accept-check-success.svg") no-repeat left center;
   padding: 0.5rem 2rem;
+}
+.hotel-features-list--item__checkbox {
+  display: flex;
+  background: none;
+  padding: 0.5rem 0;
+}
+.hotel-features-list--item__checkbox--checkbox {
+  order: -1;
+  margin-right: 1rem;
 }
 
 .profile--title {

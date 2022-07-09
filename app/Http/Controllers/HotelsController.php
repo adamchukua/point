@@ -40,16 +40,26 @@ class HotelsController extends Controller
         $data = request()->validate([
             'name' => ['required', 'max:255'],
             'type' => ['required', 'max:40'],
+            'city' => ['required', 'max:50'],
             'address' => ['required', 'max:255'],
             'description' => ['required', 'max:1000'],
+            'food_with_own_kitchen' => 'boolean',
+            'food_breakfast_is_included' => 'boolean',
+            'food_restaurant' => 'boolean',
+            'internet_free_wifi' => 'boolean',
+            'internet_fixed' => 'boolean',
+            'transport_free_parking' => 'boolean',
+            'transport_paid_parking' => 'boolean',
+            'transport_e_station' => 'boolean',
+            'sports_leisure_fitness' => 'boolean',
+            'sports_leisure_basin' => 'boolean',
+            'sports_leisure_health_spa' => 'boolean',
+            'other_pets_allowed' => 'boolean',
+            'other_cleaning' => 'boolean',
+            'other_facilities_for_people_with_disabilities' => 'boolean'
         ]);
 
-        auth()->user()->hotels()->create([
-            'name' => $data['name'],
-            'type' => $data['type'],
-            'address' => $data['address'],
-            'description' => $data['description'],
-        ]);
+        auth()->user()->hotels()->create($data);
 
         return redirect('/profile/apartments');
     }

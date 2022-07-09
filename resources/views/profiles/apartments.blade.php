@@ -51,11 +51,19 @@
                                     </p>
 
                                     <p class="profile-list-item-left-text--subtitle">
-                                        Додано: {{ $hotel->created }}
+                                        Додано: {{ date('d.m.Y о h:i', strtotime($hotel->created_at)) }}
                                     </p>
 
                                     <p class="profile-list-item-left-text--subtitle">
                                         Відгуки: {{ $hotel->reviews->count() }}
+                                    </p>
+
+                                    <p class="profile-list-item-left-text--subtitle">
+                                        Всього бронювань: {{ 0 }}
+                                    </p>
+
+                                    <p class="profile-list-item-left-text--subtitle">
+                                        Очікує на схвалення: {{ 0 }}
                                     </p>
                                 </div>
                             </div>

@@ -152,32 +152,101 @@
 
                 <div class="hotel-features">
                     <div class="row">
-                        <div class="col-4">
-                            <p class="hotel-features--title">Харчування</p>
+                        @if($hotel->featuresFood())
+                            <div class="col-4">
+                                <p class="hotel-features--title">Харчування</p>
 
-                            <ul class="hotel-features-list list-unstyled">
-                                <li class="hotel-features-list--item">З власною кухнею</li>
-                                <li class="hotel-features-list--item">Сніданок включено</li>
-                                <li class="hotel-features-list--item">Ресторан</li>
-                            </ul>
-                        </div>
+                                <ul class="hotel-features-list list-unstyled">
+                                    @if($hotel->food_with_own_kitchen)
+                                        <li class="hotel-features-list--item">З власною кухнею</li>
+                                    @endif
 
-                        <div class="col-4">
-                            <p class="hotel-features--title">Інтернет</p>
+                                    @if($hotel->food_breakfast_is_included)
+                                        <li class="hotel-features-list--item">Сніданок включено</li>
+                                    @endif
 
-                            <ul class="hotel-features-list list-unstyled">
-                                <li class="hotel-features-list--item">Безкоштовний Wi-Fi</li>
-                            </ul>
-                        </div>
+                                    @if($hotel->food_restaurant)
+                                        <li class="hotel-features-list--item">Ресторан</li>
+                                    @endif
+                                </ul>
+                            </div>
+                        @endif
 
-                        <div class="col-4">
-                            <p class="hotel-features--title">Парковка</p>
+                        @if($hotel->featuresInternet())
+                            <div class="col-4">
+                                <p class="hotel-features--title">Інтернет</p>
 
-                            <ul class="hotel-features-list list-unstyled">
-                                <li class="hotel-features-list--item">З власною кухнею</li>
-                                <li class="hotel-features-list--item">Сніданок включено</li>
-                            </ul>
-                        </div>
+                                <ul class="hotel-features-list list-unstyled">
+                                    @if($hotel->internet_free_wifi)
+                                        <li class="hotel-features-list--item">Безкоштовний Wi-Fi</li>
+                                    @endif
+
+                                    @if($hotel->internet_fixed)
+                                        <li class="hotel-features-list--item">Фіксований Інтернет</li>
+                                    @endif
+                                </ul>
+                            </div>
+                        @endif
+
+                        @if($hotel->featuresTransport())
+                            <div class="col-4">
+                                <p class="hotel-features--title">Транспорт</p>
+
+                                <ul class="hotel-features-list list-unstyled">
+                                    @if($hotel->transport_free_parking)
+                                        <li class="hotel-features-list--item">Безкоштовна автостоянка</li>
+                                    @endif
+
+                                    @if($hotel->transport_paid_parking)
+                                        <li class="hotel-features-list--item">Платна автостоянка</li>
+                                    @endif
+
+                                    @if($hotel->transport_e_station)
+                                        <li class="hotel-features-list--item">Станція для заряджання електромобілів</li>
+                                    @endif
+                                </ul>
+                            </div>
+                        @endif
+
+                        @if($hotel->featuresSportsLeisure())
+                            <div class="col-4">
+                                <p class="hotel-features--title">Спорт та дозвілля</p>
+
+                                <ul class="hotel-features-list list-unstyled">
+                                    @if($hotel->sports_leisure_fitness)
+                                        <li class="hotel-features-list--item">Фітнес-центр</li>
+                                    @endif
+
+                                    @if($hotel->sports_leisure_basin)
+                                        <li class="hotel-features-list--item">Басейн</li>
+                                    @endif
+
+                                    @if($hotel->sports_leisure_health_spa)
+                                        <li class="hotel-features-list--item">Оздоровчий спа-центр</li>
+                                    @endif
+                                </ul>
+                            </div>
+                        @endif
+
+                        @if($hotel->featuresOther())
+                            <div class="col-4">
+                                <p class="hotel-features--title">Інше</p>
+
+                                <ul class="hotel-features-list list-unstyled">
+                                    @if($hotel->other_pets_allowed)
+                                        <li class="hotel-features-list--item">Дозволене розміщення з домашніми тваринами</li>
+                                    @endif
+
+                                    @if($hotel->other_cleaning)
+                                        <li class="hotel-features-list--item">Прибирання</li>
+                                    @endif
+
+                                    @if($hotel->other_facilities_for_people_with_disabilities)
+                                        <li class="hotel-features-list--item">Зручності для осіб з обмеженими фізичними можливостями</li>
+                                    @endif
+                                </ul>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </section>
