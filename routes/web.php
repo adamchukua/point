@@ -36,8 +36,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/profile/unsaveHotel/{saved}', [App\Http\Controllers\SavedsController::class, 'unsave']);
 
     Route::get('/profile/apartments', [App\Http\Controllers\ProfilesController::class, 'apartments']);
-    Route::get('/profile/apartments/create', [App\Http\Controllers\HotelsController::class, 'create'])->middleware('verified');
-    Route::post('/profile/apartments/create', [App\Http\Controllers\HotelsController::class, 'store'])->middleware('verified');
+    Route::group(['middleware' => 'verified'], function () {
+        Route::get('/profile/apartments/create', [App\Http\Controllers\HotelsController::class, 'create']);
+        Route::post('/profile/apartments/create', [App\Http\Controllers\HotelsController::class, 'store']);
+        Route::post('/profile/apartments/{hotel}/delete', [App\Http\Controllers\HotelsController::class, 'delete']);
+        Route::get('/profile/apartments/{hotel}/edit', [App\Http\Controllers\HotelsController::class, 'edit']);
+        Route::patch('/profile/apartments/{hotel}/edit', [App\Http\Controllers\HotelsController::class, 'update']);
+    });
 
     Route::get('/profile/delete', [App\Http\Controllers\ProfilesController::class, 'delete']);
 

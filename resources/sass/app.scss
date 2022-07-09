@@ -424,6 +424,10 @@
                 }
             }
         }
+
+        &-item:hover &-item-left--img {
+            opacity: 1;
+        }
     }
 }
 

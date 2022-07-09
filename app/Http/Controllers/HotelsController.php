@@ -63,4 +63,11 @@ class HotelsController extends Controller
 
         return redirect('/profile/apartments');
     }
+
+    public function delete(Hotel $hotel)
+    {
+        $hotel->delete();
+
+        return redirect('/profile/apartments');
+    }
 }

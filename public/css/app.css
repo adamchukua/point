@@ -10576,6 +10576,9 @@ textarea.form-control-lg {
 .profile-list-item-right--btn img {
   width: 15px;
 }
+.profile-list-item:hover .profile-list-item-left--img {
+  opacity: 1;
+}
 
 .notifications {
   width: 300px;

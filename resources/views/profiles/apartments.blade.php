@@ -35,47 +35,69 @@
             @include('layouts.verification')
         @else
             @forelse($hotels as $hotel)
-                <a href="/hotel/{{ $hotel->id }}" class="link-unstyled">
-                    <div class="profile-list">
-                        <div class="profile-list-item d-flex justify-content-between">
-                            <div class="profile-list-item-left d-flex justify-content-between">
+                <div class="profile-list">
+                    <div class="profile-list-item d-flex justify-content-between">
+                        <div class="profile-list-item-left d-flex justify-content-between">
+                            <a href="/hotel/{{ $hotel->id }}" class="link-unstyled">
                                 <img
                                     src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
                                     alt=""
                                     class="profile-list-item-left--img"
                                 >
+                            </a>
 
-                                <div class="profile-list-item-left-text">
-                                    <p class="profile-list-item-left-text--title">
+                            <div class="profile-list-item-left-text">
+                                <p class="profile-list-item-left-text--title">
+                                    <a href="/hotel/{{ $hotel->id }}" class="link-unstyled">
                                         {{ $hotel->name }}
-                                    </p>
+                                    </a>
+                                </p>
 
-                                    <p class="profile-list-item-left-text--subtitle">
-                                        Додано: {{ date('d.m.Y о h:i', strtotime($hotel->created_at)) }}
-                                    </p>
+                                <p class="profile-list-item-left-text--subtitle">
+                                    Додано: {{ date('d.m.Y о h:i', strtotime($hotel->created_at)) }}
+                                </p>
 
-                                    <p class="profile-list-item-left-text--subtitle">
-                                        Відгуки: {{ $hotel->reviews->count() }}
-                                    </p>
+                                <p class="profile-list-item-left-text--subtitle">
+                                    Відгуки: {{ $hotel->reviews->count() }}
+                                </p>
 
-                                    <p class="profile-list-item-left-text--subtitle">
-                                        Всього бронювань: {{ 0 }}
-                                    </p>
+                                <p class="profile-list-item-left-text--subtitle">
+                                    Всього бронювань: {{ 0 }}
+                                </p>
 
-                                    <p class="profile-list-item-left-text--subtitle">
-                                        Очікує на схвалення: {{ 0 }}
-                                    </p>
-                                </div>
+                                <p class="profile-list-item-left-text--subtitle">
+                                    Очікує на схвалення: {{ 0 }}
+                                </p>
                             </div>
+                        </div>
 
-                            <div class="profile-list-item-right d-flex align-items-start">
-                                <button class="btn profile-list-item-right--btn">
+                        <div class="profile-list-item-right d-flex align-items-start">
+                            <div class="dropdown">
+                                <button class="btn profile-list-item-right--btn" type="button" id="dropdownMenu{{ $hotel->id }}" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="/img/svg/more.svg" alt="" title="Властивості">
                                 </button>
+
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu{{ $hotel->id }}">
+                                    <li>
+                                        <a class="dropdown-item" href="/hotel/{{ $hotel->id }}">Переглянути</a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="/profile/apartments/{{ $hotel->id }}/edit">Редагувати</a>
+                                    </li>
+
+                                    <form action="/profile/apartments/{{ $hotel->id }}/delete" method="post">
+                                        @csrf
+
+                                        <li>
+                                            <button type="submit" class="dropdown-item">Видалити</button>
+                                        </li>
+                                    </form>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </a>
+                </div>
             @empty
                 @include('layouts.empty-section')
             @endforelse
