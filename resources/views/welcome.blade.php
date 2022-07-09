@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('app.name', 'Laravel') . ': Пошук помешкання')
+@section('title', config('app.name', 'Laravel') . ': Мандруйте Україною. Почніть з помешкання')
 
 @section('content')
     <div class="bg-main">

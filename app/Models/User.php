@@ -48,6 +48,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
         static::created(function ($user) {
             $user->profile()->create();
+            $user->notifications()->create([
+                'title' => 'Перевірте пошту!',
+                'text' => 'Після реєстрації на пошту ' . $user->email . ' прийшов лист з підтвердженням пошти.',
+            ]);
         });
 
         static::deleted(function ($user) {
@@ -69,5 +73,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function saveds()
     {
         return $this->hasMany(Saved::class);
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
     }
 }

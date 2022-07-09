@@ -41,7 +41,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/profile/delete', [App\Http\Controllers\ProfilesController::class, 'delete']);
 
-    //Route::get('/notifications', [App\Http\Controllers\::class, 'notifications']);
+    Route::get('/notifications', [App\Http\Controllers\NotificationsController::class, 'notifications']);
+    Route::post('/notifications/{notification}/read', [App\Http\Controllers\NotificationsController::class, 'read']);
+    Route::post('/notifications/all-read', [App\Http\Controllers\NotificationsController::class, 'allRead']);
 });
 
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index']);

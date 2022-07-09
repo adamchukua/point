@@ -53,26 +53,27 @@
                     @auth
                         <li class="navbar-item me-3">
                             <div class="dropdown">
-                                <button class="btn" type="button" id="notifications" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="/img/svg/notification.svg" alt="" class="notification-img" title="Повідомлення">
+                                <button class="btn navbar-notification" type="button" id="notifications" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @if(count(\App\Models\Notification::where([['user_id', '=', Auth()->user()->id], ['checked', '=', 'false']])->get()) > 0)
+                                        <div class="navbar-notification--redicon"></div>
+                                    @endif
+                                    <img src="/img/svg/notification.svg" alt="" class="navbar-notification--img" title="Повідомлення">
                                 </button>
 
                                 <div class="dropdown-menu p-4 notifications pb-0">
-                                    <div class="notifications-item">
-                                        <p class="notifications-item-title">
-                                            <span>Перевірте пошту!</span>
-                                            <img src="/img/svg/right-arrow.svg" alt="" class="notifications-item-title--arrow">
-                                        </p>
-                                        <p class="notifications-item--text">Після реєстрації на пошту {{ Auth::user()->email }} прийшов лист з підтвердженням пошти.</p>
-                                    </div>
-
-                                    <div class="notifications-item">
-                                        <p class="notifications-item-title">
-                                            <span>Перевірте пошту!</span>
-                                            <img src="/img/svg/right-arrow.svg" alt="" class="notifications-item-title--arrow">
-                                        </p>
-                                        <p class="notifications-item--text">Після реєстрації на пошту {{ Auth::user()->email }} прийшов лист з підтвердженням пошти.</p>
-                                    </div>
+                                    @foreach(\App\Models\Notification::where('user_id', Auth()->user()->id)->latest()->take(2)->get() as $notification)
+                                        <div class="notifications-item {{ $notification->checked ? 'text-muted' : '' }}">
+                                            <a class="notifications-item-title link-unstyled py-2" href="/notifications">
+                                                <span>
+                                                    {{ $notification->title }}
+                                                </span>
+                                                <img src="/img/svg/right-arrow.svg" alt="" class="notifications-item-title--arrow">
+                                            </a>
+                                            <p class="notifications-item--text">
+                                                {{ $notification->text }}
+                                            </p>
+                                        </div>
+                                    @endforeach
 
                                     <a href="/notifications" class="btn w-100 py-3">Всі сповіщення</a>
                                 </div>

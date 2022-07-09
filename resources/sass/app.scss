@@ -88,8 +88,22 @@
     font-weight: bold;
 }
 
-.notification-img {
-    width: 30px;
+.navbar-notification {
+    position: relative;
+
+    &--img {
+        width: 30px;
+    }
+
+    &--redicon {
+        position: absolute;
+        top: 3px;
+        right: 12px;
+        background: red;
+        padding: 6px;
+        box-sizing: border-box;
+        border-radius: 100%;
+    }
 }
 
 .empty-section {
@@ -300,6 +314,11 @@
         font-size: 2rem;
         font-weight: bold;
         padding: 1rem 0;
+        cursor: pointer;
+    }
+
+    &-title--img {
+        width: 32px;
     }
 
     &-avatar {
@@ -342,6 +361,12 @@
             border-radius: 7px;
             margin-bottom: 1rem;
 
+            &__mini {
+                border: none;
+                border-bottom: 1px solid #000;
+                border-radius: 0;
+            }
+
             &-left {
                 &--img {
                     width: 100px;
@@ -357,7 +382,7 @@
                         font-weight: bold;
 
                         &:hover {
-                            text-decoration: underline;
+                            //text-decoration: underline;
                         }
                     }
 

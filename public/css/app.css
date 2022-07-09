@@ -10322,8 +10322,20 @@ textarea.form-control-lg {
   font-weight: bold;
 }
 
-.notification-img {
+.navbar-notification {
+  position: relative;
+}
+.navbar-notification--img {
   width: 30px;
+}
+.navbar-notification--redicon {
+  position: absolute;
+  top: 3px;
+  right: 12px;
+  background: red;
+  padding: 6px;
+  box-sizing: border-box;
+  border-radius: 100%;
 }
 
 .empty-section {
@@ -10480,6 +10492,10 @@ textarea.form-control-lg {
   font-size: 2rem;
   font-weight: bold;
   padding: 1rem 0;
+  cursor: pointer;
+}
+.profile-title--img {
+  width: 32px;
 }
 .profile-avatar {
   position: relative;
@@ -10516,6 +10532,11 @@ textarea.form-control-lg {
   border-radius: 7px;
   margin-bottom: 1rem;
 }
+.profile-list-item__mini {
+  border: none;
+  border-bottom: 1px solid #000;
+  border-radius: 0;
+}
 .profile-list-item-left--img {
   width: 100px;
   height: 100px;
@@ -10527,9 +10548,6 @@ textarea.form-control-lg {
 .profile-list-item-left-text--title {
   font-size: 1.2rem;
   font-weight: bold;
-}
-.profile-list-item-left-text--title:hover {
-  text-decoration: underline;
 }
 .profile-list-item-left-text--subtitle {
   margin-bottom: 0.5rem;
