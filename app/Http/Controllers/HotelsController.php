@@ -85,4 +85,55 @@ class HotelsController extends Controller
 
         return redirect('/profile/apartments');
     }
+
+    public function edit(Hotel $hotel)
+    {
+        $cities = DB::table('cities')->get();
+
+        return view('hotels.edit', compact('hotel', 'cities'));
+    }
+
+    public function update(Hotel $hotel)
+    {
+        $data = request()->validate([
+            'name' => ['required', 'max:255'],
+            'type' => ['required', 'max:40'],
+            'city' => ['required', 'max:50'],
+            'address' => ['required', 'max:255'],
+            'description' => ['required', 'max:1000'],
+            'food_with_own_kitchen' => 'boolean',
+            'food_breakfast_is_included' => 'boolean',
+            'food_restaurant' => 'boolean',
+            'internet_free_wifi' => 'boolean',
+            'internet_fixed' => 'boolean',
+            'transport_free_parking' => 'boolean',
+            'transport_paid_parking' => 'boolean',
+            'transport_e_station' => 'boolean',
+            'sports_leisure_fitness' => 'boolean',
+            'sports_leisure_basin' => 'boolean',
+            'sports_leisure_health_spa' => 'boolean',
+            'other_pets_allowed' => 'boolean',
+            'other_cleaning' => 'boolean',
+            'other_facilities_for_people_with_disabilities' => 'boolean',
+            'photos' => ['required', 'array'],
+            'photos.*' => ['required', 'mimes:jpg,jpeg,png,bmp', 'max:5120'],
+        ]);
+
+        $hotel->hotelPhotos->each->delete();
+        $hotel->update($data);
+
+        if (request('photos')) {
+            foreach(request('photos') as $photo)
+            {
+                $imagePath = $photo->store('hotelPhotos', 'public');
+
+                HotelPhoto::create([
+                    'hotel_id' => $hotel->id,
+                    'image' => $imagePath,
+                ]);
+            }
+        }
+
+        return redirect('/profile/apartments');
+    }
 }
