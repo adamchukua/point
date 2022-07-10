@@ -150,7 +150,7 @@
                                         </div>
                                     </label>
 
-                                    <input type="file" class="form-control-file" id="photos" name="photos" multiple>
+                                    <input type="file" class="form-control-file" id="photos" name="photos[]" multiple>
                                 </div>
                             </div>
                         </div>

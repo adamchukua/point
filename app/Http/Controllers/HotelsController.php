@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use App\Models\HotelPhoto;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -59,7 +60,17 @@ class HotelsController extends Controller
             'other_facilities_for_people_with_disabilities' => 'boolean'
         ]);
 
-        auth()->user()->hotels()->create($data);
+        $hotelId = auth()->user()->hotels()->create($data)->id;
+
+        foreach(request('photos') as $photo)
+        {
+            $imagePath = $photo->store('hotelPhotos', 'public');
+
+            HotelPhoto::create([
+                'hotel_id' => $hotelId,
+                'image' => $imagePath,
+            ]);
+        }
 
         return redirect('/profile/apartments');
     }
