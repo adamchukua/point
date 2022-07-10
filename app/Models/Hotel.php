@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Hotel extends Model
 {
@@ -119,5 +120,17 @@ class Hotel extends Model
     public function hotelPhotos()
     {
         return $this->hasMany(HotelPhoto::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($hotel) {
+            foreach ($hotel->hotelPhotos as $hotelPhoto) {
+                $hotelPhoto->delete();
+                Storage::disk('public')->delete($hotelPhoto->image);
+            }
+        });
     }
 }
