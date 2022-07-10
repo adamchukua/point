@@ -41,18 +41,18 @@
                             required>
                             <option value="">Оберіть тип помешкання</option>
 
-                            <option value="apartment">Апаратаменти</option>
-                            <option value="hotel">Готель</option>
-                            <option value="holiday_homes">Будинок для відпочинку</option>
-                            <option value="guest_house">Гостьовий будинок</option>
-                            <option value="hostel">Хостел</option>
-                            <option value="villa">Вілла</option>
-                            <option value="in_a_family">Розміщення в сім'ї</option>
-                            <option value="bed_and_breakfast">Готель типу "ліжко і сніданок"</option>
-                            <option value="camping">Кемпінг</option>
-                            <option value="country_house">Заміський будинок</option>
-                            <option value="resort_hotel">Курортний готель</option>
-                            <option value="park_hotel">Парк-готель</option>
+                            <option {{ old('type') == 'apartment' ? 'selected' : '' }} value="apartment">Апаратаменти</option>
+                            <option {{ old('type') == 'hotel' ? 'selected' : '' }} value="hotel">Готель</option>
+                            <option {{ old('type') == 'holiday_homes' ? 'selected' : '' }} value="holiday_homes">Будинок для відпочинку</option>
+                            <option {{ old('type') == 'guest_house' ? 'selected' : '' }} value="guest_house">Гостьовий будинок</option>
+                            <option {{ old('type') == 'hostel' ? 'selected' : '' }} value="hostel">Хостел</option>
+                            <option {{ old('type') == 'villa' ? 'selected' : '' }} value="villa">Вілла</option>
+                            <option {{ old('type') == 'in_a_family' ? 'selected' : '' }} value="in_a_family">Розміщення в сім'ї</option>
+                            <option {{ old('type') == 'bed_and_breakfast' ? 'selected' : '' }} value="bed_and_breakfast">Готель типу "ліжко і сніданок"</option>
+                            <option {{ old('type') == 'camping' ? 'selected' : '' }} value="camping">Кемпінг</option>
+                            <option {{ old('type') == 'country_house' ? 'selected' : '' }} value="country_house">Заміський будинок</option>
+                            <option {{ old('type') == 'resort_hotel' ? 'selected' : '' }} value="resort_hotel">Курортний готель</option>
+                            <option {{ old('type') == 'park_hotel' ? 'selected' : '' }} value="park_hotel">Парк-готель</option>
                         </select>
 
                         @error('type')
@@ -72,6 +72,7 @@
 
                             @foreach($cities as $city)
                                 <option
+                                    {{ old('city') == $city->id ? 'selected' : '' }}
                                     value="{{ $city->id }}"
                                     data-subtext="{{ $city->city }}">
                                     {{ $city->city }} ({{ $city->area }})
@@ -115,7 +116,7 @@
                                 required
                                 name="description"
                                 rows="5">
-                                {{ old('description') }}
+                                {{ trim(old('description')) }}
                             </textarea>
 
                             @error('description')

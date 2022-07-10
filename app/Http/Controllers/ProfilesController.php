@@ -60,7 +60,7 @@ class ProfilesController extends Controller
         $user = auth()->user();
 
         $data = request()->validate([
-            'name' => ['string', 'nullable'],
+            'name' => ['string', 'nullable', 'max:255'],
             'birthdate' => ['date', 'nullable'],
             'country' => ['string', 'nullable'],
             'avatar' => '',
