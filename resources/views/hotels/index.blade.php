@@ -56,27 +56,15 @@
 
                     <div class="hotel-gallery">
                         <div class="row align-items-center">
-                            <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-                                <img
-                                    src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
-                                    class="w-100 shadow-1-strong rounded mb-4 hotel-gallery--img"
-                                    alt="Boat on Calm Water"
-                                >
-
-                                <img
-                                    src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp"
-                                    class="w-100 shadow-1-strong rounded hotel-gallery--img"
-                                    alt="Waves at Sea"
-                                >
-                            </div>
-
-                            <div class="col-lg-8">
-                                <img
-                                    src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(18).webp"
-                                    class="w-100 shadow-1-strong rounded hotel-gallery--img"
-                                    alt="Mountains in the Clouds"
-                                >
-                            </div>
+                            @foreach($hotel->hotelPhotos as $hotelPhoto)
+                                <div class="col-4">
+                                    <img
+                                        src="/storage/{{ $hotelPhoto->image }}"
+                                        class="hotel-gallery--img w-100"
+                                        alt=""
+                                    >
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -45,9 +45,9 @@
                                 <div class="col-3">
                                     <a href="/hotel/{{ $hotel->id }}">
                                         <img
-                                            src="https://t-cf.bstatic.com/xdata/images/hotel/square600/264768057.webp?k=829c8a5f08236d52259307223c1bd539ec9217cf1df877d46aa0b8bb93a2901e&o=&s=1"
+                                            src="/storage/{{ $hotel->hotelPhotos->first()->image }}"
                                             alt=""
-                                            class="hotels-list-item--img">
+                                            class="hotels-list-item--img w-100">
                                     </a>
                                 </div>
 

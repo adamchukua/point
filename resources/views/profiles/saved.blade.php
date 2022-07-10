@@ -33,7 +33,7 @@
                 <div class="profile-list-item d-flex justify-content-between">
                     <div class="profile-list-item-left d-flex justify-content-between">
                         <img
-                            src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
+                            src="/storage/{{ $saved->hotel->hotelPhotos->first()->image }}"
                             alt=""
                             class="profile-list-item-left--img"
                         >
