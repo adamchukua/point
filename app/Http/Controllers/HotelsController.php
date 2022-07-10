@@ -57,19 +57,23 @@ class HotelsController extends Controller
             'sports_leisure_health_spa' => 'boolean',
             'other_pets_allowed' => 'boolean',
             'other_cleaning' => 'boolean',
-            'other_facilities_for_people_with_disabilities' => 'boolean'
+            'other_facilities_for_people_with_disabilities' => 'boolean',
+            'photos' => ['required', 'array'],
+            'photos.*' => ['required', 'mimes:jpg,jpeg,png,bmp', 'max:5120'],
         ]);
 
         $hotelId = auth()->user()->hotels()->create($data)->id;
 
-        foreach(request('photos') as $photo)
-        {
-            $imagePath = $photo->store('hotelPhotos', 'public');
+        if (request('photos')) {
+            foreach(request('photos') as $photo)
+            {
+                $imagePath = $photo->store('hotelPhotos', 'public');
 
-            HotelPhoto::create([
-                'hotel_id' => $hotelId,
-                'image' => $imagePath,
-            ]);
+                HotelPhoto::create([
+                    'hotel_id' => $hotelId,
+                    'image' => $imagePath,
+                ]);
+            }
         }
 
         return redirect('/profile/apartments');

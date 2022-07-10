@@ -150,10 +150,14 @@
                                         </div>
                                     </label>
 
-                                    <input type="file" class="form-control-file" id="photos" name="photos[]" multiple>
+                                    <input type="file" class="form-control-file" id="photos" name="photos[]" multiple required>
                                 </div>
                             </div>
                         </div>
+
+                        @error('photos')
+                            <strong>{{ $message }}</strong>
+                        @enderror
                     </div>
                 </div>
 
@@ -262,7 +266,6 @@
                 <button type="submit" class="btn btn-first mt-4">
                     Зберегти
                 </button>
-                </div>
             </form>
         </div>
     </div>
