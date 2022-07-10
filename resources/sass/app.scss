@@ -115,6 +115,10 @@
         padding-top: 0.5rem;
         font-weight: bold;
     }
+
+    &--img {
+        width: 100px;
+    }
 }
 
 .link-unstyled,
@@ -326,7 +330,7 @@
         font-size: 2rem;
         font-weight: bold;
         padding: 1rem 0;
-        cursor: pointer;
+        //cursor: pointer;
     }
 
     &-title--img {
@@ -453,6 +457,46 @@
             &--arrow {
                 width: 17px;
             }
+        }
+    }
+}
+
+// image-upload
+
+.image-upload {
+    &--title {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    &-list {
+        &-item {
+            position: relative;
+            cursor: pointer;
+
+            &--img {
+                width: 100%;
+                transition: 0.2s;
+                object-fit: cover;
+            }
+
+            &--hided {
+                display: none;
+                position: absolute;
+                top: 46%;
+                color: #fff;
+                font-weight: bold;
+                left: 28%;
+            }
+        }
+
+        &-item:hover &-item--img {
+            filter: brightness(50%);
+            transition: 0.2s;
+        }
+
+        &-item:hover  &-item--hided {
+            display: block;
         }
     }
 }

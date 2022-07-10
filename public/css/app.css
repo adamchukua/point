@@ -10347,6 +10347,9 @@ textarea.form-control-lg {
   padding-top: 0.5rem;
   font-weight: bold;
 }
+.empty-section--img {
+  width: 100px;
+}
 
 .link-unstyled,
 .link-unstyled:link,
@@ -10502,7 +10505,6 @@ textarea.form-control-lg {
   font-size: 2rem;
   font-weight: bold;
   padding: 1rem 0;
-  cursor: pointer;
 }
 .profile-title--img {
   width: 32px;
@@ -10596,4 +10598,34 @@ textarea.form-control-lg {
 }
 .notifications-item-title--arrow {
   width: 17px;
+}
+
+.image-upload--title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.image-upload-list-item {
+  position: relative;
+  cursor: pointer;
+}
+.image-upload-list-item--img {
+  width: 100%;
+  transition: 0.2s;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.image-upload-list-item--hided {
+  display: none;
+  position: absolute;
+  top: 46%;
+  color: #fff;
+  font-weight: bold;
+  left: 28%;
+}
+.image-upload-list-item:hover .image-upload-list-item--img {
+  filter: brightness(50%);
+  transition: 0.2s;
+}
+.image-upload-list-item:hover .image-upload-list-item--hided {
+  display: block;
 }

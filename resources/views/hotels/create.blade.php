@@ -127,7 +127,33 @@
                     </div>
 
                     <div class="col-6">
-                        Додайте зображення готелю
+                        <div class="image-upload">
+                            <p class="image-upload--title">Додайте зображення готелю</p>
+
+                            <div class="image-upload-list">
+                                <div class="row">
+                                    <div class="col-4 mb-3" v-for="src in previews">
+                                        <div class="image-upload-list-item">
+                                            <img
+                                                class="image-upload-list-item--img"
+                                                v-if="src && src.length" :src="src"
+                                                alt="">
+                                            <p class="image-upload-list-item--hided">Видалити</p>
+                                        </div>
+                                    </div>
+
+                                    <label for="photos">
+                                        <div class="col-12">
+                                            <div class="image-upload-list--add btn btn-second w-100 mt-1 py-2">
+                                                Додати фото (максимум 10)
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                    <input type="file" class="form-control-file" id="photos" name="photos" multiple>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
