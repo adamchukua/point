@@ -54,6 +54,8 @@
                                 $reviewsAverageMark = floor($reviewsAverageMark * 10) / 10;
                                 $review = new \App\Models\Review();
                                 $reviewsAverageMarkText = $review->getAverageMarkText($reviewsAverageMark);
+
+                                $city = \Illuminate\Support\Facades\DB::table('cities')->where('id', $hotel->city)->first();
                             @endphp
 
                             <div class="hotels-list-item">
@@ -84,8 +86,8 @@
                                             </div>
 
                                             <p class="hotels-list-item--subtitle">
-                                                {{ DB::table('cities')->where('id', $hotel->city)->first()->city }},
-                                                {{ DB::table('cities')->where('id', $hotel->city)->first()->area }}
+                                                {{ $city->city }},
+                                                {{ $city->area }}
                                             </p>
                                         </div>
 

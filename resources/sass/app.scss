@@ -463,6 +463,7 @@
                     margin-right: 2rem;
                     object-fit: cover;
                     opacity: 50%;
+                    transition: .2s;
                 }
 
                 &-text {
@@ -477,9 +478,14 @@
 
                     &--subtitle {
                         margin-bottom: 0.5rem;
+                        font-size: 1rem;
 
                         &:last-child {
                             margin-bottom: 0;
+                        }
+
+                        span {
+                            font-size: 1rem;
                         }
                     }
 
@@ -524,6 +530,7 @@
 
         &-item:hover &-item-left--img {
             opacity: 1;
+            transition: .2s;
         }
     }
 }

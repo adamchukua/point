@@ -35,6 +35,20 @@
             @include('layouts.verification')
         @else
             @forelse($hotels as $hotel)
+
+                @php
+                    $reviewsAverageMark = ($hotel->reviews->avg('personnel_mark') +
+                        $hotel->reviews->avg('comfort_mark') +
+                        $hotel->reviews->avg('free_wifi_mark') +
+                        $hotel->reviews->avg('amenities_mark') +
+                        $hotel->reviews->avg('price_quality_mark') +
+                        $hotel->reviews->avg('purity_mark') +
+                        $hotel->reviews->avg('location_mark')) / 7;
+                    $reviewsAverageMark = floor($reviewsAverageMark * 10) / 10;
+                    $review = new \App\Models\Review();
+                    $reviewsAverageMarkText = $review->getAverageMarkText($reviewsAverageMark);
+                @endphp
+
                 <div class="profile-list">
                     <div class="profile-list-item d-flex justify-content-between">
                         <div class="profile-list-item-left d-flex justify-content-between">
@@ -51,6 +65,11 @@
                                     <a href="/hotel/{{ $hotel->id }}" class="link-unstyled">
                                         {{ $hotel->name }}
                                     </a>
+                                </p>
+
+                                <p class="profile-list-item-left-text--subtitle hotel-reviews--mark">
+                                    <span>{{ $reviewsAverageMark }}</span>
+                                    {{ $reviewsAverageMarkText }}
                                 </p>
 
                                 <p class="profile-list-item-left-text--subtitle">

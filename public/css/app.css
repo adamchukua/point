@@ -10612,6 +10612,7 @@ textarea.form-control-lg {
   -o-object-fit: cover;
      object-fit: cover;
   opacity: 50%;
+  transition: 0.2s;
 }
 .profile-list-item-left-text--title {
   font-size: 1.2rem;
@@ -10619,9 +10620,13 @@ textarea.form-control-lg {
 }
 .profile-list-item-left-text--subtitle {
   margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 .profile-list-item-left-text--subtitle:last-child {
   margin-bottom: 0;
+}
+.profile-list-item-left-text--subtitle span {
+  font-size: 1rem;
 }
 .profile-list-item-left-text--img {
   width: 20px;
@@ -10652,6 +10657,7 @@ textarea.form-control-lg {
 }
 .profile-list-item:hover .profile-list-item-left--img {
   opacity: 1;
+  transition: 0.2s;
 }
 
 .notifications {

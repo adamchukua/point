@@ -30,6 +30,20 @@
 
         <div class="profile-list">
             @forelse($saveds as $saved)
+
+                @php
+                    $reviewsAverageMark = ($saved->hotel->reviews->avg('personnel_mark') +
+                        $saved->hotel->reviews->avg('comfort_mark') +
+                        $saved->hotel->reviews->avg('free_wifi_mark') +
+                        $saved->hotel->reviews->avg('amenities_mark') +
+                        $saved->hotel->reviews->avg('price_quality_mark') +
+                        $saved->hotel->reviews->avg('purity_mark') +
+                        $saved->hotel->reviews->avg('location_mark')) / 7;
+                    $reviewsAverageMark = floor($reviewsAverageMark * 10) / 10;
+                    $review = new \App\Models\Review();
+                    $reviewsAverageMarkText = $review->getAverageMarkText($reviewsAverageMark);
+                @endphp
+
                 <div class="profile-list-item d-flex justify-content-between">
                     <div class="profile-list-item-left d-flex justify-content-between">
                         <img
@@ -48,8 +62,9 @@
                                     {{ $saved->hotel->address }}
                                 </p>
 
-                                <p class="profile-list-item-left-text--subtitle">
-                                    Рейтинг: {{ 0 }}
+                                <p class="profile-list-item-left-text--subtitle hotel-reviews--mark">
+                                    <span>{{ $reviewsAverageMark }}</span>
+                                    {{ $reviewsAverageMarkText }}
                                 </p>
                             </div>
                         </a>
