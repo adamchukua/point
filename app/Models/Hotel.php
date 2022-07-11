@@ -122,11 +122,18 @@ class Hotel extends Model
         return $this->hasMany(HotelPhoto::class);
     }
 
+    public function hotelPlaces()
+    {
+        return $this->hasMany(HotelPlaces::class);
+    }
+
     protected static function boot()
     {
         parent::boot();
 
         static::deleted(function ($hotel) {
+            $hotel->reviews->each->delete();
+
             foreach ($hotel->hotelPhotos as $hotelPhoto) {
                 $hotelPhoto->delete();
                 Storage::disk('public')->delete($hotelPhoto->image);
