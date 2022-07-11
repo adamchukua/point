@@ -13,13 +13,27 @@ class HotelsController extends Controller
     public function index(Hotel $hotel)
     {
         $user = auth()->user();
-        $reviews = Review::where('hotel_id', $hotel->id)->get();
+
+        $reviewsAverageMark = ($hotel->reviews->avg('personnel_mark') +
+            $hotel->reviews->avg('comfort_mark') +
+            $hotel->reviews->avg('free_wifi_mark') +
+            $hotel->reviews->avg('amenities_mark') +
+            $hotel->reviews->avg('price_quality_mark') +
+            $hotel->reviews->avg('purity_mark') +
+            $hotel->reviews->avg('location_mark')) / 7;
+        $reviewsAverageMark = floor($reviewsAverageMark * 10) / 10;
+        $review = new Review();
+        $reviewsAverageMarkText = $review->getAverageMarkText($reviewsAverageMark);
+
         $savedStatus = $user != null ? count(DB::table('saveds')
             ->where('user_id', '=', $user->id)
             ->where('hotel_id', '=', $hotel->id)
             ->get()) > 0 : null;
 
-        return view('hotels.index', compact('hotel', 'reviews', 'savedStatus'));
+        return view('hotels.index', compact('hotel',
+            'savedStatus',
+            'reviewsAverageMark',
+            'reviewsAverageMarkText'));
     }
 
     public function hotels()
@@ -135,5 +149,10 @@ class HotelsController extends Controller
         }
 
         return redirect('/profile/apartments');
+    }
+
+    public function reviews(Hotel $hotel)
+    {
+        return view('hotels.reviews', compact('hotel'));
     }
 }
