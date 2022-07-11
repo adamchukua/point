@@ -28,8 +28,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/profile/settings', [App\Http\Controllers\ProfilesController::class, 'update']);
 
     Route::get('/profile/bookings', [App\Http\Controllers\ProfilesController::class, 'bookings']);
+    Route::get('/profile/bookings/{booking}/review/add', [App\Http\Controllers\ReviewsController::class, 'create']);
+    Route::post('/profile/bookings/{booking}/review/add', [App\Http\Controllers\ReviewsController::class, 'store']);
 
     Route::get('/profile/reviews', [App\Http\Controllers\ProfilesController::class, 'reviews']);
+    Route::get('/profile/reviews/{review}/edit', [App\Http\Controllers\ReviewsController::class, 'edit']);
+    Route::patch('/profile/reviews/{review}/edit', [App\Http\Controllers\ReviewsController::class, 'update']);
+    Route::post('/profile/reviews/{review}/delete', [App\Http\Controllers\ReviewsController::class, 'delete']);
 
     Route::get('/profile/saved', [App\Http\Controllers\ProfilesController::class, 'saved']);
     Route::post('/profile/saveHotel/{hotel}', [App\Http\Controllers\SavedsController::class, 'store']);
@@ -51,7 +56,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/notifications/all-read', [App\Http\Controllers\NotificationsController::class, 'allRead']);
 });
 
-Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index']);
+Route::get('/profile/{profile}', [App\Http\Controllers\ProfilesController::class, 'index']);
 
 Route::get('/hotel/{hotel}', [App\Http\Controllers\HotelsController::class, 'index']);
+Route::get('/hotel/{hotel}/reviews', [App\Http\Controllers\HotelsController::class, 'reviews']);
 Route::get('/hotels', [App\Http\Controllers\HotelsController::class, 'hotels']);

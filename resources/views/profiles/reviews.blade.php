@@ -85,7 +85,7 @@
                                     </a>
                                 </li>
 
-                                <form action="/profile/reviews/{{ $review->id }}/edit" method="post">
+                                <form action="/profile/reviews/{{ $review->id }}/delete" method="post">
                                     @csrf
 
                                     <li>
