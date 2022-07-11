@@ -29,35 +29,78 @@
         <h1 class="profile--title">Відгуки</h1>
 
         <div class="profile-list">
-            <div class="profile-list-item d-flex justify-content-between">
-                <div class="profile-list-item-left d-flex justify-content-between">
-                    <img
-                        src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp"
-                        alt=""
-                        class="profile-list-item-left--img"
-                    >
+            @forelse($user->profile->reviews as $review)
+                <div class="profile-list-item d-flex justify-content-between">
+                    <div class="profile-list-item-left d-flex justify-content-between">
+                        <img
+                            src="/storage/{{ $review->hotel->hotelPhotos->first()->image }}"
+                            alt=""
+                            class="profile-list-item-left--img"
+                        >
 
-                    <div>
-                        <p class="profile-list-item-left--title">
-                            Гарний готель для відпочинку
-                        </p>
+                        <a href="/hotel/{{ $review->hotel->id }}" class="link-unstyled">
+                            <div class="profile-list-item-left-text">
+                                <p class="profile-list-item-left-text--title">
+                                    {{ $review->title }}
+                                </p>
 
-                        <p class="profile-list-item-left--subtitle">
-                            Arcadia apartment & sea terrace
-                        </p>
+                                <p class="profile-list-item-left-text--subtitle">
+                                    {{ $review->hotel->name }}
+                                </p>
 
-                        <p class="profile-list-item-left--subtitle">
-                            Оцінка: 9/10
-                        </p>
+                                <p class="profile-list-item-left-text--subtitle d-flex">
+                                    @for($i = 0; $i < $review->stars; $i++)
+                                        <img src="/img/svg/star.svg" alt="" class="profile-list-item-left-text--img">
+                                    @endfor
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="profile-list-item-right d-flex align-items-start">
+                        <div class="dropdown">
+                            <button
+                                class="btn profile-list-item-right--btn"
+                                type="button"
+                                id="dropdownMenu{{ $review->id }}"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img src="/img/svg/more.svg" alt="" title="Властивості">
+                            </button>
+
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu{{ $review->id }}">
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="/hotel/{{ $review->hotel->id }}">
+                                        Сторінка готелю
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a
+                                        class="dropdown-item"
+                                        href="/profile/reviews/{{ $review->id }}/edit">
+                                        Змінити
+                                    </a>
+                                </li>
+
+                                <form action="/profile/reviews/{{ $review->id }}/edit" method="post">
+                                    @csrf
+
+                                    <li>
+                                        <button type="submit" class="dropdown-item">
+                                            Видалити
+                                        </button>
+                                    </li>
+                                </form>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-
-                <div class="profile-list-item-right d-flex align-items-start">
-                    <button class="btn profile-list-item-right--btn">
-                        <img src="/img/svg/more.svg" alt="" title="Властивості">
-                    </button>
-                </div>
-            </div>
+            @empty
+                @include('layouts.empty-section')
+            @endforelse
         </div>
     </div>
 @endsection
