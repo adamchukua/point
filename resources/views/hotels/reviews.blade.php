@@ -51,7 +51,9 @@
             @foreach($hotel->reviews as $review)
                 <div class="profile-list-item profile-list-item__mini">
                     <div class="row">
-                        <div class="col-2 d-flex align-items-center">
+                        <a
+                            class="col-2 d-flex align-items-center link-unstyled"
+                            href="/profile/{{ $review->profile->id }}">
                             <img
                                 src="{{ $review->profile->getAvatar() }}"
                                 alt=""
@@ -60,7 +62,7 @@
                             <p class="profile-list-item-left-profile--name">
                                 {{ $review->profile->name ?? 'Анонім' }}
                             </p>
-                        </div>
+                        </a>
 
                         <div class="col-3">
                             <p class="profile-list-item-left-text--subtitle">
