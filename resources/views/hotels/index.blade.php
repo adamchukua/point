@@ -85,13 +85,13 @@
 
                 <div class="hotel-reviews">
                     <p class="hotel-reviews--number">
-                        <span>{{ $reviews->count() }}</span> відгуків
+                        <span>{{ $hotel->reviews->count() }}</span> відгуків
                     </p>
 
-                    @if($reviews->count() > 0)
+                    @if($hotel->reviews->count() > 0)
                         <p class="hotel-reviews--mark">
-                            <span>{{ 0 }}</span>
-                            {{ 'Немає даних ' }}
+                            <span>{{ $reviewsAverageMark }}</span>
+                            {{ $reviewsAverageMarkText }}
                         </p>
 
                         <div class="hotel-reviews-categories">
@@ -100,36 +100,37 @@
                             <div class="row">
                                 <div class="col-4">
                                     <p class="hotel-reviews-categories--item">Персонал:
-                                        {{ $reviews->avg('personnel_mark') }}
+                                        {{ $hotel->reviews->avg('personnel_mark') }}
                                     </p>
                                     <p class="hotel-reviews-categories--item">Комфорт:
-                                        {{ $reviews->avg('comfort_mark') }}
+                                        {{ $hotel->reviews->avg('comfort_mark') }}
                                     </p>
                                     <p class="hotel-reviews-categories--item">Безкоштовний Wi-Fi:
-                                        {{ $reviews->avg('free_wifi_mark') }}
+                                        {{ $hotel->reviews->avg('free_wifi_mark') }}
                                     </p>
                                 </div>
 
                                 <div class="col-4">
                                     <p class="hotel-reviews-categories--item">Зручності:
-                                        {{ $reviews->avg('amenities_mark') }}
+                                        {{ $hotel->reviews->avg('amenities_mark') }}
                                     </p>
                                     <p class="hotel-reviews-categories--item">Співвідношення ціна/якість:
-                                        {{ $reviews->avg('price_quality_mark') }}
+                                        {{ $hotel->reviews->avg('price_quality_mark') }}
                                     </p>
                                 </div>
 
                                 <div class="col-4">
                                     <p class="hotel-reviews-categories--item">Чистота:
-                                        {{ $reviews->avg('purity_mark') }}
+                                        {{ $hotel->reviews->avg('purity_mark') }}
                                     </p>
                                     <p class="hotel-reviews-categories--item">Розташування:
-                                        {{ $reviews->avg('location_mark') }}
+                                        {{ $hotel->reviews->avg('location_mark') }}
                                     </p>
                                 </div>
                             </div>
 
-                            <button class="btn btn-first mb-3">Читати всі відгуки</button>
+                            <a href="/hotel/{{ $hotel->id }}/reviews/add" class="btn btn-first mb-3">Додати відгук</a>
+                            <a href="/hotel/{{ $hotel->id }}/reviews" class="btn btn-first mb-3">Читати всі відгуки</a>
                         @endif
                     </div>
                 </div>
