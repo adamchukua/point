@@ -17,17 +17,18 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('profile_id');
             $table->unsignedBigInteger('hotel_id');
-            $table->string('title');
-            $table->text('review');
+            $table->string('title')->nullable();
+            $table->text('text');
             $table->text('pros')->nullable();
             $table->text('cons')->nullable();
-            $table->float('personnel_mark', 2, 2);
-            $table->float('comfort_mark', 2, 2);
-            $table->float('free_wifi_mark', 2, 2);
-            $table->float('amenities_mark', 2, 2);
-            $table->float('price_quality_mark', 2, 2);
-            $table->float('purity_mark', 2, 2);
-            $table->float('location_mark', 2, 2);
+            $table->tinyInteger('personnel_mark');
+            $table->tinyInteger('comfort_mark');
+            $table->tinyInteger('free_wifi_mark');
+            $table->tinyInteger('amenities_mark');
+            $table->tinyInteger('price_quality_mark');
+            $table->tinyInteger('purity_mark');
+            $table->tinyInteger('location_mark');
+            $table->tinyInteger('stars');
             $table->timestamps();
 
             $table->index('profile_id');

@@ -9,57 +9,54 @@ class Review extends Model
 {
     use HasFactory;
 
-    /*
-    public function getAveragePersonellMark()
+    protected $fillable = [
+        'title',
+        'text',
+        'pros',
+        'cons',
+        'personnel_mark',
+        'comfort_mark',
+        'free_wifi_mark',
+        'amenities_mark',
+        'price_quality_mark',
+        'purity_mark',
+        'location_mark',
+        'stars'
+    ];
+
+    public function getAverageMark()
     {
-        return $this->avg('personnel_mark');
+        $reviewAverageMark = ($this->personnel_mark +
+                $this->comfort_mark +
+                $this->free_wifi_mark +
+                $this->amenities_mark +
+                $this->price_quality_mark +
+                $this->purity_mark +
+                $this->location_mark) / 7;
+
+        return floor($reviewAverageMark * 10) / 10;
     }
 
-    public function getAverageComfortMark()
+    public function getAverageMarkText($reviewAverageMark)
     {
-        return $this->avg('comfort_mark');
-    }
-
-    public function getAverageFreeWifiMark()
-    {
-        return $this->avg('free_wifi_mark');
-    }
-
-    public function getAverageAmenitiesMark()
-    {
-        return $this->avg('amenities_mark');
-    }
-
-    public function getAveragePriceQualityMark()
-    {
-        return $this->avg('price_quality_mark');
-    }
-
-    public function getAveragePurityMark()
-    {
-        return $this->avg('purity_mark');
-    }
-
-    public function getAverageLocationMark()
-    {
-        return $this->avg('location_mark');
-    }
-
-    public function getAverageOverallMark()
-    {
-        return 0;
-    }*/
-
-    public function getAverageOverallMarkText()
-    {
-        switch ($this->getAverageOverallMark()) {
-            case 0:
-                return 'Жах';
-        }
+        return match (intval(round($reviewAverageMark))) {
+            0, 1, 2, 3, 4, 5 => 'Незадовільно',
+            6 => 'Досить добре',
+            7 => 'Добре',
+            8 => 'Дуже добре',
+            9 => 'Чудово',
+            10 => 'Відмінно',
+            default => 'Немає даних',
+        };
     }
 
     public function hotel()
     {
         return $this->belongsTo(Hotel::class);
+    }
+
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class);
     }
 }
