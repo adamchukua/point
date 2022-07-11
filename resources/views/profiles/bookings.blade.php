@@ -37,27 +37,49 @@
                         class="profile-list-item-left--img"
                     >
 
-                    <div>
-                        <p class="profile-list-item-left--title">
-                            Arcadia apartment & sea terrace
-                        </p>
+                    <a href="/hotel/" class="link-unstyled">
+                        <div class="profile-list-item-left-text">
+                            <p class="profile-list-item-left-text--title">
+                                Arcadia apartment & sea terrace
+                            </p>
 
-                        <p class="profile-list-item-left--subtitle">
-                            30 груд. 2021 – 5 січ. 2022
-                        </p>
+                            <p class="profile-list-item-left-text--subtitle">
+                                30 груд. 2021 – 5 січ. 2022
+                            </p>
 
-                        <p class="profile-list-item-left--subtitle">
-                            Виконано
-                        </p>
-                    </div>
+                            <p class="profile-list-item-left-text--subtitle">
+                                Виконано
+                            </p>
+                        </div>
+                    </a>
                 </div>
 
                 <div class="profile-list-item-right d-flex align-items-start">
-                    <p class="profile-list-item-right--text">UAH 2 000</p>
+                    <div class="dropdown">
+                        <button
+                            class="btn profile-list-item-right--btn"
+                            type="button" id="dropdownMenu{{ 0 }}"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <img src="/img/svg/more.svg" alt="" title="Властивості">
+                        </button>
 
-                    <button class="btn profile-list-item-right--btn">
-                        <img src="/img/svg/more.svg" alt="" title="Властивості">
-                    </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                            <li>
+                                <a class="dropdown-item" href="/hotel/">Сторінка готелю</a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="/profile/bookings/14/review/add">Залишити відгук</a>
+                            </li>
+
+                            <form action="/profile/unsaveHotel/" method="post">
+                                @csrf
+
+                                <li><button type="submit" class="dropdown-item">Видалити</button></li>
+                            </form>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
