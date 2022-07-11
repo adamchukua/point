@@ -19,7 +19,7 @@ class Profile extends Model
         } elseif ($this->name) {
             return "https://eu.ui-avatars.com/api/?name=" . $this->name . "&background=random&format=svg";
         } else {
-            return "https://eu.ui-avatars.com/api/?name=" . $this->user->email . "&background=random&format=svg";
+            return "https://eu.ui-avatars.com/api/?name=" . substr($this->user->email, 0, 2) . "&background=random&format=svg";
         }
     }
 
