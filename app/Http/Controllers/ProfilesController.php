@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use App\Models\Profile;
 use App\Models\Saved;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,10 +12,9 @@ use Intervention\Image\Facades\Image;
 
 class ProfilesController extends Controller
 {
-    public function index(User $user)
+    public function index(Profile $profile)
     {
-        dd($user);
-        return view('profiles.index', compact('user'));
+        return view('profiles.index', compact('profile'));
     }
 
     public function settings()
