@@ -10,7 +10,9 @@
             </div>
             <div class="col-9">
                 <div class="hotels">
-                    <p class="hotels--title">Одеська область: знайдено {{ $hotels->count() }} помешкання</p>
+                    <p class="hotels--title">
+                        {{ 'назва міста' }}: знайдено {{ $hotels->count() }} помешкання
+                    </p>
 
                     <ul class="nav nav-tabs d-flex justify-content-around mb-2 nav-tabs__bg">
                         <li class="nav-item">
@@ -39,28 +41,75 @@
                     </ul>
 
                     <div class="hotels-list">
-                    @forelse($hotels as $hotel)
-                        <div class="hotels-list-item">
-                            <div class="row">
-                                <div class="col-3">
-                                    <a href="/hotel/{{ $hotel->id }}">
-                                        <img
-                                            src="/storage/{{ $hotel->hotelPhotos->first()->image }}"
-                                            alt=""
-                                            class="hotels-list-item--img w-100">
-                                    </a>
-                                </div>
+                        @forelse($hotels as $hotel)
 
-                                <div class="col-9">
-                                    <a href="/hotel/{{ $hotel->id }}">
-                                        <p class="hotels-list-item--title">{{ $hotel->name }}</p>
-                                    </a>
+                            @php
+                                $reviewsAverageMark = ($hotel->reviews->avg('personnel_mark') +
+                                    $hotel->reviews->avg('comfort_mark') +
+                                    $hotel->reviews->avg('free_wifi_mark') +
+                                    $hotel->reviews->avg('amenities_mark') +
+                                    $hotel->reviews->avg('price_quality_mark') +
+                                    $hotel->reviews->avg('purity_mark') +
+                                    $hotel->reviews->avg('location_mark')) / 7;
+                                $reviewsAverageMark = floor($reviewsAverageMark * 10) / 10;
+                                $review = new \App\Models\Review();
+                                $reviewsAverageMarkText = $review->getAverageMarkText($reviewsAverageMark);
+                            @endphp
+
+                            <div class="hotels-list-item">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <a href="/hotel/{{ $hotel->id }}">
+                                            <img
+                                                src="/storage/{{ $hotel->hotelPhotos->first()->image }}"
+                                                alt=""
+                                                class="hotels-list-item--img w-100">
+                                        </a>
+                                    </div>
+
+                                    <div class="col-9 d-flex justify-content-between">
+                                        <div class="hotels-list-item-left">
+                                            <div class="hotels-list-item-left-title">
+                                                <a class="hotels-list-item-left-title--text link-unstyled"
+                                                   href="/hotel/{{ $hotel->id }}">
+                                                    {{ $hotel->name }}
+                                                </a>
+
+                                                @for($i = 0; $i < intval($hotel->reviews->avg('stars')); $i++)
+                                                    <img
+                                                        src="/img/svg/star.svg"
+                                                        alt=""
+                                                        class="hotels-list-item-title--img">
+                                                @endfor
+                                            </div>
+
+                                            <p class="hotels-list-item--subtitle">
+                                                {{ DB::table('cities')->where('id', $hotel->city)->first()->city }},
+                                                {{ DB::table('cities')->where('id', $hotel->city)->first()->area }}
+                                            </p>
+                                        </div>
+
+                                        <div class="hotels-list-item-right">
+                                            <div class="hotels-list-item-right-reviews">
+                                                <p class="hotels-list-item-right-reviews--text">
+                                                    <span>
+                                                        {{ $reviewsAverageMarkText }}
+                                                    </span>
+
+                                                    {{ $hotel->reviews->count() }} відгуків
+                                                </p>
+
+                                                <p class="hotels-list-item-right-reviews--mark hotel-reviews--mark">
+                                                    <span>{{ $reviewsAverageMark }}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @empty
-                        There is no
-                    @endforelse
+                        @empty
+                            @include('layouts.empty-section')
+                        @endforelse
                     </div>
                 </div>
             </div>

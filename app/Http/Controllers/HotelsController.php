@@ -40,6 +40,7 @@ class HotelsController extends Controller
     {
         $hotels = Hotel::all();
 
+
         return view('hotels.hotels', compact('hotels'));
     }
 
