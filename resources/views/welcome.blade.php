@@ -86,154 +86,19 @@
 
     <div class="container mt-2">
         <section>
-            <p class="section--title">Пошук областями України</p>
+            <p class="section--title">Пошук популярними містами України</p>
             <div class="row">
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="areas-item">
-                        <a class="areas-item--title">Автономна Республіка Крим</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
+                @foreach($topCities as $city)
+                    @php
+                        $cityNames = \Illuminate\Support\Facades\DB::table('cities')->where('id', $city['city'])->first();
+                    @endphp
+                    <div class="col-6 col-md-3">
+                        <a class="areas-item--title" href="/search?city={{ $city['city'] }}">
+                            {{ $cityNames->city . ' (' . $cityNames->area . ')' }}
+                        </a>
+                        <p class="areas-item--subtitle">{{ $city['count(*)'] }} помешкань</p>
                     </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Вінницька область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Волинська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Дніпропетровська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Чернігівська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="areas-item">
-                        <a class="areas-item--title">Донецька область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Житомирська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Закарпатська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Запорізька область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">місто Київ</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="areas-item">
-                        <a class="areas-item--title">Івано-Франківська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Київська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Кіровоградська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Луганська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">місто Севастополь</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="areas-item">
-                        <a class="areas-item--title">Львівська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Миколаївська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Одеська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Полтавська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="areas-item">
-                        <a class="areas-item--title">Рівненська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Сумська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Тернопільська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Харківська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-                </div>
-
-                <div class="col-6 col-md-3 col-lg-2">
-                    <div class="areas-item">
-                        <a class="areas-item--title">Херсонська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Хмельницька область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Черкаська область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-
-                    <div class="areas-item">
-                        <a class="areas-item--title">Чернівецька область</a>
-                        <p class="areas-item--subtitle">1 000 помешкань</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </section>
     </div>

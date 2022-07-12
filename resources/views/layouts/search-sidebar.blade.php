@@ -24,7 +24,7 @@
             type="date"
             name="arrival"
             id="arrival"
-            value="{{ $query['arrival'] }}"
+            value="{{ $query['arrival'] ?? '' }}"
             class="form-control search--input sidebar--input">
 
         <label for="departure" class="mb-2">Виїзд</label>
@@ -32,7 +32,7 @@
             type="date"
             name="departure"
             id="departure"
-            value="{{ $query['departure'] }}"
+            value="{{ $query['departure'] ?? '' }}"
             class="form-control search--input sidebar--input">
 
         <label for="peopleNumber" class="mb-2">Кількість людей</label>
@@ -40,7 +40,7 @@
             type="number"
             name="peopleNumber"
             id="peopleNumber"
-            value="{{ $query['peopleNumber'] }}"
+            value="{{ $query['peopleNumber'] ?? '' }}"
             class="form-control search--input sidebar--input"
             min="1">
 
@@ -49,7 +49,7 @@
             type="number"
             name="roomsNumber"
             id="roomsNumber"
-            value="{{ $query['roomsNumber'] }}"
+            value="{{ $query['roomsNumber'] ?? '' }}"
             class="form-control search--input sidebar--input"
             min="1">
 

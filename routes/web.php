@@ -18,8 +18,12 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', function () {
     $cities = DB::table('cities')->get();
+    $topCities = \App\Models\Hotel::select('city', DB::raw('count(*)'))
+        ->groupBy('city')
+        ->limit(30)
+        ->get();
 
-    return view('welcome', compact('cities'));
+    return view('welcome', compact('cities', 'topCities'));
 });
 
 Route::get('/join', function () {

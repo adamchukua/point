@@ -45,10 +45,10 @@ class HotelsController extends Controller
     {
         $query = request()->validate([
             'city' => ['required', 'max:50'],
-            'arrival' => ['required', 'date'],
-            'departure' => ['required', 'date'],
-            'peopleNumber' => ['required', 'integer', 'between:1,10'],
-            'roomsNumber' => ['required', 'integer', 'between:1,10'],
+            'arrival' => ['date'],
+            'departure' => ['date'],
+            'peopleNumber' => ['integer', 'between:1,10'],
+            'roomsNumber' => ['integer', 'between:1,10'],
         ]);
 
         $hotels = Hotel::query()
