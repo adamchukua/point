@@ -13,12 +13,13 @@
 
     <div class="container">
         <div class="search">
-            <form action="" method="get">
+            <form action="/search" method="get">
                 <div class="row align-items-end">
                     <div class="col-4">
-                        <label for="">Куди ви вирушаєте?</label>
+                        <label for="city">Куди ви вирушаєте?</label>
                         <select class="form-select form-control search--input sidebar--input"
                                 name="city"
+                                id="city"
                                 required>
                             <option value="">Оберіть місто</option>
 
@@ -34,23 +35,45 @@
                     </div>
 
                     <div class="col-2">
-                        <label for="">Заїзд</label>
-                        <input type="date" class="form-control search--input sidebar--input">
+                        <label for="arrival">Заїзд</label>
+                        <input
+                            type="date"
+                            name="arrival"
+                            id="arrival"
+                            class="form-control search--input sidebar--input"
+                            required>
                     </div>
 
                     <div class="col-2">
-                        <label for="">Виїзд</label>
-                        <input type="date" class="form-control search--input sidebar--input">
+                        <label for="departure">Виїзд</label>
+                        <input
+                            type="date"
+                            name="departure"
+                            id="departure"
+                            class="form-control search--input sidebar--input"
+                            required>
                     </div>
 
                     <div class="col-1">
-                        <label for="">Кількість людей</label>
-                        <input type="number" class="form-control search--input sidebar--input" min="1">
+                        <label for="peopleNumber">Кількість людей</label>
+                        <input
+                            type="number"
+                            name="peopleNumber"
+                            id="peopleNumber"
+                            class="form-control search--input sidebar--input"
+                            min="1"
+                            required>
                     </div>
 
                     <div class="col-1">
-                        <label for="">Кількість номерів</label>
-                        <input type="number" class="form-control search--input sidebar--input" min="1">
+                        <label for="roomsNumber">Кількість номерів</label>
+                        <input
+                            type="number"
+                            name="roomsNumber"
+                            id="roomsNumber"
+                            class="form-control search--input sidebar--input"
+                            min="1"
+                            required>
                     </div>
 
                     <div class="col-2">

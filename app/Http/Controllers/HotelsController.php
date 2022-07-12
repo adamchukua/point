@@ -31,20 +31,37 @@ class HotelsController extends Controller
             ->get()) > 0 : null;
 
         $cities = DB::table('cities')->get();
+        $query = request();
 
         return view('hotels.index', compact('hotel',
             'savedStatus',
             'reviewsAverageMark',
             'reviewsAverageMarkText',
-            'cities'));
+            'cities',
+            'query'));
     }
 
-    public function hotels()
+    public function search()
     {
-        $hotels = Hotel::all();
-        $cities = DB::table('cities')->get();
+        $query = request()->validate([
+            'city' => ['required', 'max:50'],
+            'arrival' => ['required', 'date'],
+            'departure' => ['required', 'date'],
+            'peopleNumber' => ['required', 'integer', 'between:1,10'],
+            'roomsNumber' => ['required', 'integer', 'between:1,10'],
+        ]);
 
-        return view('hotels.hotels', compact('hotels', 'cities'));
+        $hotels = Hotel::query()
+            ->where('city', $query['city'])
+            ->get();
+        $cities = DB::table('cities')->get();
+        $queryCity = DB::table('cities')->where('id', $query['city'])->first();
+
+        return view('hotels.hotels', compact(
+            'hotels',
+    'cities',
+            'query',
+            'queryCity'));
     }
 
     public function create()

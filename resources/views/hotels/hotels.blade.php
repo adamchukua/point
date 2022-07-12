@@ -213,7 +213,7 @@
             <div class="col-9">
                 <div class="hotels">
                     <p class="hotels--title">
-                        {{ 'назва міста' }}: знайдено {{ $hotels->count() }} помешкання
+                        {{ $queryCity->city }}: знайдено {{ $hotels->count() }} помешкання
                     </p>
 
                     <ul class="nav nav-tabs d-flex justify-content-around mb-2 nav-tabs__bg">
@@ -263,7 +263,7 @@
                             <div class="hotels-list-item">
                                 <div class="row">
                                     <div class="col-3">
-                                        <a href="/hotel/{{ $hotel->id }}">
+                                        <a href="/hotel/{{ $hotel->id }}?{{ http_build_query($query)  }}">
                                             <img
                                                 src="/storage/{{ $hotel->hotelPhotos->first()->image }}"
                                                 alt=""
@@ -275,7 +275,7 @@
                                         <div class="hotels-list-item-left">
                                             <div class="hotels-list-item-left-title">
                                                 <a class="hotels-list-item-left-title--text link-unstyled"
-                                                   href="/hotel/{{ $hotel->id }}">
+                                                   href="/hotel/{{ $hotel->id }}?{{ http_build_query($query) }}">
                                                     {{ $hotel->name }}
                                                 </a>
 

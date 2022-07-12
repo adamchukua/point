@@ -63,4 +63,5 @@ Route::get('/profile/{profile}', [App\Http\Controllers\ProfilesController::class
 
 Route::get('/hotel/{hotel}', [App\Http\Controllers\HotelsController::class, 'index']);
 Route::get('/hotel/{hotel}/reviews', [App\Http\Controllers\HotelsController::class, 'reviews']);
-Route::get('/hotels', [App\Http\Controllers\HotelsController::class, 'hotels']);
+
+Route::get('/search', [App\Http\Controllers\HotelsController::class, 'search']);
