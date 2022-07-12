@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="bg-main">
-        <div class="container mt-3 mb-5">
+        <div class="container mt-3 mb-3">
             <header>
                 <h1 class="header--title py-5">Мандруйте Україною. Почніть з помешкання</h1>
             </header>
@@ -14,17 +14,43 @@
     <div class="container">
         <div class="search">
             <form action="" method="get">
-                <div class="row" >
-                    <div class="col-5">
-                        <input type="text" placeholder="Куди Ви вирушаєте?" class="form-control search--input">
+                <div class="row align-items-end">
+                    <div class="col-4">
+                        <label for="">Куди ви вирушаєте?</label>
+                        <select class="form-select form-control search--input sidebar--input"
+                                name="city"
+                                required>
+                            <option value="">Оберіть місто</option>
+
+                            @foreach($cities as $city)
+                                <option
+                                    {{ old('city') == $city->id ? 'selected' : '' }}
+                                    value="{{ $city->id }}"
+                                    data-subtext="{{ $city->city }}">
+                                    {{ $city->city }} ({{ $city->area }})
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="col-2">
-                        <button class="form-control search--input">Заїзд – виїзд</button>
+                        <label for="">Заїзд</label>
+                        <input type="date" class="form-control search--input sidebar--input">
                     </div>
 
-                    <div class="col-3">
-                        <button class="form-control search--input">2 людини | 1 номер</button>
+                    <div class="col-2">
+                        <label for="">Виїзд</label>
+                        <input type="date" class="form-control search--input sidebar--input">
+                    </div>
+
+                    <div class="col-1">
+                        <label for="">Кількість людей</label>
+                        <input type="number" class="form-control search--input sidebar--input" min="1">
+                    </div>
+
+                    <div class="col-1">
+                        <label for="">Кількість номерів</label>
+                        <input type="number" class="form-control search--input sidebar--input" min="1">
                     </div>
 
                     <div class="col-2">

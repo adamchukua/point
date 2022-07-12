@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['verify' => true]);
 
 Route::get('/', function () {
-    return view('welcome');
+    $cities = DB::table('cities')->get();
+
+    return view('welcome', compact('cities'));
 });
 
 Route::get('/join', function () {
