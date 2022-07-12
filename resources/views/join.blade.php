@@ -18,9 +18,9 @@
                 <div class="join-info">
                     <p class="join-info--title">Зареєструйте нове помешкання</p>
                     <ul class="join-info-list list-unstyled">
-                        <li class="join-info-list--item">Понад 6,4 млн зареєстрованих помешкань для відпустки</li>
-                        <li class="join-info-list--item">Більше ніж 1 млрд заїздів у помешкання для відпустки</li>
-                        <li class="join-info-list--item">Понад 40% щойно зареєстрованих помешкань для відпустки отримують своє перше бронювання протягом тижня</li>
+                        <li class="join-info-list--item">Вже {{ $hotelsNumber }} зареєстрованих помешкань</li>
+                        <li class="join-info-list--item">Більше ніж {{ $bookingsNumber }} заїздів у помешкання</li>
+                        <li class="join-info-list--item">Людяна система, яка зробить все за вас</li>
                     </ul>
                     <a class="btn btn-first w-100" href="/profile/apartments/create">Почати</a>
                 </div>

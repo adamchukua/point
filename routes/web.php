@@ -27,7 +27,10 @@ Route::get('/', function () {
 });
 
 Route::get('/join', function () {
-    return view('join');
+    $hotelsNumber = \App\Models\Hotel::all()->count();
+    $bookingsNumber = 0;
+
+    return view('join', compact('hotelsNumber', 'bookingsNumber'));
 });
 
 Route::group(['middleware' => 'auth'], function () {
