@@ -11,45 +11,45 @@
             </a>
         </h1>
 
-        @if($hotel->reviews->count() > 0)
+        @if($reviews->count() > 0)
             <div class="hotel-reviews-categories">
                 <p class="hotel-reviews-categories--title">Оцінки за категоріями</p>
 
                 <div class="row">
                     <div class="col-4">
                         <p class="hotel-reviews-categories--item">Персонал:
-                            {{ $hotel->reviews->avg('personnel_mark') }}
+                            {{ $reviews->avg('personnel_mark') }}
                         </p>
                         <p class="hotel-reviews-categories--item">Комфорт:
-                            {{ $hotel->reviews->avg('comfort_mark') }}
+                            {{ $reviews->avg('comfort_mark') }}
                         </p>
                         <p class="hotel-reviews-categories--item">Безкоштовний Wi-Fi:
-                            {{ $hotel->reviews->avg('free_wifi_mark') }}
+                            {{ $reviews->avg('free_wifi_mark') }}
                         </p>
                     </div>
 
                     <div class="col-4">
                         <p class="hotel-reviews-categories--item">Зручності:
-                            {{ $hotel->reviews->avg('amenities_mark') }}
+                            {{ $reviews->avg('amenities_mark') }}
                         </p>
                         <p class="hotel-reviews-categories--item">Співвідношення ціна/якість:
-                            {{ $hotel->reviews->avg('price_quality_mark') }}
+                            {{ $reviews->avg('price_quality_mark') }}
                         </p>
                     </div>
 
                     <div class="col-4">
                         <p class="hotel-reviews-categories--item">Чистота:
-                            {{ $hotel->reviews->avg('purity_mark') }}
+                            {{ $reviews->avg('purity_mark') }}
                         </p>
                         <p class="hotel-reviews-categories--item">Розташування:
-                            {{ $hotel->reviews->avg('location_mark') }}
+                            {{ $reviews->avg('location_mark') }}
                         </p>
                     </div>
                 </div>
             </div>
 
             <div class="profile-list">
-                @foreach($hotel->reviews as $review)
+                @foreach($reviews as $review)
                     <div class="profile-list-item profile-list-item__mini">
                         <div class="row">
                             <a
@@ -100,6 +100,12 @@
                         </div>
                     </div>
                 @endforeach
+
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        {{ $reviews->links() }}
+                    </div>
+                </div>
             </div>
         @else
             @include('layouts.empty-section')

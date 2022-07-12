@@ -34,9 +34,9 @@ class ProfilesController extends Controller
 
     public function reviews()
     {
-        $user = auth()->user();
+        $reviews = auth()->user()->profile->reviews()->paginate(10);
 
-        return view('profiles.reviews', compact('user'));
+        return view('profiles.reviews', compact('reviews'));
     }
 
     public function saved()

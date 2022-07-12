@@ -29,7 +29,7 @@
         <h1 class="profile--title">Відгуки</h1>
 
         <div class="profile-list">
-            @forelse($user->profile->reviews as $review)
+            @forelse($reviews as $review)
                 <div class="profile-list-item d-flex justify-content-between">
                     <div class="profile-list-item-left d-flex justify-content-between">
                         <img
@@ -101,6 +101,12 @@
             @empty
                 @include('layouts.empty-section')
             @endforelse
+
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    {{ $reviews->links() }}
+                </div>
+            </div>
         </div>
     </div>
 @endsection
