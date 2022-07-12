@@ -7,6 +7,208 @@
         <div class="row">
             <div class="col-3">
                 @include('layouts.search-sidebar')
+
+                <div class="sidebar mt-4">
+                    <p class="sidebar--title">Сортувати за такими критеріями:</p>
+
+                    <div class="sidebar-section">
+                        <p class="sidebar-section--title">Ціна</p>
+
+                        <form action="" method="get">
+                            <input
+                                type="text"
+                                name=""
+                                id=""
+                                placeholder="Від"
+                                class="form-control search--input sidebar--input">
+
+                            <input
+                                type="text"
+                                name=""
+                                id=""
+                                placeholder="До"
+                                class="form-control search--input sidebar--input">
+                        </form>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <p class="sidebar-section--title">Популярні фільтри</p>
+
+                        <form action="" method="get">
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Безкоштовний Wi-Fi</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Готелі</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Басейн</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Дуже добре 8+</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <p class="sidebar-section--title">Кількість зірок</p>
+
+                        <form action="" method="get">
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">5</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">4+</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">3+</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">2+</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <p class="sidebar-section--title">Оцінка за відгуками</p>
+
+                        <form action="" method="get">
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Чудово 9+</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Дуже добре 8+</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Добре 7+</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Досить добре 6+</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <p class="sidebar-section--title">Харчування</p>
+
+                        <form action="" method="get">
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">З власною кухнею</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Сніданок включено</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Ресторан</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <p class="sidebar-section--title">Інтернет</p>
+
+                        <form action="" method="get">
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Безкоштовний Wi-Fi</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Фіксований Інтернет</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <p class="sidebar-section--title">Транспорт</p>
+
+                        <form action="" method="get">
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Безкоштовна автостоянка</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Платна автостоянка</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Станція для заряджання електромобілів</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <p class="sidebar-section--title">Спорт та дозвілля</p>
+
+                        <form action="" method="get">
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Фітнес-центр</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Басейн</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Оздоровчий спа-центр</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <p class="sidebar-section--title">Інше</p>
+
+                        <form action="" method="get">
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Дозволене розміщення з домашніми тваринами</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Прибирання</label>
+                            </div>
+
+                            <div class="d-flex">
+                                <input type="checkbox" name="" id="">
+                                <label for="">Зручності для осіб з обмеженими фізичними можливостями</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
             <div class="col-9">
                 <div class="hotels">

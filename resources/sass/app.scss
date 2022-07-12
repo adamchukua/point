@@ -214,18 +214,16 @@
     }
 }
 
-// search-sidebar
+// sidebar
 
-.search {
-    &-sidebar {
-        padding: 1rem;
-        border: 1px solid #000;
-        border-radius: 13px;
+.sidebar {
+    padding: 1rem;
+    border: 1px solid #000;
+    border-radius: 13px;
 
-        &--title {
-            font-size: 1.15rem;
-            font-weight: bold;
-        }
+    &--title {
+        font-size: 1.15rem;
+        font-weight: bold;
     }
 
     &--input {
@@ -239,6 +237,23 @@
 
     &--btn {
         font-size: 1rem;
+    }
+
+    &-section {
+        font-size: 1rem;
+
+        &--title {
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        input {
+            margin-right: 1rem;
+        }
+
+        form div {
+            margin-bottom: 1rem;
+        }
     }
 }
 

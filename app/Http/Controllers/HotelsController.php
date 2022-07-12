@@ -30,18 +30,21 @@ class HotelsController extends Controller
             ->where('hotel_id', '=', $hotel->id)
             ->get()) > 0 : null;
 
+        $cities = DB::table('cities')->get();
+
         return view('hotels.index', compact('hotel',
             'savedStatus',
             'reviewsAverageMark',
-            'reviewsAverageMarkText'));
+            'reviewsAverageMarkText',
+            'cities'));
     }
 
     public function hotels()
     {
         $hotels = Hotel::all();
+        $cities = DB::table('cities')->get();
 
-
-        return view('hotels.hotels', compact('hotels'));
+        return view('hotels.hotels', compact('hotels', 'cities'));
     }
 
     public function create()

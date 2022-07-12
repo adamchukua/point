@@ -1,13 +1,35 @@
-<div class="search-sidebar">
-    <p class="search-sidebar--title">Шукати</p>
+<div class="sidebar">
+    <p class="sidebar--title">Шукати</p>
 
     <form action="" method="get">
-        <input type="text" placeholder="Куди Ви вирушаєте?" class="form-control search--input">
+        <label for="" class="mb-2">Куди ви вирушаєте?</label>
+        <select class="form-select form-control search--input sidebar--input"
+                name="city"
+                required>
+            <option value="">Оберіть місто</option>
 
-        <input type="text" placeholder="Куди Ви вирушаєте?" class="form-control search--input">
+            @foreach($cities as $city)
+                <option
+                    {{ old('city') == $city->id ? 'selected' : '' }}
+                    value="{{ $city->id }}"
+                    data-subtext="{{ $city->city }}">
+                    {{ $city->city }} ({{ $city->area }})
+                </option>
+            @endforeach
+        </select>
 
-        <input type="text" placeholder="Куди Ви вирушаєте?" class="form-control search--input">
+        <label for="" class="mb-2">Заїзд</label>
+        <input type="date" class="form-control search--input sidebar--input">
 
-        <button type="submit" class="btn search--input search--btn btn-first">Шукати</button>
+        <label for="" class="mb-2">Виїзд</label>
+        <input type="date" class="form-control search--input sidebar--input">
+
+        <label for="" class="mb-2">Кількість людей</label>
+        <input type="number" class="form-control search--input sidebar--input" min="1">
+
+        <label for="" class="mb-2">Кількість номерів</label>
+        <input type="number" class="form-control search--input sidebar--input" min="1">
+
+        <button type="submit" class="btn search--btn sidebar--input sidebar--btn btn-first">Шукати</button>
     </form>
 </div>
