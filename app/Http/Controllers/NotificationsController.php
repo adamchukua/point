@@ -10,7 +10,7 @@ class NotificationsController extends Controller
     public function notifications()
     {
         $user = auth()->user();
-        $notifications = Notification::where('user_id', $user->id)->latest()->get();
+        $notifications = Notification::where('user_id', $user->id)->latest()->paginate(10);
 
         return view('notifications', compact('notifications'));
     }

@@ -314,6 +314,12 @@
                         @empty
                             @include('layouts.empty-section')
                         @endforelse
+
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center">
+                                {{ $hotels->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

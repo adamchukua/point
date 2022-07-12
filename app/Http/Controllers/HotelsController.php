@@ -53,9 +53,11 @@ class HotelsController extends Controller
 
         $hotels = Hotel::query()
             ->where('city', $query['city'])
-            ->get();
+            ->paginate(10);
         $cities = DB::table('cities')->get();
-        $queryCity = DB::table('cities')->where('id', $query['city'])->first();
+        $queryCity = DB::table('cities')
+            ->where('id', $query['city'])
+            ->first();
 
         return view('hotels.hotels', compact(
             'hotels',

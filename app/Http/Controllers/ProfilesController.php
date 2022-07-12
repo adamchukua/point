@@ -42,7 +42,7 @@ class ProfilesController extends Controller
     public function saved()
     {
         $user = auth()->user();
-        $saveds = Saved::where('user_id', $user->id)->latest()->get();
+        $saveds = Saved::where('user_id', $user->id)->latest()->paginate(10);
 
         return view('profiles.saved', compact('user', 'saveds'));
     }
@@ -50,7 +50,7 @@ class ProfilesController extends Controller
     public function apartments()
     {
         $user = auth()->user();
-        $hotels = Hotel::where('user_id', $user->id)->latest()->get();
+        $hotels = Hotel::where('user_id', $user->id)->latest()->paginate(10);
 
         return view('profiles.apartments', compact('user', 'hotels'));
     }
