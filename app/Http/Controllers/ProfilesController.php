@@ -41,16 +41,15 @@ class ProfilesController extends Controller
 
     public function saved()
     {
-        $user = auth()->user();
-        $saveds = Saved::where('user_id', $user->id)->latest()->paginate(10);
+        $saveds = auth()->user()->saveds()->paginate(10);
 
-        return view('profiles.saved', compact('user', 'saveds'));
+        return view('profiles.saved', compact( 'saveds'));
     }
 
     public function apartments()
     {
         $user = auth()->user();
-        $hotels = Hotel::where('user_id', $user->id)->latest()->paginate(10);
+        $hotels = $user->hotels()->paginate(10);
 
         return view('profiles.apartments', compact('user', 'hotels'));
     }
