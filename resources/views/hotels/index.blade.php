@@ -272,11 +272,16 @@
                                     <td>{{ $room->comment }}</td>
                                     <td>{{ $room->price }}</td>
                                     <td>
-                                        <a
-                                            class="btn btn-first"
-                                            href="/hotel/{{ $hotel->id }}/{{ $room->id }}/booking">
-                                            Бронювати
-                                        </a>
+                                        <form
+                                            action="/booking/{{ $room->id }}/store"
+                                            method="post">
+                                            @csrf
+
+                                            <button
+                                                class="btn btn-first">
+                                                Бронювати
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endif

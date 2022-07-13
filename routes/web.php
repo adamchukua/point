@@ -38,20 +38,29 @@ Route::group(['middleware' => 'auth'], function () {
     Route::patch('/profile/settings', [App\Http\Controllers\ProfilesController::class, 'update']);
 
     Route::get('/profile/bookings', [App\Http\Controllers\ProfilesController::class, 'bookings']);
-    Route::get('/profile/bookings/{booking}/review/add', [App\Http\Controllers\ReviewsController::class, 'create']);
-    Route::post('/profile/bookings/{booking}/review/add', [App\Http\Controllers\ReviewsController::class, 'store']);
 
     Route::get('/profile/reviews', [App\Http\Controllers\ProfilesController::class, 'reviews']);
-    Route::get('/profile/reviews/{review}/edit', [App\Http\Controllers\ReviewsController::class, 'edit']);
-    Route::patch('/profile/reviews/{review}/edit', [App\Http\Controllers\ReviewsController::class, 'update']);
-    Route::post('/profile/reviews/{review}/delete', [App\Http\Controllers\ReviewsController::class, 'delete']);
 
     Route::get('/profile/saved', [App\Http\Controllers\ProfilesController::class, 'saved']);
     Route::post('/profile/saveHotel/{hotel}', [App\Http\Controllers\SavedsController::class, 'store']);
     Route::post('/profile/unsaveHotel/{saved}', [App\Http\Controllers\SavedsController::class, 'unsave']);
 
     Route::get('/profile/apartments', [App\Http\Controllers\ProfilesController::class, 'apartments']);
+
+    Route::get('/profile/delete', [App\Http\Controllers\ProfilesController::class, 'delete']);
+
+    Route::get('/notifications', [App\Http\Controllers\NotificationsController::class, 'notifications']);
+    Route::post('/notifications/{notification}/read', [App\Http\Controllers\NotificationsController::class, 'read']);
+    Route::post('/notifications/all-read', [App\Http\Controllers\NotificationsController::class, 'allRead']);
+
     Route::group(['middleware' => 'verified'], function () {
+        Route::get('/profile/bookings/{booking}/review/add', [App\Http\Controllers\ReviewsController::class, 'create']);
+        Route::post('/profile/bookings/{booking}/review/add', [App\Http\Controllers\ReviewsController::class, 'store']);
+
+        Route::get('/profile/reviews/{review}/edit', [App\Http\Controllers\ReviewsController::class, 'edit']);
+        Route::patch('/profile/reviews/{review}/edit', [App\Http\Controllers\ReviewsController::class, 'update']);
+        Route::post('/profile/reviews/{review}/delete', [App\Http\Controllers\ReviewsController::class, 'delete']);
+
         Route::get('/profile/apartments/create', [App\Http\Controllers\HotelsController::class, 'create']);
         Route::post('/profile/apartments/create', [App\Http\Controllers\HotelsController::class, 'store']);
         Route::post('/profile/apartments/{hotel}/delete', [App\Http\Controllers\HotelsController::class, 'delete']);
@@ -60,13 +69,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/profile/apartments/{hotel}/room/create', [App\Http\Controllers\RoomsController::class, 'create']);
         Route::post('/profile/apartments/{hotel}/room/create', [App\Http\Controllers\RoomsController::class, 'store']);
+
+        Route::post('/booking/{room}/store', [App\Http\Controllers\BookingsController::class, 'store']);
     });
-
-    Route::get('/profile/delete', [App\Http\Controllers\ProfilesController::class, 'delete']);
-
-    Route::get('/notifications', [App\Http\Controllers\NotificationsController::class, 'notifications']);
-    Route::post('/notifications/{notification}/read', [App\Http\Controllers\NotificationsController::class, 'read']);
-    Route::post('/notifications/all-read', [App\Http\Controllers\NotificationsController::class, 'allRead']);
 });
 
 Route::get('/profile/{profile}', [App\Http\Controllers\ProfilesController::class, 'index']);
