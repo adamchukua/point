@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Booking extends Model
 {
@@ -28,7 +29,25 @@ class Booking extends Model
             1 => 'Схвалено',
             2 => 'Відмовлено',
             3 => 'Виконано',
+            4 => 'Скасовано',
             default => 'Немає даних',
         };
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($booking) {
+            auth()->user()->notifications()->create([
+                'title' => 'Запит на бронювання подано',
+                'text' => 'Невдовзі власник ' . $booking->room->hotel->name . ' розгляне Ваш запит, результат очікуйте в своєму профілі та в сповіщеннях',
+            ]);
+
+            $booking->profile->user->notifications()->create([
+                'title' => 'Новий запит на бронювання ' . $booking->room->hotel->name . '!',
+                'text' => 'Користувач ' . $booking->profile->name . ' подав запит на бронювання ' . $booking->room->hotel->name . ', надайте відповідь у своєму профілі',
+            ]);
+        });
     }
 }

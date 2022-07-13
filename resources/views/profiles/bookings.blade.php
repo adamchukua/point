@@ -49,7 +49,7 @@
                                 </p>
 
                                 <p class="profile-list-item-left-text--subtitle">
-                                    {{ $booking->arrived }} – {{ $booking->departure }}
+                                    {{ $booking->arrival }} – {{ $booking->departure }}
                                 </p>
 
                                 <p class="profile-list-item-left-text--subtitle">

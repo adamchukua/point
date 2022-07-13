@@ -9,7 +9,7 @@ class NotificationsController extends Controller
 {
     public function notifications()
     {
-        $notifications = auth()->user()->notifications()->paginate(10);
+        $notifications = auth()->user()->notifications()->latest()->paginate(10);
 
         return view('notifications', compact('notifications'));
     }

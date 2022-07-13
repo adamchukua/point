@@ -277,6 +277,34 @@
                                             method="post">
                                             @csrf
 
+                                            <div class="d-none">
+                                                <input
+                                                    type="date"
+                                                    name="arrival"
+                                                    id="arrival"
+                                                    value="{{ $query['arrival'] ?? '' }}">
+
+                                                <input
+                                                    type="date"
+                                                    name="departure"
+                                                    id="departure"
+                                                    value="{{ $query['departure'] ?? '' }}">
+
+                                                <input
+                                                    type="number"
+                                                    name="peopleNumber"
+                                                    id="peopleNumber"
+                                                    value="{{ $query['peopleNumber'] ?? '' }}"
+                                                    min="1">
+                                                <input
+                                                    type="number"
+                                                    name="roomsNumber"
+                                                    id="roomsNumber"
+                                                    value="{{ $query['roomsNumber'] ?? '' }}"
+                                                    class="form-control search--input sidebar--input"
+                                                    min="1">
+                                            </div>
+
                                             <button
                                                 class="btn btn-first">
                                                 Бронювати
