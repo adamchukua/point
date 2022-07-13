@@ -20,4 +20,15 @@ class Booking extends Model
     {
         return $this->belongsTo(Profile::class);
     }
+
+    public function getStatusText()
+    {
+        return match ($this->status) {
+            0 => 'Очікує на схвалення',
+            1 => 'Схвалено',
+            2 => 'Відмовлено',
+            3 => 'Виконано',
+            default => 'Немає даних',
+        };
+    }
 }

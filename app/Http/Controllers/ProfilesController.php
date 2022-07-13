@@ -27,9 +27,9 @@ class ProfilesController extends Controller
 
     public function bookings()
     {
-        $user = auth()->user();
+        $bookings = auth()->user()->profile->bookings()->paginate(10);
 
-        return view('profiles.bookings', compact('user'));
+        return view('profiles.bookings', compact('bookings'));
     }
 
     public function reviews()
