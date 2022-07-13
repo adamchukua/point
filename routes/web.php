@@ -71,6 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/profile/apartments/{hotel}/room/create', [App\Http\Controllers\RoomsController::class, 'store']);
 
         Route::post('/booking/{room}/store', [App\Http\Controllers\BookingsController::class, 'store']);
+        Route::post('/booking/{booking}/cancel', [App\Http\Controllers\BookingsController::class, 'cancel']);
     });
 });
 

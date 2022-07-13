@@ -78,11 +78,13 @@
                                     <a class="dropdown-item" href="/profile/bookings/{{ $booking->room->hotel->id }}/review/add">Залишити відгук</a>
                                 </li>
 
-                                <form action="/profile/unsaveHotel/" method="post">
-                                    @csrf
+                                @if($booking->status == 0)
+                                    <form action="/booking/{{ $booking->id }}/cancel" method="post">
+                                        @csrf
 
-                                    <li><button type="submit" class="dropdown-item">Видалити</button></li>
-                                </form>
+                                        <li><button type="submit" class="dropdown-item">Скасувати</button></li>
+                                    </form>
+                                @endif
                             </ul>
                         </div>
                     </div>

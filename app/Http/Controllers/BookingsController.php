@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Hotel;
 use App\Models\Room;
 use Illuminate\Http\Request;
@@ -24,6 +25,19 @@ class BookingsController extends Controller
                 'departure' => $data['departure']
             ]);
         }
+
+        return redirect('/profile/bookings');
+    }
+
+    public function cancel(Booking $booking)
+    {
+        $booking->status = 4;
+        $booking->save();
+
+        $booking->room->hotel->user->notifications()->create([
+            'title' => 'Запит на бронювання #' . $booking->id . ' скасовано!',
+            'text' => 'Зверніть увагу, користувач ' . $booking->profile->name . ' скасував запит на бронювання',
+        ]);
 
         return redirect('/profile/bookings');
     }

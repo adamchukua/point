@@ -40,12 +40,12 @@ class Booking extends Model
 
         static::created(function ($booking) {
             auth()->user()->notifications()->create([
-                'title' => 'Запит на бронювання подано',
+                'title' => 'Запит #' . $booking->id . ' на бронювання подано',
                 'text' => 'Невдовзі власник ' . $booking->room->hotel->name . ' розгляне Ваш запит, результат очікуйте в своєму профілі та в сповіщеннях',
             ]);
 
             $booking->profile->user->notifications()->create([
-                'title' => 'Новий запит на бронювання ' . $booking->room->hotel->name . '!',
+                'title' => 'Новий запит #' . $booking->id . ' на бронювання ' . $booking->room->hotel->name . '!',
                 'text' => 'Користувач ' . $booking->profile->name . ' подав запит на бронювання ' . $booking->room->hotel->name . ', надайте відповідь у своєму профілі',
             ]);
         });
