@@ -80,13 +80,10 @@
                                     Відгуки: {{ $hotel->reviews->count() }}
                                 </p>
 
-                                <p class="profile-list-item-left-text--subtitle">
+                                <!--
+                                 <p class="profile-list-item-left-text--subtitle">
                                     Всього бронювань: {{ 0 }}
-                                </p>
-
-                                <p class="profile-list-item-left-text--subtitle">
-                                    Очікує на схвалення: {{ 0 }}
-                                </p>
+                                </p>-->
 
                                 @if($hotel->rooms->count() > 0)
                                     <table class="table">
@@ -95,6 +92,7 @@
                                             <th scope="col">Назва типу номеру</th>
                                             <th scope="col">Вільних</th>
                                             <th scope="col">Зайнятих</th>
+                                            <th scope="col">Очікують на розгляд</th>
                                             <th scope="col">Всього</th>
                                             <th scope="col"></th>
                                         </tr>
@@ -102,12 +100,32 @@
                                         <tbody>
                                         @foreach($hotel->rooms as $room)
                                             <tr>
-                                                <th scope="row">{{ $room->type }}</th>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>{{ $room->number }}</td>
+                                                <th scope="row">
+                                                    {{ $room->type }}
+                                                </th>
+
                                                 <td>
-                                                    <a href="/profile/apartments/{{ $hotel->id }}/room/{{ $room->id }}/edit">
+                                                    {{ $room->number -
+                                                    ($room->bookings()->where('status', 1)->count() +
+                                                    $room->bookings()->where('status', 3)->count()) }}
+                                                </td>
+
+                                                <td>
+                                                    {{ $room->bookings()->where('status', 1)->count() }}
+                                                </td>
+
+                                                <td>
+                                                    {{ $room->bookings()->where('status', 0)->count() }}
+                                                </td>
+
+                                                <td>
+                                                    {{ $room->number }}
+                                                </td>
+
+                                                <td>
+                                                    <a
+                                                        class="btn btn-second"
+                                                        href="/profile/apartments/{{ $hotel->id }}/room/{{ $room->id }}/edit">
                                                         Редагувати
                                                     </a>
                                                 </td>
