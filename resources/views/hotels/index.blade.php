@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="col-2">
-                            <button class="btn btn-second">Бронювати</button>
+                            <a class="btn btn-second" href="#booking">Бронювати</a>
                         </div>
                     </div>
 
@@ -249,18 +249,40 @@
                 </ul>
             </section>
 
-            <section class="hotel-section">
+            <section class="hotel-section" id="booking">
                 <p class="hotel--title" id="availability">Наявність місць</p>
 
-                <p class="hotel--description">
-                    Це помешкання розташоване в 5 хв. ходьби від пляжу Апартаменти Arcadia & sea terrace розташовані в Одесі, за 450 метрів від пляжу Аркадія та за 1,2 км від пляжу Чайка. До послуг гостей сад із терасою. На території облаштовано власну парковку та надається безкоштовний Wi-Fi.
-                    <br>
-                    В апартаментах є кондиціонер, повністю обладнана міні-кухня, телевізор із плоским екраном і окрема ванна кімната з ванною або душем, феном і безкоштовними туалетно-косметичними засобами. Серед інших зручностей: мікрохвильова піч, холодильник, чайник і плита.
-                    <br>
-                    За 7 км від апартаментів розміщені Одеський археологічний музей і Одеський театр опери й балету. Відстань від апартаментів Arcadia & sea terrace до міжнародного аеропорту Одеси становить 7 км.
-                    <br>
-                    Це місце розташування особливо подобається парам - вони оцінили його на 9,6 для поїздки удвох.
-                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Тип номеру</th>
+                            <th scope="col">Вміщує в собі (осіб)</th>
+                            <th scope="col">Коментар від власника</th>
+                            <th scope="col">Ціна (грн)</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($hotel->rooms as $room)
+                            <!-- TODO: check if number of rooms is less than number of bookings -->
+                            @if(true)
+                                <tr>
+                                    <th scope="row">{{ $room->type }}</th>
+                                    <td>{{ $room->contains }}</td>
+                                    <td>{{ $room->comment }}</td>
+                                    <td>{{ $room->price }}</td>
+                                    <td>
+                                        <a
+                                            class="btn btn-first"
+                                            href="/hotel/{{ $hotel->id }}/{{ $room->id }}/booking">
+                                            Бронювати
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    </tbody>
+                </table>
             </section>
         </div>
     </div>
