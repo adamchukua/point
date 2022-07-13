@@ -9,20 +9,7 @@ class Review extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'title',
-        'text',
-        'pros',
-        'cons',
-        'personnel_mark',
-        'comfort_mark',
-        'free_wifi_mark',
-        'amenities_mark',
-        'price_quality_mark',
-        'purity_mark',
-        'location_mark',
-        'stars'
-    ];
+    protected $guarded = [];
 
     public function getAverageMark()
     {

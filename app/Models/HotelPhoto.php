@@ -9,10 +9,7 @@ class HotelPhoto extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-      'hotel_id',
-      'image'
-    ];
+    protected $guarded = [];
 
     public function hotel()
     {
