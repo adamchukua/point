@@ -122,9 +122,9 @@ class Hotel extends Model
         return $this->hasMany(HotelPhoto::class);
     }
 
-    public function hotelPlaces()
+    public function rooms()
     {
-        return $this->hasMany(HotelPlaces::class);
+        return $this->hasMany(Room::class);
     }
 
     protected static function boot()
