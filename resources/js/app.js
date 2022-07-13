@@ -8,6 +8,21 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+// Import v-from
+import {
+    Button,
+    HasError,
+    AlertError,
+    AlertErrors,
+    AlertSuccess
+} from 'vform/src/components/bootstrap5'
+
+Vue.component(Button.name, Button)
+Vue.component(HasError.name, HasError)
+Vue.component(AlertError.name, AlertError)
+Vue.component(AlertErrors.name, AlertErrors)
+Vue.component(AlertSuccess.name, AlertSuccess)
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -20,6 +35,7 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('save-button', require('./components/SaveButton.vue').default);
+Vue.component('create-hotel', require('./components/CreateHotel.vue').default);
 Vue.component('image-upload', require('./components/ImageUpload.vue').default);
 
 /**

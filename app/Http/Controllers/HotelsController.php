@@ -113,7 +113,7 @@ class HotelsController extends Controller
             }
         }
 
-        return redirect('/profile/apartments');
+        return redirect('/profile/apartments/' . $hotelId . '/room/create');
     }
 
     public function delete(Hotel $hotel)

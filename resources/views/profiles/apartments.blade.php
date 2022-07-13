@@ -34,22 +34,22 @@
         @if($user->hasVerifiedEmail() == null)
             @include('layouts.verification')
         @else
-            @forelse($hotels as $hotel)
+            <div class="profile-list">
+                @forelse($hotels as $hotel)
 
-                @php
-                    $reviewsAverageMark = ($hotel->reviews->avg('personnel_mark') +
-                        $hotel->reviews->avg('comfort_mark') +
-                        $hotel->reviews->avg('free_wifi_mark') +
-                        $hotel->reviews->avg('amenities_mark') +
-                        $hotel->reviews->avg('price_quality_mark') +
-                        $hotel->reviews->avg('purity_mark') +
-                        $hotel->reviews->avg('location_mark')) / 7;
-                    $reviewsAverageMark = floor($reviewsAverageMark * 10) / 10;
-                    $review = new \App\Models\Review();
-                    $reviewsAverageMarkText = $review->getAverageMarkText($reviewsAverageMark);
-                @endphp
+                    @php
+                        $reviewsAverageMark = ($hotel->reviews->avg('personnel_mark') +
+                            $hotel->reviews->avg('comfort_mark') +
+                            $hotel->reviews->avg('free_wifi_mark') +
+                            $hotel->reviews->avg('amenities_mark') +
+                            $hotel->reviews->avg('price_quality_mark') +
+                            $hotel->reviews->avg('purity_mark') +
+                            $hotel->reviews->avg('location_mark')) / 7;
+                        $reviewsAverageMark = floor($reviewsAverageMark * 10) / 10;
+                        $review = new \App\Models\Review();
+                        $reviewsAverageMarkText = $review->getAverageMarkText($reviewsAverageMark);
+                    @endphp
 
-                <div class="profile-list">
                     <div class="profile-list-item d-flex justify-content-between">
                         <div class="profile-list-item-left d-flex justify-content-between">
                             <a href="/hotel/{{ $hotel->id }}" class="link-unstyled">
@@ -87,6 +87,41 @@
                                 <p class="profile-list-item-left-text--subtitle">
                                     Очікує на схвалення: {{ 0 }}
                                 </p>
+
+                                @if($hotel->rooms->count() > 0)
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">Назва типу номеру</th>
+                                            <th scope="col">Вільних</th>
+                                            <th scope="col">Зайнятих</th>
+                                            <th scope="col">Всього</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($hotel->rooms as $room)
+                                            <tr>
+                                                <th scope="row">{{ $room->type }}</th>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>{{ $room->number }}</td>
+                                                <td>
+                                                    <a href="/profile/apartments/{{ $hotel->id }}/room/{{ $room->id }}/edit">
+                                                        Редагувати
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                @endif
+
+                                <a
+                                    class="btn btn-first"
+                                    href="/profile/apartments/{{ $hotel->id }}/room/create">
+                                    Додати тип номеру
+                                </a>
                             </div>
                         </div>
 
@@ -117,15 +152,16 @@
                         </div>
                     </div>
                 </div>
+            </div>
             @empty
                 @include('layouts.empty-section')
             @endforelse
 
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-center">
-                        {{ $hotels->links() }}
-                    </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    {{ $hotels->links() }}
                 </div>
+            </div>
         @endif
     </div>
 @endsection
