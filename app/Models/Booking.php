@@ -47,7 +47,7 @@ class Booking extends Model
         static::created(function ($booking) {
             auth()->user()->notifications()->create([
                 'title' => 'Запит #' . $booking->id . ' на бронювання подано',
-                'text' => 'Невдовзі власник ' . $booking->room->hotel->name . ' розгляне Ваш запит, результат очікуйте в своєму профілі та в сповіщеннях',
+                'text' => "Невдовзі власник <a href='/hotel/" . $booking->hotel->id . "'>" . $booking->room->hotel->name . "</a> розгляне Ваш запит, результат очікуйте в своєму профілі та в сповіщеннях",
             ]);
 
             $booking->room->hotel->user->notifications()->create([
