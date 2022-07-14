@@ -117,6 +117,8 @@ class HotelsController extends Controller
 
     public function delete(Hotel $hotel)
     {
+        $this->authorize('delete', $hotel);
+
         $hotel->delete();
 
         return redirect('/profile/apartments');
@@ -124,6 +126,8 @@ class HotelsController extends Controller
 
     public function edit(Hotel $hotel)
     {
+        $this->authorize('update', $hotel);
+
         $cities = DB::table('cities')->get();
 
         return view('hotels.edit', compact('hotel', 'cities'));
@@ -131,6 +135,8 @@ class HotelsController extends Controller
 
     public function update(Hotel $hotel)
     {
+        $this->authorize('update', $hotel);
+
         $data = request()->validate([
             'name' => ['required', 'max:255'],
             'type' => ['required', 'max:40'],
