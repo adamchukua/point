@@ -73,8 +73,12 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('/profile/apartments/room/{room}/edit', [App\Http\Controllers\RoomsController::class, 'update']);
         Route::post('/profile/apartments/room/{room}/delete', [App\Http\Controllers\RoomsController::class, 'delete']);
 
+        Route::get('/profile/apartments/{hotel}/bookings', [App\Http\Controllers\BookingsController::class, 'index']);
+
         Route::post('/booking/{room}/store', [App\Http\Controllers\BookingsController::class, 'store']);
         Route::post('/booking/{booking}/cancel', [App\Http\Controllers\BookingsController::class, 'cancel']);
+        Route::post('/booking/{booking}/approve', [App\Http\Controllers\BookingsController::class, 'approve']);
+        Route::post('/booking/{booking}/disapprove', [App\Http\Controllers\BookingsController::class, 'disapprove']);
     });
 });
 

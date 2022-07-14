@@ -88,14 +88,14 @@
                                 @if($hotel->rooms->count() > 0)
                                     <table class="table">
                                         <thead>
-                                        <tr>
-                                            <th scope="col">Назва типу номеру</th>
-                                            <th scope="col">Вільних</th>
-                                            <th scope="col">Зайнятих</th>
-                                            <th scope="col">Очікують на розгляд</th>
-                                            <th scope="col">Всього</th>
-                                            <th scope="col"></th>
-                                        </tr>
+                                            <tr>
+                                                <th scope="col">Назва типу номеру</th>
+                                                <th scope="col">Вільних</th>
+                                                <th scope="col">Зайнятих</th>
+                                                <th scope="col">Очікують на розгляд</th>
+                                                <th scope="col">Всього</th>
+                                                <th scope="col"></th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($hotel->rooms as $room)
@@ -156,8 +156,8 @@
 
                                 <a
                                     class="btn btn-first"
-                                    href="/profile/apartments/{{ $hotel->id }}/">
-                                    Розглянути заявки
+                                    href="/profile/apartments/{{ $hotel->id }}/bookings">
+                                    Всі бронювання
                                 </a>
                             </div>
                         </div>

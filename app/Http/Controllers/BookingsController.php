@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 class BookingsController extends Controller
 {
+
+
     public function store(Room $room)
     {
         $data = request()->validate([
@@ -20,6 +22,7 @@ class BookingsController extends Controller
 
         for ($i = 0; $i < $data['peopleNumber']; $i += $room->contains) {
             auth()->user()->profile->bookings()->create([
+                'hotel_id' => $room->hotel->id,
                 'room_id' => $room->id,
                 'arrival' => $data['arrival'],
                 'departure' => $data['departure']
@@ -43,5 +46,64 @@ class BookingsController extends Controller
         ]);
 
         return redirect('/profile/bookings');
+    }
+
+    public function index(Hotel $hotel)
+    {
+        if ($hotel->user->id != auth()->user()->id) {
+            return redirect('/login');
+        }
+
+        return view('bookings.index', compact('hotel'));
+    }
+
+    public function approve(Booking $booking)
+    {
+        if ($booking->hotel->user->id != auth()->user()->id) {
+            return redirect('/login');
+        }
+
+        if ($booking->status != 0) {
+            return redirect('/profile/apartments');
+        }
+
+        $booking->status = 1;
+        $booking->save();
+
+        $booking->profile->user->notifications()->create([
+            'title' => 'Запит на бронювання #' . $booking->id . ' схвалено!',
+            'text' => "Вітаємо! Власник <a href='/hotel/" .
+                $booking->hotel->id . "'>" .
+                $booking->hotel->name . "</a>" .
+                " схвалив Ваш запит #" .
+                $booking->id . " на бронювання",
+        ]);
+
+        return redirect('/profile/apartments/' . $booking->hotel->id . '/bookings');
+    }
+
+    public function disapprove(Booking $booking)
+    {
+        if ($booking->hotel->user->id != auth()->user()->id) {
+            return redirect('/login');
+        }
+
+        if ($booking->status != 0) {
+            return redirect('/profile/apartments');
+        }
+
+        $booking->status = 2;
+        $booking->save();
+
+        $booking->profile->user->notifications()->create([
+            'title' => 'Відмова запиту на бронювання #' . $booking->id,
+            'text' => "Власник <a href='/hotel/" .
+                $booking->hotel->id . "'>" .
+                $booking->hotel->name . "</a>" .
+                " відповів відмовою на Ваш запит #" .
+                $booking->id . " на бронювання",
+        ]);
+
+        return redirect('/profile/apartments/' . $booking->hotel->id . '/bookings');
     }
 }

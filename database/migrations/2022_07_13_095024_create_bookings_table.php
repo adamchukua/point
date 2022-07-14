@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('room_id');
             $table->unsignedBigInteger('profile_id');
+            $table->unsignedBigInteger('hotel_id');
             $table->string('arrival');
             $table->string('departure');
             $table->unsignedTinyInteger('status')->default(0);
