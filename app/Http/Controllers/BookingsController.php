@@ -40,13 +40,15 @@ class BookingsController extends Controller
         $booking->room->hotel->user->notifications()->create([
             'title' => 'Запит на бронювання #' . $booking->id . ' скасовано!',
             'text' => "Зверніть увагу, бронювання #" .
-                $booking->id . " скасовано!",
+                $booking->id . " <a href='/hotel/" . $booking->hotel->id . "'>" .
+                $booking->hotel->name . "</a> скасовано!"
         ]);
 
         $booking->profile->user->notifications()->create([
             'title' => 'Запит на бронювання #' . $booking->id . ' скасовано!',
             'text' => "Зверніть увагу, бронювання #" .
-                $booking->id . " скасовано!",
+                $booking->id . " <a href='/hotel/" . $booking->hotel->id . "'>" .
+                $booking->hotel->name . "</a> скасовано!"
         ]);
 
         return redirect()->back();
