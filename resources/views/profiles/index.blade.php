@@ -26,14 +26,14 @@
 
                 <p class="profile--subtitle">
                     <span>Країна:</span>
-                    {{ $profile->country ?? 'Немає даних' }}
+                    {{ $profile->getCountryName() ?? 'Немає даних' }}
                 </p>
             </div>
 
             <div class="col-4">
                 <p class="profile--subtitle">
                     <span>Кількість бронювань:</span>
-                    {{ 0 }}
+                    {{ $profile->bookings->where('status', 3)->count() }}
                 </p>
 
                 <p class="profile--subtitle">

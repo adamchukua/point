@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Http\Controllers\HotelsController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Profile extends Model
 {
@@ -21,6 +22,14 @@ class Profile extends Model
         } else {
             return "https://eu.ui-avatars.com/api/?name=" . substr($this->user->email, 0, 2) . "&background=random&format=svg";
         }
+    }
+
+    public function getCountryName()
+    {
+        return DB::table('countries')
+            ->where('code', $this->country)
+            ->first()
+            ->name;
     }
 
     public function user()
