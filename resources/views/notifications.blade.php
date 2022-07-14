@@ -26,7 +26,7 @@
                             </p>
 
                             <p class="profile-list-item-left-text--subtitle">
-                                {{ $notification->text }}
+                                {!! $notification->text !!}
                             </p>
                         </div>
                     </div>

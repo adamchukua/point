@@ -47,7 +47,7 @@ class Booking extends Model
 
             $booking->room->hotel->user->notifications()->create([
                 'title' => 'Новий запит #' . $booking->id . ' на бронювання ' . $booking->room->hotel->name . '!',
-                'text' => 'Користувач <a href="/profile/' . $booking->profile->id . '">' . $booking->profile->name . '</a> подав запит на бронювання ' . $booking->room->hotel->name . ', надайте відповідь у своєму профілі',
+                'text' => "Користувач <a href='/profile/" . $booking->profile->id . "'>" . $booking->profile->name . "</a> подав запит на бронювання " . $booking->room->hotel->name . ", надайте відповідь у своєму профілі",
             ]);
         });
     }
