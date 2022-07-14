@@ -41,7 +41,7 @@ class BookingsController extends Controller
             'title' => 'Запит на бронювання #' . $booking->id . ' скасовано!',
             'text' => "Зверніть увагу, користувач <a href='/profile/" .
                 $booking->profile->id . "'>" .
-                $booking->profile->name . " скасував запит #" .
+                $booking->profile->name . "</a> скасував запит #" .
                 $booking->id . " на бронювання",
         ]);
 
