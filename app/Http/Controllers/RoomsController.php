@@ -10,18 +10,14 @@ class RoomsController extends Controller
 {
     public function create(Hotel $hotel)
     {
-        if ($hotel->user->id != auth()->user()->id) {
-            return '/login';
-        }
+        $this->authorize('create', $hotel);
 
         return view('rooms.create', compact('hotel'));
     }
 
     public function store(Hotel $hotel)
     {
-        if ($hotel->user->id != auth()->user()->id) {
-            return '/login';
-        }
+        $this->authorize('create', $hotel);
 
         $data = request()->validate([
             'type' => ['required', 'max:255'],
@@ -38,14 +34,14 @@ class RoomsController extends Controller
 
     public function edit(Room $room)
     {
+        $this->authorize('update', $room);
+
         return view('rooms.edit', compact('room'));
     }
 
     public function update(Room $room)
     {
-        if ($room->hotel->user->id != auth()->user()->id) {
-            return '/login';
-        }
+        $this->authorize('update', $room);
 
         $data = request()->validate([
             'type' => ['required', 'max:255'],
@@ -62,6 +58,8 @@ class RoomsController extends Controller
 
     public function delete(Room $room)
     {
+        $this->authorize('delete', $room);
+
         $room->bookings->each->update(['status' => 5]);
         $room->delete();
 
