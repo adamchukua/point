@@ -153,6 +153,12 @@
                                     href="/profile/apartments/{{ $hotel->id }}/room/create">
                                     Додати тип номеру
                                 </a>
+
+                                <a
+                                    class="btn btn-first"
+                                    href="/profile/apartments/{{ $hotel->id }}/">
+                                    Розглянути заявки
+                                </a>
                             </div>
                         </div>
 
