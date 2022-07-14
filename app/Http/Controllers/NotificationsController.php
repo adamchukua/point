@@ -16,6 +16,8 @@ class NotificationsController extends Controller
 
     public function read(Notification $notification)
     {
+        $this->authorize('update', $notification);
+
         $notification->checked = !$notification->checked;
         $notification->save();
 
