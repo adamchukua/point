@@ -10,32 +10,44 @@
 
         <ul class="nav nav-tabs d-flex justify-content-around mb-2 nav-tabs__bg">
             <li class="nav-item">
-                <a class="nav-link" href="">Всі</a>
+                <a class="nav-link" href="">
+                    Всі <strong>{{ $bookings->count() }}</strong>
+                </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="">Очікують на схвалення</a>
+                <a class="nav-link" href="">
+                    Очікують на схвалення <strong>{{ $bookings->where('status', 0)->count() }}</strong>
+                </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="">Схвалено</a>
+                <a class="nav-link" href="">
+                    Схвалено <strong>{{ $bookings->where('status', 1)->count() }}</strong>
+                </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="">Відмовлено</a>
+                <a class="nav-link" href="">
+                    Відмовлено <strong>{{ $bookings->where('status', 2)->count() }}</strong>
+                </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="">Виконано</a>
+                <a class="nav-link" href="">
+                    Виконано <strong>{{ $bookings->where('status', 3)->count() }}</strong>
+                </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="">Скасовано</a>
+                <a class="nav-link" href="">
+                    Скасовано <strong>{{ $bookings->where('status', 4)->count() }}</strong>
+                </a>
             </li>
         </ul>
 
         <div class="profile-list">
-            @forelse($hotel->bookings as $booking)
+            @forelse($bookings as $booking)
                 <div class="profile-list-item profile-list-item__mini">
                     <div class="row">
                         <a
@@ -91,6 +103,12 @@
             @empty
                 @include('layouts.empty-section')
             @endforelse
+        </div>
+
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                {{ $bookings->links() }}
+            </div>
         </div>
     </div>
 @endsection

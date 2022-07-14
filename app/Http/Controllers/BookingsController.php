@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 
 class BookingsController extends Controller
 {
-
-
     public function store(Room $room)
     {
         $data = request()->validate([
@@ -54,7 +52,9 @@ class BookingsController extends Controller
             return redirect('/login');
         }
 
-        return view('bookings.index', compact('hotel'));
+        $bookings = $hotel->bookings()->latest()->paginate(15);
+
+        return view('bookings.index', compact('bookings', 'hotel'));
     }
 
     public function approve(Booking $booking)
