@@ -30,6 +30,7 @@ class Booking extends Model
             2 => 'Відмовлено',
             3 => 'Виконано',
             4 => 'Скасовано',
+            5 => 'Видалено',
             default => 'Немає даних',
         };
     }
@@ -44,9 +45,9 @@ class Booking extends Model
                 'text' => 'Невдовзі власник ' . $booking->room->hotel->name . ' розгляне Ваш запит, результат очікуйте в своєму профілі та в сповіщеннях',
             ]);
 
-            $booking->profile->user->notifications()->create([
+            $booking->room->hotel->user->notifications()->create([
                 'title' => 'Новий запит #' . $booking->id . ' на бронювання ' . $booking->room->hotel->name . '!',
-                'text' => 'Користувач ' . $booking->profile->name . ' подав запит на бронювання ' . $booking->room->hotel->name . ', надайте відповідь у своєму профілі',
+                'text' => 'Користувач <a href="/profile/' . $booking->profile->id . '">' . $booking->profile->name . '</a> подав запит на бронювання ' . $booking->room->hotel->name . ', надайте відповідь у своєму профілі',
             ]);
         });
     }

@@ -99,18 +99,17 @@ class HotelsController extends Controller
             'photos.*' => ['required', 'mimes:jpg,jpeg,png,bmp', 'max:5120'],
         ]);
 
+        //dd($data);
+
         $hotelId = auth()->user()->hotels()->create($data)->id;
 
-        if (request('photos')) {
-            foreach(request('photos') as $photo)
-            {
-                $imagePath = $photo->store('hotelPhotos', 'public');
+        foreach(request('photos') as $photo) {
+            $imagePath = $photo->store('hotelPhotos', 'public');
 
-                HotelPhoto::create([
-                    'hotel_id' => $hotelId,
-                    'image' => $imagePath,
-                ]);
-            }
+            HotelPhoto::create([
+                'hotel_id' => $hotelId,
+                'image' => $imagePath,
+            ]);
         }
 
         return redirect('/profile/apartments/' . $hotelId . '/room/create');

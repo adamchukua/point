@@ -69,6 +69,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/profile/apartments/{hotel}/room/create', [App\Http\Controllers\RoomsController::class, 'create']);
         Route::post('/profile/apartments/{hotel}/room/create', [App\Http\Controllers\RoomsController::class, 'store']);
+        Route::get('/profile/apartments/room/{room}/edit', [App\Http\Controllers\RoomsController::class, 'edit']);
+        Route::patch('/profile/apartments/room/{room}/edit', [App\Http\Controllers\RoomsController::class, 'update']);
+        Route::post('/profile/apartments/room/{room}/delete', [App\Http\Controllers\RoomsController::class, 'delete']);
 
         Route::post('/booking/{room}/store', [App\Http\Controllers\BookingsController::class, 'store']);
         Route::post('/booking/{booking}/cancel', [App\Http\Controllers\BookingsController::class, 'cancel']);

@@ -125,9 +125,22 @@
                                                 <td>
                                                     <a
                                                         class="btn btn-second"
-                                                        href="/profile/apartments/{{ $hotel->id }}/room/{{ $room->id }}/edit">
+                                                        href="/profile/apartments/room/{{ $room->id }}/edit">
                                                         Редагувати
                                                     </a>
+                                                </td>
+
+                                                <td>
+                                                    <form
+                                                        method="post"
+                                                        action="/profile/apartments/room/{{ $room->id }}/delete">
+                                                        @csrf
+
+                                                        <button
+                                                            class="btn btn-second">
+                                                            Видалити
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach

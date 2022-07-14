@@ -21,20 +21,4 @@ class Room extends Model
     {
         return $this->hasMany(Booking::class);
     }
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::created(function ($user, $hotel) {
-            $user->notifications()->create([
-                'title' => 'Запит на бронювання подано',
-                'text' => 'Власник ' . $hotel->name . ' невдовзі перевірить Ваш запит. Результат очікуйте в профілі та в сповіщеннях',
-            ]);
-        });
-
-        static::deleted(function ($user) {
-            //
-        });
-    }
 }
