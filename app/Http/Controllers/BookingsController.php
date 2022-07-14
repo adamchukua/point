@@ -32,6 +32,8 @@ class BookingsController extends Controller
 
     public function cancel(Booking $booking)
     {
+        // TODO: policy
+
         $booking->status = 4;
         $booking->save();
 
@@ -48,9 +50,7 @@ class BookingsController extends Controller
 
     public function index(Hotel $hotel)
     {
-        if ($hotel->user->id != auth()->user()->id) {
-            return redirect('/login');
-        }
+        $this->authorize('viewAny', $hotel);
 
         $bookings = $hotel->bookings()->latest()->paginate(15);
 
@@ -59,13 +59,7 @@ class BookingsController extends Controller
 
     public function approve(Booking $booking)
     {
-        if ($booking->hotel->user->id != auth()->user()->id) {
-            return redirect('/login');
-        }
-
-        if ($booking->status != 0) {
-            return redirect('/profile/apartments');
-        }
+        $this->authorize('update', $booking);
 
         $booking->status = 1;
         $booking->save();
@@ -84,13 +78,7 @@ class BookingsController extends Controller
 
     public function disapprove(Booking $booking)
     {
-        if ($booking->hotel->user->id != auth()->user()->id) {
-            return redirect('/login');
-        }
-
-        if ($booking->status != 0) {
-            return redirect('/profile/apartments');
-        }
+        $this->authorize('update', $booking);
 
         $booking->status = 2;
         $booking->save();
