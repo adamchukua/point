@@ -175,7 +175,7 @@ class HotelsController extends Controller
 
     public function reviews(Hotel $hotel)
     {
-        $reviews = $hotel->reviews()->paginate(15);
+        $reviews = $hotel->reviews()->latest()->paginate(15);
 
         return view('hotels.reviews', compact('hotel', 'reviews'));
     }
