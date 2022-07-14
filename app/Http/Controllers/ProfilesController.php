@@ -27,21 +27,22 @@ class ProfilesController extends Controller
 
     public function bookings()
     {
-        $bookings = auth()->user()->profile->bookings()->paginate(10);
+        $bookings = auth()->user()->profile->bookings()->latest()->paginate(10);
 
         return view('profiles.bookings', compact('bookings'));
     }
 
+
     public function reviews()
     {
-        $reviews = auth()->user()->profile->reviews()->paginate(10);
+        $reviews = auth()->user()->profile->reviews()->latest()->paginate(10);
 
         return view('profiles.reviews', compact('reviews'));
     }
 
     public function saved()
     {
-        $saveds = auth()->user()->saveds()->paginate(10);
+        $saveds = auth()->user()->saveds()->latest()->paginate(10);
 
         return view('profiles.saved', compact( 'saveds'));
     }
@@ -49,7 +50,7 @@ class ProfilesController extends Controller
     public function apartments()
     {
         $user = auth()->user();
-        $hotels = $user->hotels()->paginate(10);
+        $hotels = $user->hotels()->latest()->paginate(10);
 
         return view('profiles.apartments', compact('user', 'hotels'));
     }
