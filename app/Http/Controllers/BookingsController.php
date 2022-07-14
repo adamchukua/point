@@ -12,7 +12,7 @@ class BookingsController extends Controller
     public function store(Room $room)
     {
         // Check if there is free rooms
-        if ($room->bookings()->where('status', 1)->count() < $room->number) {
+        if ($room->bookings()->where('status', 1)->count() > $room->number) {
             return redirect()->back();
         }
 
@@ -61,6 +61,7 @@ class BookingsController extends Controller
 
     public function index(Hotel $hotel)
     {
+        // TODO: if there isn't any bookings then it will not working
         $this->authorize('viewAny', $hotel->bookings()->first());
 
         $bookings = $hotel->bookings()->latest()->paginate(15);
