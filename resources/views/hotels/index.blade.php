@@ -264,8 +264,7 @@
                     </thead>
                     <tbody>
                         @foreach($hotel->rooms as $room)
-                            <!-- TODO: check if number of rooms is less than number of bookings -->
-                            @if(true)
+                            @if($room->bookings()->where('status', 1)->count() < $room->number)
                                 <tr>
                                     <th scope="row">{{ $room->type }}</th>
                                     <td>{{ $room->contains }}</td>
