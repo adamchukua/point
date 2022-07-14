@@ -45,6 +45,10 @@
                                 <div
                                     class="profile-list-item-left-text
                                 {{ $booking->status == 2 ? 'text-muted' : '' }}">
+                                    <p class="profile-list-item-left-text--subtitle">
+                                        #{{ $booking->id }}
+                                    </p>
+
                                     <p class="profile-list-item-left-text--title">
                                         {{ $booking->room->hotel->name }}
                                     </p>

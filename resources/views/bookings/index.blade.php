@@ -65,6 +65,10 @@
 
                         <div class="col-3">
                             <p class="profile-list-item-left-text--subtitle">
+                                #{{ $booking->id }}
+                            </p>
+
+                            <p class="profile-list-item-left-text--subtitle">
                                 Статус: {{ $booking->getStatusText() }}
                             </p>
 
