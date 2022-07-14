@@ -2,28 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ReviewsController extends Controller
 {
-    public function create()
+    public function create(Booking $booking)
     {
+        $this->authorize('create', $booking);
+
         return view('reviews.create');
     }
 
-    public function store()
+    public function store(Booking $booking)
     {
+        $this->authorize('create', $booking);
 
+        //
+
+        return redirect('/profile/reviews');
     }
 
     public function edit(Review $review)
     {
+        $this->authorize('update', $review);
+
         return view('reviews.edit', compact('review'));
     }
 
     public function update(Review $review)
     {
+        $this->authorize('update', $review);
+
         $data = request()->validate([
             'title' => 'max:255',
             'text' => ['required', 'max:1000'],
@@ -46,6 +57,8 @@ class ReviewsController extends Controller
 
     public function delete(Review $review)
     {
+        $this->authorize('delete', $review);
+
         $review->delete();
 
         return redirect('/profile/reviews');
