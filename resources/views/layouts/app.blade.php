@@ -70,7 +70,7 @@
                                                 <img src="/img/svg/right-arrow.svg" alt="" class="notifications-item-title--arrow">
                                             </a>
                                             <p class="notifications-item--text">
-                                                {{ $notification->text }}
+                                                {!! $notification->text !!}
                                             </p>
                                         </div>
                                     @endforeach
