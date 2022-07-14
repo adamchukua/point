@@ -43,7 +43,8 @@ class ReviewPolicy
      */
     public function create(User $user, Booking $booking)
     {
-        return $user->profile->bookings->contains($booking);
+        return ($user->profile->bookings->contains($booking)) &&
+            ($booking->status = 3);
     }
 
     /**
