@@ -10,14 +10,26 @@ class RoomsController extends Controller
 {
     public function create(Hotel $hotel)
     {
-        $this->authorize('create', $hotel);
+        $room = new Room();
+        $room->hotel_id = $hotel->id;
+        $room->type = '';
+        $room->contains = 0;
+        $room->price = 0;
+
+        $this->authorize('create', $room);
 
         return view('rooms.create', compact('hotel'));
     }
 
     public function store(Hotel $hotel)
     {
-        $this->authorize('create', $hotel);
+        $room = new Room();
+        $room->hotel_id = $hotel->id;
+        $room->type = '';
+        $room->contains = 0;
+        $room->price = 0;
+
+        $this->authorize('create', $room);
 
         $data = request()->validate([
             'type' => ['required', 'max:255'],

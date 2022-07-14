@@ -38,12 +38,12 @@ class RoomPolicy
      * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Hotel  $hotel
+     * @param  \App\Models\Room  $room
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user, Hotel $hotel)
+    public function create(User $user, Room $room)
     {
-        return $user->id == $hotel->user->id;
+        return $user->id == $room->hotel->user->id;
     }
 
     /**
