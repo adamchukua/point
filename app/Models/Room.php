@@ -21,4 +21,13 @@ class Room extends Model
     {
         return $this->hasMany(Booking::class);
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($room) {
+            $room->bookings->each->delete();
+        });
+    }
 }
