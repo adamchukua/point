@@ -50,7 +50,7 @@ class BookingsController extends Controller
 
     public function index(Hotel $hotel)
     {
-        $this->authorize('viewAny', $hotel);
+        $this->authorize('viewAny', $hotel->bookings()->first());
 
         $bookings = $hotel->bookings()->latest()->paginate(15);
 

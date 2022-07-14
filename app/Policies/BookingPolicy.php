@@ -15,12 +15,12 @@ class BookingPolicy
      * Determine whether the user can view any models.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Hotel  $hotel
+     * @param  \App\Models\Booking  $booking
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user, Hotel $hotel)
+    public function viewAny(User $user, Booking $booking)
     {
-        return $user->id == $hotel->user->id;
+        return $user->id == $booking->hotel->user->id;
     }
 
     /**
@@ -32,7 +32,7 @@ class BookingPolicy
      */
     public function view(User $user, Booking $booking)
     {
-        //
+
     }
 
     /**
