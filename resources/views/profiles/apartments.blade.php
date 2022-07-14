@@ -80,11 +80,6 @@
                                     Відгуки: {{ $hotel->reviews->count() }}
                                 </p>
 
-                                <!--
-                                 <p class="profile-list-item-left-text--subtitle">
-                                    Всього бронювань: {{ 0 }}
-                                </p>-->
-
                                 @if($hotel->rooms->count() > 0)
                                     <table class="table">
                                         <thead>
