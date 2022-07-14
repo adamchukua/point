@@ -78,11 +78,19 @@
                                     </li>
 
                                     <li>
-                                        <a
-                                            class="dropdown-item"
-                                            href="/profile/bookings/{{ $booking->room->hotel->id }}/review/add">
-                                            Залишити відгук
-                                        </a>
+                                        @if($booking->status == 3)
+                                            <a
+                                                class="dropdown-item"
+                                                href="/profile/bookings/{{ $booking->room->hotel->id }}/review/add">
+                                                Залишити відгук
+                                            </a>
+                                        @else
+                                            <button
+                                                class="dropdown-item text-muted mb-0"
+                                                title="Відгук можна залишити тільки після виконаного бронювання">
+                                                Залишити відгук
+                                            </button>
+                                        @endif
                                     </li>
 
                                     @if($booking->status == 0)
