@@ -39,13 +39,17 @@ class BookingsController extends Controller
 
         $booking->room->hotel->user->notifications()->create([
             'title' => 'Запит на бронювання #' . $booking->id . ' скасовано!',
-            'text' => "Зверніть увагу, користувач <a href='/profile/" .
-                $booking->profile->id . "'>" .
-                $booking->profile->name . "</a> скасував запит #" .
-                $booking->id . " на бронювання",
+            'text' => "Зверніть увагу, бронювання #" .
+                $booking->id . " скасовано!",
         ]);
 
-        return redirect('/profile/bookings');
+        $booking->profile->user->notifications()->create([
+            'title' => 'Запит на бронювання #' . $booking->id . ' скасовано!',
+            'text' => "Зверніть увагу, бронювання #" .
+                $booking->id . " скасовано!",
+        ]);
+
+        return redirect()->back();
     }
 
     public function index(Hotel $hotel)

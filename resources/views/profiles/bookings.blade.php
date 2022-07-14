@@ -93,13 +93,23 @@
                                         @endif
                                     </li>
 
-                                    @if($booking->status == 0)
-                                        <form action="/booking/{{ $booking->id }}/cancel" method="post">
-                                            @csrf
+                                    <li>
+                                        @if($booking->status <= 1)
+                                            <form
+                                                action="/booking/{{ $booking->id }}/cancel"
+                                                method="post">
+                                                @csrf
 
-                                            <li><button type="submit" class="dropdown-item">Скасувати</button></li>
-                                        </form>
-                                    @endif
+                                                <button type="submit" class="dropdown-item">Скасувати</button>
+                                            </form>
+                                        @else
+                                            <button
+                                                class="dropdown-item text-muted mb-0"
+                                                title="Це бронювання не можна скасувати">
+                                                Скасувати
+                                            </button>
+                                        @endif
+                                    </li>
                                 </ul>
                             </div>
                         </div>

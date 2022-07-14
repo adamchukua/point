@@ -77,8 +77,8 @@
                             </p>
                         </div>
 
-                        @if($booking->status == 0)
-                            <div class="col-7 d-flex align-items-center justify-content-end">
+                        <div class="col-7 d-flex align-items-center justify-content-end">
+                            @if($booking->status == 0)
                                 <form method="post"
                                       action="/booking/{{ $booking->id }}/approve ">
                                     @csrf
@@ -96,8 +96,17 @@
                                         Відмовити
                                     </button>
                                 </form>
-                            </div>
-                        @endif
+                            @elseif($booking->status == 1)
+                                <form method="post"
+                                      action="/booking/{{ $booking->id }}/cancel">
+                                    @csrf
+
+                                    <button class="btn btn-first">
+                                        Скасувати
+                                    </button>
+                                </form>
+                            @endif
+                        </div>
                     </div>
                 </div>
             @empty
