@@ -12,9 +12,9 @@ use Intervention\Image\Facades\Image;
 
 class ProfilesController extends Controller
 {
-    public function index(Profile $profile)
+    public function show(Profile $profile)
     {
-        return view('profiles.index', compact('profile'));
+        return view('profiles.show', compact('profile'));
     }
 
     public function settings()

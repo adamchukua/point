@@ -84,9 +84,9 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 
-Route::get('/profile/{profile}', [App\Http\Controllers\ProfilesController::class, 'index']);
+Route::get('/profile/{profile}', [App\Http\Controllers\ProfilesController::class, 'show']);
 
-Route::get('/hotel/{hotel}', [App\Http\Controllers\HotelsController::class, 'index']);
-Route::get('/hotel/{hotel}/reviews', [App\Http\Controllers\HotelsController::class, 'reviews']);
+Route::get('/hotel/{hotel}', [App\Http\Controllers\HotelsController::class, 'show']);
+Route::get('/hotel/{hotel}/reviews', [App\Http\Controllers\ReviewsController::class, 'index']);
 
 Route::get('/search', [App\Http\Controllers\HotelsController::class, 'search']);

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class HotelsController extends Controller
 {
-    public function index(Hotel $hotel)
+    public function show(Hotel $hotel)
     {
         $user = auth()->user();
 
@@ -33,7 +33,7 @@ class HotelsController extends Controller
         $cities = DB::table('cities')->get();
         $query = request();
 
-        return view('hotels.index', compact('hotel',
+        return view('hotels.show', compact('hotel',
             'savedStatus',
             'reviewsAverageMark',
             'reviewsAverageMarkText',
@@ -59,7 +59,7 @@ class HotelsController extends Controller
             ->where('id', $query['city'])
             ->first();
 
-        return view('hotels.hotels', compact(
+        return view('hotels.index', compact(
             'hotels',
     'cities',
             'query',
@@ -177,12 +177,5 @@ class HotelsController extends Controller
         }
 
         return redirect('/profile/apartments');
-    }
-
-    public function reviews(Hotel $hotel)
-    {
-        $reviews = $hotel->reviews()->latest()->paginate(15);
-
-        return view('hotels.reviews', compact('hotel', 'reviews'));
     }
 }

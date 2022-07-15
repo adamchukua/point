@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Hotel;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ReviewsController extends Controller
 {
+    public function index(Hotel $hotel)
+    {
+        $reviews = $hotel->reviews()->latest()->paginate(15);
+
+        return view('reviews.index', compact('hotel', 'reviews'));
+    }
+
     public function create(Booking $booking)
     {
         $this->authorize('create', $booking);
