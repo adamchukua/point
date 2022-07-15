@@ -107,6 +107,15 @@ class Hotel extends Model
             $this->other_facilities_for_people_with_disabilities;
     }
 
+    public function featuresAny()
+    {
+        return $this->featuresFood() &&
+            $this->featuresInternet() &&
+            $this->featuresTransport() &&
+            $this->featuresSportsLeisure() &&
+            $this->featuresOther();
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
