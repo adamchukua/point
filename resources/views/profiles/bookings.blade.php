@@ -30,7 +30,7 @@
 
         <div class="profile-list">
             @forelse($bookings as $booking)
-                <div class="profile-list-item d-flex justify-content-between">\
+                <div class="profile-list-item d-flex justify-content-between">
                     <div class="profile-list-item-left d-flex justify-content-between">
                         <a href="/hotel/{{ $booking->room->hotel->id  }}">
                             <img
