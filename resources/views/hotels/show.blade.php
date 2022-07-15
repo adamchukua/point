@@ -256,8 +256,78 @@
             <section class="hotel-section" id="booking">
                 <p class="hotel--title" id="availability">Наявність місць</p>
 
-                <table class="table">
-                    <thead>
+                <form action="/hotel/{{ $hotel->id }}"
+                      method="get"
+                      class="d-flex align-items-end mb-3">
+
+                    <div class="me-3">
+                        <label for="departure">Заїзд</label>
+
+                        <input
+                            type="date"
+                            name="arrival"
+                            id="arrival"
+                            value="{{ $query['arrival'] ?? '' }}"
+                            class="form-control search--input sidebar--input @error('arrival') is-invalid @enderror">
+
+                        @error('departure')
+                            {{ $message }}
+                        @enderror
+                    </div>
+
+                    <div class="me-3">
+                        <label for="departure">Виїзд</label>
+
+                        <input
+                            type="date"
+                            name="departure"
+                            id="departure"
+                            value="{{ $query['departure'] ?? '' }}"
+                            class="form-control search--input sidebar--input @error('departure') is-invalid @enderror">
+
+                        @error('departure')
+                            {{ $message }}
+                        @enderror
+                    </div>
+
+                    <div class="me-3">
+                        <label for="peopleNumber">Кількість людей</label>
+
+                        <input
+                            type="number"
+                            name="peopleNumber"
+                            id="peopleNumber"
+                            value="{{ $query['peopleNumber'] ?? '' }}"
+                            class="form-control search--input sidebar--input @error('peopleNumber') is-invalid @enderror"
+                            min="1">
+
+                        @error('peopleNumber')
+                            {{ $message }}
+                        @enderror
+                    </div>
+
+                    <div class="me-3">
+                        <label for="roomsNumber">Кількість номерів</label>
+
+                        <input
+                            type="number"
+                            name="roomsNumber"
+                            id="roomsNumber"
+                            value="{{ $query['roomsNumber'] ?? '' }}"
+                            class="form-control search--input sidebar--input @error('roomsNumber') is-invalid @enderror"
+                            min="1">
+
+                        @error('roomsNumber')
+                            {{ $message }}
+                        @enderror
+                    </div>
+
+                    <button class="btn btn-second sidebar--input">Шукати</button>
+                </form>
+
+                @if($query['arrival'] ?? null)
+                    <table class="table">
+                        <thead>
                         <tr>
                             <th scope="col">Тип номеру</th>
                             <th scope="col">Вміщує в собі (осіб)</th>
@@ -265,8 +335,8 @@
                             <th scope="col">Ціна (грн)</th>
                             <th scope="col"></th>
                         </tr>
-                    </thead>
-                    <tbody>
+                        </thead>
+                        <tbody>
                         @foreach($hotel->rooms as $room)
                             @if($room->bookings()->where('status', 1)->count() < $room->number)
                                 <tr>
@@ -317,8 +387,9 @@
                                 </tr>
                             @endif
                         @endforeach
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                @endif
             </section>
         </div>
     </div>

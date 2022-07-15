@@ -31,7 +31,14 @@ class HotelsController extends Controller
             ->get()) > 0 : null;
 
         $cities = DB::table('cities')->get();
-        $query = request();
+
+        $query = request()->validate([
+            'city' => 'max:50',
+            'arrival' => ['date', 'after_or_equal:today'],
+            'departure' => ['date', 'after:arrival'],
+            'peopleNumber' => ['integer', 'between:1,100'],
+            'roomsNumber' => ['integer', 'between:1,100'],
+        ]);
 
         return view('hotels.show', compact('hotel',
             'savedStatus',

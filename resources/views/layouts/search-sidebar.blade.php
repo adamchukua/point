@@ -18,7 +18,7 @@
 
             @foreach($cities as $city)
                 <option
-                    {{ $query['city'] == $city->id ? 'selected' : '' }}
+                    {{ $query['city'] ?? null == $city->id ? 'selected' : '' }}
                     value="{{ $city->id }}"
                     data-subtext="{{ $city->city }}">
                     {{ $city->city }} ({{ $city->area }})
