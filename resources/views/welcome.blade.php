@@ -22,7 +22,7 @@
                             <label for="city">Куди ви вирушаєте?</label>
                         @enderror
 
-                        <select class="form-select form-control search--input sidebar--input"
+                        <select class="form-select form-control search--input sidebar--input @error('city') is-invalid @enderror"
                                 name="city"
                                 id="city"
                                 required>

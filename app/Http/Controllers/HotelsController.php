@@ -61,7 +61,7 @@ class HotelsController extends Controller
 
         return view('hotels.index', compact(
             'hotels',
-    'cities',
+            'cities',
             'query',
             'queryCity'));
     }
