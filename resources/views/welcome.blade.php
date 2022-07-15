@@ -85,21 +85,23 @@
     </div>
 
     <div class="container mt-2">
-        <section>
-            <p class="section--title">Пошук популярними містами України</p>
-            <div class="row">
-                @foreach($topCities as $city)
-                    @php
-                        $cityNames = \Illuminate\Support\Facades\DB::table('cities')->where('id', $city['city'])->first();
-                    @endphp
-                    <div class="col-6 col-md-3">
-                        <a class="areas-item--title" href="/search?city={{ $city['city'] }}">
-                            {{ $cityNames->city . ' (' . $cityNames->area . ')' }}
-                        </a>
-                        <p class="areas-item--subtitle">{{ $city['count(*)'] }} помешкань</p>
-                    </div>
-                @endforeach
-            </div>
-        </section>
+        @if($topCities->count() > 0)
+            <section>
+                <p class="section--title">Пошук популярними містами України</p>
+                <div class="row">
+                    @foreach($topCities as $city)
+                        @php
+                            $cityNames = \Illuminate\Support\Facades\DB::table('cities')->where('id', $city['city'])->first();
+                        @endphp
+                        <div class="col-6 col-md-3">
+                            <a class="areas-item--title" href="/search?city={{ $city['city'] }}">
+                                {{ $cityNames->city . ' (' . $cityNames->area . ')' }}
+                            </a>
+                            <p class="areas-item--subtitle">{{ $city['count(*)'] }} помешкань</p>
+                        </div>
+                    @endforeach
+                </div>
+            </section>
+        @endif
     </div>
 @endsection

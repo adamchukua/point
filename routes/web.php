@@ -28,7 +28,9 @@ Route::get('/', function () {
 
 Route::get('/join', function () {
     $hotelsNumber = \App\Models\Hotel::all()->count();
-    $bookingsNumber = 0;
+    $bookingsNumber = \App\Models\Booking::query()
+        ->where('status', 3)
+        ->count();
 
     return view('join', compact('hotelsNumber', 'bookingsNumber'));
 });

@@ -19,7 +19,7 @@
                     <p class="join-info--title">Зареєструйте нове помешкання</p>
                     <ul class="join-info-list list-unstyled">
                         <li class="join-info-list--item">Вже {{ $hotelsNumber }} зареєстрованих помешкань</li>
-                        <li class="join-info-list--item">Більше ніж {{ $bookingsNumber }} заїздів у помешкання</li>
+                        <li class="join-info-list--item">Точно {{ $bookingsNumber }} заїздів у помешкання</li>
                         <li class="join-info-list--item">Людяна система, яка зробить все за вас</li>
                     </ul>
                     <a class="btn btn-first w-100" href="/profile/apartments/create">Почати</a>
