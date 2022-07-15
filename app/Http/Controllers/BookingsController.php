@@ -11,17 +11,21 @@ class BookingsController extends Controller
 {
     public function store(Room $room)
     {
-        // Check if there is free rooms
-        if ($room->bookings()->where('status', 1)->count() > $room->number) {
-            return redirect()->back();
-        }
-
         $data = request()->validate([
             'arrival' => ['required', 'date'],
             'departure' => ['required', 'date'],
             'peopleNumber' => ['required', 'integer', 'between:1,100'],
             //'roomsNumber' => ['integer', 'between:1,100'],
         ]);
+
+        // Check if there is free rooms
+        if ($room->bookings()
+                ->where([
+                    ['status', 1],
+                    ['departure', '>', $data['arrival']]
+                ])->count() < $room->number) {
+            return redirect()->back();
+        }
 
         for ($i = 0; $i < $data['peopleNumber']; $i += $room->contains) {
             auth()->user()->profile->bookings()->create([
