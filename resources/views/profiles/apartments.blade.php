@@ -94,23 +94,33 @@
                                         </thead>
                                         <tbody>
                                         @foreach($hotel->rooms as $room)
+
+                                            @php
+                                                $awaitingApproval = $room->bookings()->where('status', 0)->count();
+                                                $approved = $room->bookings()->where('status', 1)->count();
+                                                $disapproved = $room->bookings()->where('status', 2)->count();
+                                                $done = $room->bookings()->where('status', 3)->count();
+
+                                                $freeRooms = max($room->number - ($approved + $done), 0);
+                                            @endphp
+
                                             <tr>
                                                 <th scope="row">
                                                     {{ $room->type }}
                                                 </th>
 
                                                 <td>
-                                                    {{ $room->number -
-                                                    ($room->bookings()->where('status', 1)->count() +
-                                                    $room->bookings()->where('status', 3)->count()) }}
+                                                    {{ $freeRooms }}
                                                 </td>
 
                                                 <td>
-                                                    {{ $room->bookings()->where('status', 1)->count() }}
+                                                    {{ $approved <= $room->number ? $approved :
+                                                        ($room->number . ' (' . $approved - $room->number
+                                                        . ' наперед)') }}
                                                 </td>
 
                                                 <td>
-                                                    {{ $room->bookings()->where('status', 0)->count() }}
+                                                    {{ $awaitingApproval }}
                                                 </td>
 
                                                 <td>
