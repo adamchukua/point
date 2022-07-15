@@ -16,7 +16,12 @@
             <form action="/search" method="get">
                 <div class="row align-items-end">
                     <div class="col-4">
-                        <label for="city">Куди ви вирушаєте?</label>
+                        @error('city')
+                            {{ $message }}
+                        @else
+                            <label for="city">Куди ви вирушаєте?</label>
+                        @enderror
+
                         <select class="form-select form-control search--input sidebar--input"
                                 name="city"
                                 id="city"
@@ -35,43 +40,67 @@
                     </div>
 
                     <div class="col-2">
-                        <label for="arrival">Заїзд</label>
+                        @error('arrival')
+                            {{ $message }}
+                        @else
+                            <label for="arrival">Заїзд</label>
+                        @enderror
+
                         <input
+                            value="{{ old('arrival') }}"
                             type="date"
                             name="arrival"
                             id="arrival"
-                            class="form-control search--input sidebar--input"
+                            class="form-control search--input sidebar--input @error('arrival') is-invalid @enderror"
                             required>
                     </div>
 
                     <div class="col-2">
-                        <label for="departure">Виїзд</label>
+                        @error('departure')
+                            {{ $message }}
+                        @else
+                            <label for="departure">Виїзд</label>
+                        @enderror
+
                         <input
+                            value="{{ old('departure') }}"
                             type="date"
                             name="departure"
                             id="departure"
-                            class="form-control search--input sidebar--input"
+                            class="form-control search--input sidebar--input @error('departure') is-invalid @enderror"
                             required>
                     </div>
 
                     <div class="col-1">
-                        <label for="peopleNumber">Кількість людей</label>
+                        @error('peopleNumber')
+                            {{ $message }}
+                        @else
+                            <label for="peopleNumber">Кількість людей</label>
+                        @enderror
+
                         <input
+                            value="{{ old('peopleNumber') }}"
                             type="number"
                             name="peopleNumber"
                             id="peopleNumber"
-                            class="form-control search--input sidebar--input"
+                            class="form-control search--input sidebar--input @error('peopleNumber') is-invalid @enderror"
                             min="1"
                             required>
                     </div>
 
                     <div class="col-1">
-                        <label for="roomsNumber">Кількість номерів</label>
+                        @error('roomsNumber')
+                            {{ $message }}
+                        @else
+                            <label for="roomsNumber">Кількість номерів</label>
+                        @enderror
+
                         <input
+                            value="{{ old('roomsNumber') }}"
                             type="number"
                             name="roomsNumber"
                             id="roomsNumber"
-                            class="form-control search--input sidebar--input"
+                            class="form-control search--input sidebar--input @error('roomsNumber') is-invalid @enderror"
                             min="1"
                             required>
                     </div>
