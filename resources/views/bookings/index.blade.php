@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', config('app.name', 'Laravel') . ': Бронювання ' . $hotel->name)
+
 @section('content')
     <div class="container">
         @if($bookings->count() > 0)

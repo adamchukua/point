@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('app.name', 'Laravel') . ': Створення Вашого помешкання')
+@section('title', config('app.name', 'Laravel') . ': Редагувати відгук на бронювання' . $review->hotel->name)
 
 @section('content')
     <div class="container">

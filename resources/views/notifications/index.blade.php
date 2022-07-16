@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('app.name', 'Laravel') . ': Відгуки')
+@section('title', config('app.name', 'Laravel') . ': Сповіщення')
 
 @section('content')
     <div class="container">

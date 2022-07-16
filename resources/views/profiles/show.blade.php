@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', config('app.name', 'Laravel') . ': ' . ($profile->name ? $profile->name : 'Профіль користувача'))
+
 @section('content')
     <div class="container">
 

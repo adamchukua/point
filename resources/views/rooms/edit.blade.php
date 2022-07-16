@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
-@section('title', config('app.name', 'Laravel') . ': Додавання номеру до готелюR')
+@section('title', config('app.name', 'Laravel') . ': Редагування номеру ' . $room->hotel->name)
 
 @section('content')
     <div class="container">
 
         <h1 class="profile--title">
-            Редагування номеру готелю {{ $room->hotel->name }}
+            Редагування номеру
+            <a href="/hotel/{{ $room->hotel->id }}">{{ $room->hotel->name }}</a>
         </h1>
 
             <form action="/profile/apartments/room/{{ $room->id }}/edit" method="post">
