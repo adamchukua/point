@@ -81,6 +81,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/booking/{booking}/cancel', [App\Http\Controllers\BookingsController::class, 'cancel']);
         Route::post('/booking/{booking}/approve', [App\Http\Controllers\BookingsController::class, 'approve']);
         Route::post('/booking/{booking}/disapprove', [App\Http\Controllers\BookingsController::class, 'disapprove']);
+        Route::post('/booking/{booking}/done', [App\Http\Controllers\BookingsController::class, 'done']);
     });
 });
 

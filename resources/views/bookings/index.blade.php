@@ -101,6 +101,17 @@
                                         </button>
                                     </form>
                                 @elseif($booking->status == 1)
+                                    @if($booking->departure == Carbon\Carbon::now()->toDateString())
+                                        <form method="post"
+                                              action="/booking/{{ $booking->id }}/done">
+                                            @csrf
+
+                                            <button class="btn btn-first me-3">
+                                                Виконано
+                                            </button>
+                                        </form>
+                                    @endif
+
                                     <form method="post"
                                           action="/booking/{{ $booking->id }}/cancel">
                                         @csrf

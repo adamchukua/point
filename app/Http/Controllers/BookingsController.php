@@ -110,4 +110,23 @@ class BookingsController extends Controller
 
         return redirect('/profile/apartments/' . $booking->hotel->id . '/bookings');
     }
+
+    public function done(Booking $booking)
+    {
+        $this->authorize('update', $booking);
+
+        $booking->status = 3;
+        $booking->save();
+
+        $booking->profile->user->notifications()->create([
+            'title' => 'Бронювання #' . $booking->id . ' виконано!',
+            'text' => "Власник <a href='/hotel/" .
+                $booking->hotel->id . "'>" .
+                $booking->hotel->name . "</a>" .
+                " позначив Ваше бронювання #" .
+                $booking->id . " як виконане! Відтепер Ви маєте змогу залишити відгук",
+        ]);
+
+        return redirect('/profile/apartments/' . $booking->hotel->id . '/bookings');
+    }
 }

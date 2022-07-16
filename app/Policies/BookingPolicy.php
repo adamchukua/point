@@ -55,8 +55,7 @@ class BookingPolicy
      */
     public function update(User $user, Booking $booking)
     {
-        return ($user->id == $booking->hotel->user->id) &&
-            ($booking->status == 0);
+        return $user->id == $booking->hotel->user->id;
     }
 
     /**
