@@ -263,7 +263,7 @@
                             <div class="hotels-list-item">
                                 <div class="row">
                                     <div class="col-3">
-                                        <a href="/hotel/{{ $hotel->id }}?{{ http_build_query($query)  }}">
+                                        <a href="/hotel/{{ $hotel->id }}?{{ http_build_query($query) }}">
                                             <img
                                                 src="/storage/{{ $hotel->hotelPhotos->first()->image }}"
                                                 alt=""
@@ -273,8 +273,8 @@
 
                                     <div class="col-9 d-flex justify-content-between">
                                         <div class="hotels-list-item-left">
-                                            <div class="hotels-list-item-left-title">
-                                                <a class="hotels-list-item-left-title--text link-unstyled"
+                                            <div class="hotels-list-item-left-title d-flex">
+                                                <a class="hotels-list-item-left-title--text me-2 link-unstyled"
                                                    href="/hotel/{{ $hotel->id }}?{{ http_build_query($query) }}">
                                                     {{ $hotel->name }}
                                                 </a>
@@ -283,7 +283,7 @@
                                                     <img
                                                         src="/img/svg/star.svg"
                                                         alt=""
-                                                        class="hotels-list-item-title--img">
+                                                        class="hotels-list-item-left-title--img">
                                                 @endfor
                                             </div>
 
@@ -291,10 +291,14 @@
                                                 {{ $city->city }},
                                                 {{ $city->area }}
                                             </p>
+
+                                            <p class="hotels-list-item--subtitle">
+                                                {{ strlen($hotel->description) > 300 ? substr($hotel->description, 0, 300) . '...' : $hotel->description }}
+                                            </p>
                                         </div>
 
-                                        <div class="hotels-list-item-right">
-                                            <div class="hotels-list-item-right-reviews">
+                                        <div class="hotels-list-item-right d-flex justify-content-between" style="flex-direction: column">
+                                            <div class="hotels-list-item-right-reviews d-flex">
                                                 <p class="hotels-list-item-right-reviews--text">
                                                     <span>
                                                         {{ $reviewsAverageMarkText }}
@@ -307,6 +311,11 @@
                                                     <span>{{ $reviewsAverageMark }}</span>
                                                 </p>
                                             </div>
+
+                                            <a class="btn btn-second"
+                                               href="/hotel/{{ $hotel->id }}?{{ http_build_query($query) }}">
+                                                 Наявність місць
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

@@ -366,9 +366,15 @@
                 object-fit: cover;
             }
 
-            &-left-title--text {
-                font-size: 1.25rem;
-                font-weight: bold;
+            &-left-title {
+                &--text {
+                    font-size: 1.25rem;
+                    font-weight: bold;
+                }
+
+                &--img {
+                    width: 12px;
+                }
             }
 
             &-right {

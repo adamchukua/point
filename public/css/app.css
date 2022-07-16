@@ -10542,6 +10542,9 @@ textarea.form-control-lg {
   font-size: 1.25rem;
   font-weight: bold;
 }
+.hotels-list-item-left-title--img {
+  width: 12px;
+}
 .hotels-list-item-right-reviews {
   display: flex;
   align-items: center;

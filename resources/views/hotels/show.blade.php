@@ -129,7 +129,6 @@
                                 </div>
                             </div>
 
-                            <a href="/hotel/{{ $hotel->id }}/reviews/add" class="btn btn-first mb-3">Додати відгук</a>
                             <a href="/hotel/{{ $hotel->id }}/reviews" class="btn btn-first mb-3">Читати всі відгуки</a>
                         @endif
                     </div>
