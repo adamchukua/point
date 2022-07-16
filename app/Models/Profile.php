@@ -26,10 +26,12 @@ class Profile extends Model
 
     public function getCountryName()
     {
-        return DB::table('countries')
-            ->where('code', $this->country)
-            ->first()
-            ->name;
+        if ($this->country) {
+            return DB::table('countries')
+                ->where('code', $this->country)
+                ->first()
+                ->name;
+        }
     }
 
     public function user()
