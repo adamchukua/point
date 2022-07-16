@@ -257,7 +257,9 @@
                                 $review = new \App\Models\Review();
                                 $reviewsAverageMarkText = $review->getAverageMarkText($reviewsAverageMark);
 
-                                $city = \Illuminate\Support\Facades\DB::table('cities')->where('id', $hotel->city)->first();
+                                $city = \Illuminate\Support\Facades\DB::table('cities')
+                                    ->where('id', $hotel->city)
+                                    ->first();
                             @endphp
 
                             <div class="hotels-list-item">
@@ -312,10 +314,16 @@
                                                 </p>
                                             </div>
 
-                                            <a class="btn btn-second"
-                                               href="/hotel/{{ $hotel->id }}?{{ http_build_query($query) }}">
-                                                 Наявність місць
-                                            </a>
+                                            @if($hotel->rooms->count() > 0)
+                                                <p class="mb-0 text-muted text-center">
+                                                    Від {{ $hotel->rooms->min('price') }} грн
+                                                </p>
+
+                                                <a class="btn btn-second"
+                                                   href="/hotel/{{ $hotel->id }}?{{ http_build_query($query) }}">
+                                                    Наявність місць
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
