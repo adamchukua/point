@@ -46,4 +46,9 @@ class Review extends Model
     {
         return $this->belongsTo(Profile::class);
     }
+
+    public function booking()
+    {
+        return $this->hasOne(Booking::class);
+    }
 }

@@ -38,13 +38,12 @@ class ReviewPolicy
      * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Booking  $booking
+     * @param  \App\Models\Review  $review
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user, Booking $booking)
+    public function create(User $user, Review $review)
     {
-        return ($user->profile->bookings->contains($booking)) &&
-            ($booking->status = 3);
+
     }
 
     /**

@@ -84,7 +84,7 @@
                                     @if($booking->status == 3)
                                         <a
                                             class="dropdown-item"
-                                            href="/profile/bookings/{{ $booking->room->hotel->id }}/review/add">
+                                            href="/profile/bookings/{{ $booking->id }}/review/create">
                                             Залишити відгук
                                         </a>
                                     @else

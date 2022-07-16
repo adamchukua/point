@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('profile_id');
             $table->unsignedBigInteger('hotel_id');
+            $table->unsignedBigInteger('booking_id');
             $table->string('title')->nullable();
             $table->text('text');
             $table->text('pros')->nullable();

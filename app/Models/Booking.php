@@ -27,6 +27,11 @@ class Booking extends Model
         return $this->belongsTo(Hotel::class);
     }
 
+    public function review()
+    {
+        return $this->belongsTo(Review::class);
+    }
+
     public function getStatusText()
     {
         return match ($this->status) {

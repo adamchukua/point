@@ -18,16 +18,41 @@ class ReviewsController extends Controller
 
     public function create(Booking $booking)
     {
-        $this->authorize('create', $booking);
+        if (!auth()->user()->profile->bookings->contains($booking)) {
+            return redirect('/profile/bookings');
+        }
 
-        return view('reviews.create');
+        return view('reviews.create', compact('booking'));
     }
 
     public function store(Booking $booking)
     {
-        $this->authorize('create', $booking);
+        $user = auth()->user();
 
-        //
+        if (!$user->profile->bookings->contains($booking)) {
+            return redirect('/profile/bookings');
+        }
+
+        $data = request()->validate([
+            'title' => 'max:255',
+            'text' => ['required', 'max:1000'],
+            'pros' => 'max:500',
+            'cons' => 'max:500',
+            'personnel_mark' => ['required', 'integer', 'between:0,10'],
+            'comfort_mark' => ['required', 'integer', 'between:0,10'],
+            'free_wifi_mark' => ['required', 'integer', 'between:0,10'],
+            'amenities_mark' => ['required', 'integer', 'between:0,10'],
+            'price_quality_mark' => ['required', 'integer', 'between:0,10'],
+            'purity_mark' => ['required', 'integer', 'between:0,10'],
+            'location_mark' => ['required', 'integer', 'between:0,10'],
+            'stars' => ['required', 'integer', 'between:1,5'],
+        ]);
+
+        $booking->review()->create(array_merge($data, [
+            'profile_id' => $user->profile->id,
+            'hotel_id' => $booking->hotel->id,
+            'booking_id' => $booking->id,
+        ]));
 
         return redirect('/profile/reviews');
     }
@@ -55,7 +80,7 @@ class ReviewsController extends Controller
             'price_quality_mark' => ['required', 'integer', 'between:0,10'],
             'purity_mark' => ['required', 'integer', 'between:0,10'],
             'location_mark' => ['required', 'integer', 'between:0,10'],
-            //'stars' => ['required', 'integer', 'between:1,5'],
+            'stars' => ['required', 'integer', 'between:1,5'],
         ]);
 
         $review->update($data);

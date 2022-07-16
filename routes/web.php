@@ -56,8 +56,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/notifications/all-read', [App\Http\Controllers\NotificationsController::class, 'allRead']);
 
     Route::group(['middleware' => 'verified'], function () {
-        Route::get('/profile/bookings/{booking}/review/add', [App\Http\Controllers\ReviewsController::class, 'create']);
-        Route::post('/profile/bookings/{booking}/review/add', [App\Http\Controllers\ReviewsController::class, 'store']);
+        Route::get('/profile/bookings/{booking}/review/create', [App\Http\Controllers\ReviewsController::class, 'create']);
+        Route::post('/profile/bookings/{booking}/review/create', [App\Http\Controllers\ReviewsController::class, 'store']);
 
         Route::get('/profile/reviews/{review}/edit', [App\Http\Controllers\ReviewsController::class, 'edit']);
         Route::patch('/profile/reviews/{review}/edit', [App\Http\Controllers\ReviewsController::class, 'update']);
