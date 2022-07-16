@@ -40,8 +40,9 @@
 
                         <a href="/hotel/{{ $review->hotel->id }}" class="link-unstyled">
                             <div class="profile-list-item-left-text">
-                                <p class="profile-list-item-left-text--title">
-                                    {{ $review->title }}
+                                <p class="profile-list-item-left-text--title hotel-reviews--mark">
+                                    <span>{{ $review->getAverageMark() }}</span>
+                                    {{ $review->title ?? $review->getAverageMarkText($review->getAverageMark()) }}
                                 </p>
 
                                 <p class="profile-list-item-left-text--subtitle">
