@@ -52,18 +52,25 @@
                 @foreach($reviews as $review)
                     <div class="profile-list-item profile-list-item__mini">
                         <div class="row">
-                            <a
-                                class="col-2 d-flex align-items-center link-unstyled"
-                                href="/profile/{{ $review->profile->id }}">
-                                <img
-                                    src="{{ $review->profile->getAvatar() }}"
-                                    alt=""
-                                    class="profile-list-item-left-profile--img">
+                            <div
+                                class="col-2 d-flex align-items-center justify-content-center"
+                                style="flex-direction: column">
+                                <a class="d-flex align-items-center link-unstyled"
+                                   href="/profile/{{ $review->profile->id }}">
+                                    <img
+                                        src="{{ $review->profile->getAvatar() }}"
+                                        alt=""
+                                        class="profile-list-item-left-profile--img">
 
-                                <p class="profile-list-item-left-profile--name">
-                                    {{ $review->profile->name ?? 'Анонім' }}
+                                    <p class="profile-list-item-left-profile--name">
+                                        {{ $review->profile->name ?? 'Анонім' }}
+                                    </p>
+                                </a>
+
+                                <p class="profile-list-item-left-text--subtitle mt-4 text-muted">
+                                    {{ $review->booking->room->type }}
                                 </p>
-                            </a>
+                            </div>
 
                             <div class="col-3">
                                 <p class="profile-list-item-left-text--subtitle">
@@ -73,6 +80,12 @@
                                 <p class="profile-list-item-left-text--title hotel-reviews--mark">
                                     <span>{{ $review->getAverageMark() }}</span>
                                     {{ $review->title ?? $review->getAverageMarkText($review->getAverageMark()) }}
+                                </p>
+
+                                <p class="profile-list-item-left-text--subtitle d-flex mb-3">
+                                    @for($i = 0; $i < $review->stars; $i++)
+                                        <img src="/img/svg/star.svg" alt="" class="profile-list-item-left-text--img">
+                                    @endfor
                                 </p>
 
                                 @if($review->pros)
@@ -90,21 +103,15 @@
                                 <p class="profile-list-item-left-text--subtitle">
                                     {{ $review->text }}
                                 </p>
-
-                                <p class="profile-list-item-left-text--subtitle d-flex">
-                                    @for($i = 0; $i < $review->stars; $i++)
-                                        <img src="/img/svg/star.svg" alt="" class="profile-list-item-left-text--img">
-                                    @endfor
-                                </p>
                             </div>
                         </div>
                     </div>
                 @endforeach
+            </div>
 
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-center">
-                        {{ $reviews->links() }}
-                    </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    {{ $reviews->links() }}
                 </div>
             </div>
         @else
