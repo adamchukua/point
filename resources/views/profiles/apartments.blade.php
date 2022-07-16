@@ -83,14 +83,14 @@
                                 @if($hotel->rooms->count() > 0)
                                     <table class="table">
                                         <thead>
-                                            <tr>
-                                                <th scope="col">Назва типу номеру</th>
-                                                <th scope="col">Вільних</th>
-                                                <th scope="col">Зайнятих</th>
-                                                <th scope="col">Очікують на розгляд</th>
-                                                <th scope="col">Всього</th>
-                                                <th scope="col"></th>
-                                            </tr>
+                                        <tr>
+                                            <th scope="col">Назва типу номеру</th>
+                                            <th scope="col">Вільних</th>
+                                            <th scope="col">Зайнятих</th>
+                                            <th scope="col">Очікують на розгляд</th>
+                                            <th scope="col">Всього</th>
+                                            <th scope="col"></th>
+                                        </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($hotel->rooms as $room)
@@ -169,7 +169,9 @@
 
                         <div class="profile-list-item-right d-flex align-items-start">
                             <div class="dropdown">
-                                <button class="btn profile-list-item-right--btn" type="button" id="dropdownMenu{{ $hotel->id }}" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn profile-list-item-right--btn" type="button"
+                                        id="dropdownMenu{{ $hotel->id }}" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
                                     <img src="/img/svg/more.svg" alt="" title="Властивості">
                                 </button>
 
@@ -193,11 +195,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                @empty
+                    @include('layouts.empty-section')
+                @endforelse
             </div>
-            @empty
-                @include('layouts.empty-section')
-            @endforelse
 
             <div class="row">
                 <div class="col-12 d-flex justify-content-center">
