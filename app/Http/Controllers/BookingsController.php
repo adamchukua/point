@@ -19,11 +19,11 @@ class BookingsController extends Controller
         ]);
 
         // Check if there is free rooms
-        if ($room->bookings()
-                ->where([
-                    ['status', 1],
-                    ['departure', '>', $data['arrival']]
-                ])->count() < $room->number) {
+        if ($room->bookings()->where([
+                ['status', 1],
+                ['departure', '>', $data['arrival']],
+                ['arrival', '<', $data['departure']]
+            ])->count() > $room->number) {
             return redirect()->back();
         }
 
