@@ -339,7 +339,7 @@
                         <tbody>
 
                         @foreach($hotel->rooms as $room)
-                            @if($room->bookings()->where([['status', 1], ['departure', '>', $query['arrival']]])->count() < $room->number)
+                            @if($room->bookings()->where([['status', 1], ['departure', '>', $query['arrival']], ['arrival', '<', $query['departure']]])->count() < $room->number)
                                 <tr>
                                     <th scope="row">{{ $room->type }}</th>
                                     <td>{{ $room->contains }}</td>
