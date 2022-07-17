@@ -2,7 +2,7 @@
 
 ## Технічне завдання
 
-Технічне завдання доступне за [посиланням](https://drive.google.com/file/d/1Y6cBiPucx_-FmD469jM1qjghOZdHH9dM/view).
+Технічне завдання доступне за [посиланням](https://drive.google.com/file/d/1Y6cBiPucx_-FmD469jM1qjghOZdHH9dM/view)**.
 
 ## Реалізовний функціонал
 
