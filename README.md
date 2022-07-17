@@ -2,7 +2,7 @@
 
 ## Технічне завдання
 
-Технічне завдання доступне за [посиланням](https://drive.google.com/file/d/1Y6cBiPucx_-FmD469jM1qjghOZdHH9dM/view).
+Технічне завдання доступне за <a href="https://drive.google.com/file/d/1Y6cBiPucx_-FmD469jM1qjghOZdHH9dM/view" target="_blank">посиланням</a>.
 
 ## Реалізовний функціонал
 
@@ -65,17 +65,17 @@
 
 ### Windows
 
-1. Завантажте та встановіть [XAMPP](https://www.apachefriends.org/index.html).
+1. Завантажте та встановіть <a href="https://www.apachefriends.org/index.html" target="_blank">XAMPP</a>.
 2. В конфігурації php.ini (Apache -> Config -> php.ini) розкоментуйте рядок `extension=gd`, прибравши ";".
-3. Завантажте та встановіть [Composer](https://getcomposer.org/download/), **обравши чекбокс "Add this PHP to your path"!**
+3. Завантажте та встановіть <a href="https://getcomposer.org/download/" target="_blank">Composer</a>, **обравши чекбокс "Add this PHP to your path"!**
 4. Перейдіть в phpMyAdmin (скоріш за все за посиланням http://localhost/phpmyadmin/) та створіть базу даних з назвою "point" (або іншою).
-5. Перейдіть у папку, в якій знаходитиметься проєкт та виконайте команду `git clone https://github.com/thegradle/point` (якщо у Вас немає встановленого git - завантажте та встановіть [його](https://git-scm.com/downloads)).
+5. Перейдіть у папку, в якій знаходитиметься проєкт та виконайте команду `git clone https://github.com/thegradle/point` (якщо у Вас немає встановленого git - завантажте та встановіть <a href="https://git-scm.com/downloads" target="_blank">його</a>).
 6. Перейдіть у корінь проєкту командою `cd point`.
 7. Перейменуйте файл `.env.example` командою у `.env`.
 8. Налаштуйте середовище на свій лад, або за замовчування: у файлі `.env` замініть наступні рядки:
 `APP_NAME=Point`
 `DB_DATABASE=point`
-Для роботи пошти зареєструйтесь в сервісі [Mailtrap](https://mailtrap.io/) та отримайте налаштування для MAIL_HOST, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD, MAIL_ENCRYPTION.
+Для роботи пошти зареєструйтесь в сервісі <a href="https://mailtrap.io/" target="_blank">Mailtrap</a> та отримайте налаштування для MAIL_HOST, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD, MAIL_ENCRYPTION.
 10. Виконайте `composer install`.
 11. Виконайте `php artisan key:generate`.
 12. Виконайте `php artisan migrate`.
