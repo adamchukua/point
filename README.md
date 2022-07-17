@@ -1,4 +1,4 @@
-<p align="center" style="font-weight: bold; font-size: 3rem">POINT</p>
+<p align="center"><img src="https://tlgur.com/d/8e0dA0l4"></p>
 
 ## Технічне завдання
 
