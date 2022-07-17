@@ -7,7 +7,7 @@
 
         <h1 class="profile--title">
             Редагування номеру
-            <a href="/hotel/{{ $room->hotel->id }}">{{ $room->hotel->name }}</a>
+            <a href="/hotel/{{ $room->hotel->id }}" class="link-unstyled">{{ $room->hotel->name }}</a>
         </h1>
 
             <form action="/profile/apartments/room/{{ $room->id }}/edit" method="post">

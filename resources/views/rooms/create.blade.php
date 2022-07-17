@@ -7,7 +7,7 @@
 
         <h1 class="profile--title">
             Додавання номеру до готелю
-            <a href="/hotel/{{ $hotel->id }}">{{ $hotel->name }}</a>
+            <a href="/hotel/{{ $hotel->id }}" class="link-unstyled">{{ $hotel->name }}</a>
         </h1>
 
             <form action="/profile/apartments/{{ $hotel->id }}/room/create" method="post">

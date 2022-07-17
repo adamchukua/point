@@ -59,6 +59,7 @@ class User extends Authenticatable implements MustVerifyEmail
             Storage::disk('public')->delete($user->profile->avatar);
             $user->profile->delete();
             $user->hotels->each->delete();
+            $user->saveds->each->delete();
         });
     }
 

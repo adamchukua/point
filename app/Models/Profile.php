@@ -48,4 +48,14 @@ class Profile extends Model
     {
         return $this->hasMany(Booking::class);
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($profile) {
+            $profile->reviews->each->delete();
+            $profile->bookings->each->delete();
+        });
+    }
 }
