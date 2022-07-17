@@ -314,7 +314,7 @@
                                                 </p>
                                             </div>
 
-                                            @if($hotel->rooms->count() > 0)
+                                            @if(($hotel->rooms->sum('number') - $hotel->bookings->where('status', 1)->count()) > 0)
                                                 <p class="mb-0 text-muted text-center">
                                                     Від {{ $hotel->rooms->min('price') }} грн
                                                 </p>
@@ -323,6 +323,8 @@
                                                    href="/hotel/{{ $hotel->id }}?{{ http_build_query($query) }}">
                                                     Наявність місць
                                                 </a>
+                                            @else
+                                                <strong>Місць немає</strong>
                                             @endif
                                         </div>
                                     </div>

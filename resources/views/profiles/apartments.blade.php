@@ -101,7 +101,7 @@
                                                 $disapproved = $room->bookings()->where('status', 2)->count();
                                                 $done = $room->bookings()->where('status', 3)->count();
 
-                                                $freeRooms = max($room->number - ($approved + $done), 0);
+                                                $freeRooms = max($room->number - $approved, 0);
                                             @endphp
 
                                             <tr>
