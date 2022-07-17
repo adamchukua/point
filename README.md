@@ -76,4 +76,5 @@
 11. Виконайте `php artisan key:generate`.
 12. Виконайте `php artisan migrate`.
 13. Виконайте `php artisan db:seed`.
-14. Запустіть локальний сервер командою `php artisan serve`.
+14. Виконайте `php artisan storage:link`.
+15. Запустіть локальний сервер командою `php artisan serve`.
