@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center" style="font-weight: bold; font-size: 3rem">POINT</p>
 
 ## Технічне завдання
 
@@ -57,8 +57,19 @@
 - Рейтинги та відгуки:
   - ...
 
-## Встановлення та запуск проєкту 
+## Запуск проєкту 
 
 ### Windows
 
-1. git clone 
+1. Завантажте та встановіть [XAMPP](https://www.apachefriends.org/index.html).
+2. В конфігурації php.ini (Apache -> Config -> php.ini) розкоментуйте рядок `extension=gd`, прибравши ";".
+3. Завантажте та встановіть [Composer](https://getcomposer.org/download/), **обравши чекбокс include php to path!**
+4. Перейдіть в phpMyAdmin (скоріш за все за посиланням http://localhost/phpmyadmin/) та створіть базу даних з назвою "point".
+5. Перейдіть у папку, в якій знаходитиметься проєкт та виконайте команду `git clone https://github.com/thegradle/point` (якщо у Вас немає встановленого git - завантажте та встановіть [його](https://git-scm.com/downloads)).
+6. Перейдіть у корінь проєкту командою `cd point`.
+7. Перейменуйте файл .env.example командою `mv .env.example .env`.
+8. Виконайте `composer install`.
+9. Виконайте `php artisan key:generate`.
+10. Виконайте `php artisan migrate`.
+11. Виконайте `php artisan db:seed`.
+12. Запустіть локальний сервер командою `php artisan serve`.
