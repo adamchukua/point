@@ -63,7 +63,7 @@
 
 1. Завантажте та встановіть [XAMPP](https://www.apachefriends.org/index.html).
 2. В конфігурації php.ini (Apache -> Config -> php.ini) розкоментуйте рядок `extension=gd`, прибравши ";".
-3. Завантажте та встановіть [Composer](https://getcomposer.org/download/), **обравши чекбокс include php to path!**
+3. Завантажте та встановіть [Composer](https://getcomposer.org/download/), **обравши чекбокс "Add this PHP to your path"!**
 4. Перейдіть в phpMyAdmin (скоріш за все за посиланням http://localhost/phpmyadmin/) та створіть базу даних з назвою "point".
 5. Перейдіть у папку, в якій знаходитиметься проєкт та виконайте команду `git clone https://github.com/thegradle/point` (якщо у Вас немає встановленого git - завантажте та встановіть [його](https://git-scm.com/downloads)).
 6. Перейдіть у корінь проєкту командою `cd point`.
