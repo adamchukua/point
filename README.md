@@ -67,7 +67,7 @@
 4. Перейдіть в phpMyAdmin (скоріш за все за посиланням http://localhost/phpmyadmin/) та створіть базу даних з назвою "point".
 5. Перейдіть у папку, в якій знаходитиметься проєкт та виконайте команду `git clone https://github.com/thegradle/point` (якщо у Вас немає встановленого git - завантажте та встановіть [його](https://git-scm.com/downloads)).
 6. Перейдіть у корінь проєкту командою `cd point`.
-7. Перейменуйте файл .env.example командою `mv .env.example .env`.
+7. Перейменуйте файл `.env.example` командою у `.env`.
 8. Виконайте `composer install`.
 9. Виконайте `php artisan key:generate`.
 10. Виконайте `php artisan migrate`.
