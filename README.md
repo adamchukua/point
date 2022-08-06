@@ -1,4 +1,4 @@
-<p align="center"><img src="[https://ibb.co/Z851mm3](https://i.ibb.co/yytBSSD/logo.png)"></p>
+<p align="center"><img src="https://i.imgur.com/Zx8TaXU.png"></p>
 
 ## Технічне завдання
 
