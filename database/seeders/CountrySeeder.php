@@ -199,7 +199,7 @@ class CountrySeeder extends Seeder
             array("code"=>"PT","name"=>"Портуґалія"),
             array("code"=>"PR","name"=>"Пуерто-Ріко"),
             array("code"=>"RE","name"=>"Реюньйон"),
-            array("code"=>"RU","name"=>"Росія"),
+            array("code"=>"RU","name"=>"Росія [країна-терорист]"),
             array("code"=>"RW","name"=>"Руанда"),
             array("code"=>"RO","name"=>"Румунія"),
             array("code"=>"SV","name"=>"Сальвадор"),
