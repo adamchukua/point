@@ -15,7 +15,7 @@
         <div class="search">
             <form action="/search" method="get">
                 <div class="row align-items-end">
-                    <div class="col-4">
+                    <div class="col-lg-4 col-sm-6 col-12">
                         @error('city')
                             {{ $message }}
                         @else
@@ -39,7 +39,7 @@
                         </select>
                     </div>
 
-                    <div class="col-2">
+                    <div class="col-lg-2 col-sm-3 col-6">
                         @error('arrival')
                             {{ $message }}
                         @else
@@ -55,7 +55,7 @@
                             required>
                     </div>
 
-                    <div class="col-2">
+                    <div class="col-lg-2 col-sm-3 col-6">
                         @error('departure')
                             {{ $message }}
                         @else
@@ -71,7 +71,7 @@
                             required>
                     </div>
 
-                    <div class="col-1">
+                    <div class="col-lg-1 col-sm-6 mt-sm-2 col-6">
                         @error('peopleNumber')
                             {{ $message }}
                         @else
@@ -88,7 +88,7 @@
                             required>
                     </div>
 
-                    <div class="col-1">
+                    <div class="col-lg-1 col-sm-6 col-6">
                         @error('roomsNumber')
                             {{ $message }}
                         @else
@@ -105,7 +105,7 @@
                             required>
                     </div>
 
-                    <div class="col-2">
+                    <div class="col-lg-2 col-sm-12 mt-sm-4">
                         <button type="submit" class="btn search--input search--btn btn-first">Шукати</button>
                     </div>
                 </div>
