@@ -10322,6 +10322,10 @@ textarea.form-control-lg {
   font-weight: bold;
 }
 
+.mt-exsm-3 {
+  margin-top: 1rem;
+}
+
 .navbar-notification {
   position: relative;
 }
@@ -10363,6 +10367,12 @@ textarea.form-control-lg {
   font-size: 1.1rem;
 }
 
+@media screen and (max-width: 768px) {
+  .nav-tabs > li {
+    width: 50%;
+    text-align: center;
+  }
+}
 .header--title {
   font-weight: bold;
   font-size: 3rem;
@@ -10596,6 +10606,12 @@ textarea.form-control-lg {
   cursor: pointer;
   transition: 0.2s;
 }
+@media screen and (max-width: 768px) {
+  .profile-avatar--img {
+    width: 150px;
+    height: 150px;
+  }
+}
 .profile-avatar--hided {
   top: calc(50% - 0.55rem);
   left: 17%;
@@ -10604,6 +10620,14 @@ textarea.form-control-lg {
   font-size: 1.05rem;
   color: #fff;
   display: none;
+}
+@media screen and (max-width: 768px) {
+  .profile-avatar--hided {
+    top: calc(50% - 1rem);
+    text-align: center;
+    left: 6%;
+    font-size: 1rem;
+  }
 }
 .profile-avatar:hover .profile-avatar--img {
   transition: 0.2s;

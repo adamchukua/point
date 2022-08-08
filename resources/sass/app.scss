@@ -88,6 +88,10 @@
     font-weight: bold;
 }
 
+.mt-exsm-3 {
+    margin-top: 1rem;
+}
+
 .navbar-notification {
     position: relative;
 
@@ -131,6 +135,13 @@
 .subtitle {
     font-weight: bold;
     font-size: 1.1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-tabs > li {
+        width: 50%;
+        text-align: center;
+    }
 }
 
 // header
@@ -443,6 +454,11 @@
             border-radius: 51%;
             cursor: pointer;
             transition: 0.2s;
+
+            @media screen and (max-width: 768px) {
+                width: 150px;
+                height: 150px;
+            }
         }
 
         &--hided {
@@ -453,6 +469,13 @@
             font-size: 1.05rem;
             color: #fff;
             display: none;
+
+            @media screen and (max-width: 768px) {
+                top: calc(50% - 1rem);
+                text-align: center;
+                left: 6%;
+                font-size: 1rem;
+            }
         }
     }
 

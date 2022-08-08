@@ -29,7 +29,7 @@
         <h1 class="profile--title">Налаштування</h1>
 
         <div class="row">
-            <div class="col-3">
+            <div class="col-lg-3 col-sm-4">
                 <label for="avatar" class="profile-avatar">
                     <img
                         src="{{ $user->profile->getAvatar() }}"
@@ -40,7 +40,7 @@
                 </label>
             </div>
 
-            <div class="col-6">
+            <div class="col-lg-6 col-sm-8">
                 <form action="/profile/settings" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
@@ -117,7 +117,7 @@
                 </form>
             </div>
 
-            <div class="col-3">
+            <div class="col-lg-3 col-sm-12 mt-exsm-3">
                 @if($user->hasVerifiedEmail() == null)
                     @include('layouts.verification')
                 @else
